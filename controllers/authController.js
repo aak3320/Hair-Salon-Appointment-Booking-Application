@@ -1,4 +1,4 @@
-const { registerUser } = require('../services/authService');
+const { registerUser, loginUser } = require('../services/authService');
 
 // Controller function to handle user registration
 const register = async (req, res) => {
@@ -30,4 +30,34 @@ const register = async (req, res) => {
     }
 };
 
-module.exports = { register };
+// Controller function to handle user login
+const login = async (req, res) => {
+    try {
+        const { email, password } = req.body;
+
+        // Basic validation
+        if (!email || !password) {
+            return res.status(400).json({ 
+                success: false,
+                message: 'Please enter email and password' 
+            });
+        }
+
+        // Call the service function to login the user
+        const { user, token } = await loginUser(email, password);
+
+        res.status(200).json({
+            success: true,
+            message: 'Login successful',
+            token: token,
+            user: user
+        });
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: err.message
+        });
+    }
+};
+
+module.exports = { register, login };
