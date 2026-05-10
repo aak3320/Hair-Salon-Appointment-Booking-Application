@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="booking-page">
+
+  <header class="navbar">
+    <div class="logo">Hair Salon</div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="catalog.html">Catalog</a>
+      <a href="booking.html">Booking</a>
+      <a href="#">Login</a>
+    </nav>
+  </header>
+
+  <section class="booking-section">
+    <h1>Book an Appointment</h1>
+    <p>Please fill in the form below to book your salon appointment.</p>
+
+    <form class="booking-form">
+      <input type="text" placeholder="Full Name" required>
+      <input type="email" placeholder="Email Address" required>
+
+      <select required>
+        <option value="">Select Service</option>
+        <option>Haircut</option>
+        <option>Hair Colouring</option>
+        <option>Hair Treatment</option>
+        <option>Hair Wash</option>
+        <option>Hair Styling</option>
+        <option>Beard Trim</option>
+      </select>
+
+      <input type="date" required>
+      <input type="time" required>
+
+      <textarea placeholder="Additional notes"></textarea>
+
+      <button class="btn-primary" type="submit">Confirm Booking</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Hair Salon Appointment Booking System</p>
+  </footer>
+
+</body>
+</html>
