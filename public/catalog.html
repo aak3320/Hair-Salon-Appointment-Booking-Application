@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Service Catalog</title>
-  <link rel="stylesheet" href="css/style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salon Catalog</title>
+  <link rel="stylesheet" href="css/style.css"/>
 </head>
+
 <body class="catalog-page">
 
   <header class="navbar">
     <div class="logo">Hair Salon</div>
+
     <nav>
       <a href="index.html">Home</a>
       <a href="catalog.html">Catalog</a>
@@ -19,76 +21,93 @@
   </header>
 
   <section class="catalog-header">
-    <h1>Service Catalog</h1>
-    <p>Browse our salon services, prices, and estimated time before making a booking.</p>
+    <h1>Salon Catalog</h1>
+
+    <p>
+      Browse available salons, compare ratings, and find the best salon near you.
+    </p>
   </section>
 
+  <!-- Search + Filter -->
+  <section class="search-section">
+
+    <input
+      type="text"
+      id="searchBar"
+      placeholder="Search salon..."
+    >
+
+    <select id="filterSelect">
+      <option value="all">All Suburbs</option>
+      <option value="Melbourne CBD">Melbourne CBD</option>
+      <option value="Box Hill">Box Hill</option>
+      <option value="Richmond">Richmond</option>
+    </select>
+
+  </section>
+
+  <!-- Salon Cards -->
   <section class="catalog-section">
-    <div class="catalog-container">
 
-      <div class="catalog-card">
-        <img src="images/haircut.jpg" alt="Haircut">
+    <div class="catalog-container" id="salonContainer">
+
+      <!-- Salon 1 -->
+      <div class="catalog-card" data-name="Elite Hair Studio" data-location="Melbourne CBD">
+
+        <img src="images/salon1.png" alt="Salon">
+
         <div class="catalog-content">
-          <h3>Haircut</h3>
-          <p>Professional haircut service for different styles and customer needs.</p>
-          <p class="price">$35</p>
-          <p class="duration">Duration: 45 minutes</p>
-          <button class="btn-primary">Book Now</button>
+
+          <h3>Elite Hair Studio</h3>
+
+          <p>Melbourne CBD</p>
+
+          <p class="rating">⭐ 4.8 Rating</p>
+
+          <button class="btn-primary">
+            View Salon
+          </button>
+
         </div>
       </div>
 
-      <div class="catalog-card">
-        <img src="images/color.jpg" alt="Hair Colouring">
+      <!-- Salon 2 -->
+      <div class="catalog-card" data-name="Modern Cuts" data-location="Box Hill">
+
+        <img src="images/salon2.png" alt="Salon">
+
         <div class="catalog-content">
-          <h3>Hair Colouring</h3>
-          <p>Modern hair colouring options provided by experienced salon staff.</p>
-          <p class="price">$80</p>
-          <p class="duration">Duration: 90 minutes</p>
-          <button class="btn-primary">Book Now</button>
+
+          <h3>Modern Cuts</h3>
+
+          <p>Box Hill</p>
+
+          <p class="rating">⭐ 4.6 Rating</p>
+
+          <button class="btn-primary">
+            View Salon
+          </button>
+
         </div>
       </div>
 
-      <div class="catalog-card">
-        <img src="images/treatment.jpg" alt="Hair Treatment">
-        <div class="catalog-content">
-          <h3>Hair Treatment</h3>
-          <p>Hair care and treatment services for customers who need extra care.</p>
-          <p class="price">$60</p>
-          <p class="duration">Duration: 60 minutes</p>
-          <button class="btn-primary">Book Now</button>
-        </div>
-      </div>
+      <!-- Salon 3 -->
+      <div class="catalog-card" data-name="Luxury Salon" data-location="Richmond">
 
-      <div class="catalog-card">
-        <img src="images/wash.jpg" alt="Hair Wash">
-        <div class="catalog-content">
-          <h3>Hair Wash</h3>
-          <p>Relaxing hair wash service with basic scalp care.</p>
-          <p class="price">$25</p>
-          <p class="duration">Duration: 30 minutes</p>
-          <button class="btn-primary">Book Now</button>
-        </div>
-      </div>
+        <img src="images/salon3.png" alt="Salon">
 
-      <div class="catalog-card">
-        <img src="images/styling.jpg" alt="Hair Styling">
         <div class="catalog-content">
-          <h3>Hair Styling</h3>
-          <p>Simple styling service for daily looks or special occasions.</p>
-          <p class="price">$50</p>
-          <p class="duration">Duration: 60 minutes</p>
-          <button class="btn-primary">Book Now</button>
-        </div>
-      </div>
 
-      <div class="catalog-card">
-        <img src="images/beard.jpg" alt="Beard Trim">
-        <div class="catalog-content">
-          <h3>Beard Trim</h3>
-          <p>Basic beard trimming and shaping service for male customers.</p>
-          <p class="price">$20</p>
-          <p class="duration">Duration: 25 minutes</p>
-          <button class="btn-primary">Book Now</button>
+          <h3>Luxury Salon</h3>
+
+          <p>Richmond</p>
+
+          <p class="rating">⭐ 4.9 Rating</p>
+
+          <button class="btn-primary">
+            View Salon
+          </button>
+
         </div>
       </div>
 
@@ -98,6 +117,44 @@
   <footer>
     <p>&copy; 2026 Hair Salon Appointment Booking System</p>
   </footer>
+
+  <!-- Simple Search + Filter -->
+  <script>
+
+    const searchBar = document.getElementById("searchBar");
+    const filterSelect = document.getElementById("filterSelect");
+    const cards = document.querySelectorAll(".catalog-card");
+
+    function filterSalons() {
+
+      const searchValue = searchBar.value.toLowerCase();
+      const filterValue = filterSelect.value;
+
+      cards.forEach(card => {
+
+        const name = card.dataset.name.toLowerCase();
+        const location = card.dataset.location;
+
+        const matchesSearch = name.includes(searchValue);
+
+        const matchesFilter =
+          filterValue === "all" || location === filterValue;
+
+        if (matchesSearch && matchesFilter) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+
+      });
+
+    }
+
+    searchBar.addEventListener("input", filterSalons);
+
+    filterSelect.addEventListener("change", filterSalons);
+
+  </script>
 
 </body>
 </html>

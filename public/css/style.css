@@ -452,3 +452,25 @@ footer {
   position: relative;
   z-index: 10000;
 }
+
+.search-section {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 30px;
+  background-color: #fff7f2;
+}
+
+.search-section input,
+.search-section select {
+  padding: 14px 18px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  width: 250px;
+}
+
+.rating {
+  font-weight: bold;
+  color: #b35c44;
+}
