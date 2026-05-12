@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page for Hair Salon</title>
+
+    <!-- Materialize CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Common Navigation bar-->
+    <nav class="navbar-custom">
+        <div class="nav-wrapper container">
+
+            <!-- Logo -->
+            <a href="index.html" class="brand-logo">Hair Salon</a>
+
+            <!-- Mobile Menu Icon -->
+            <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+
+            <!-- Deskstop Navigation Links -->
+            <ul class="right hide-on-med-and-down">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="login.html" id="navLoginLink" class="nav-active">Login</a></li>
+                <li><a href="#" id="navUserName"></a></li>
+            </ul>
+
+            <!-- Mobile Side Navigation -->
+            <ul class="sidenav" id="mobile-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
+                <li><a href="#" id="navUserNameMobile"></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
+    <section class="register-section">
+        <div class="container">
+            <div class="row form-row">
+                <div class="col s12 m5">
+                    <div class="left-panel">
+                        <h2>Welcome to Hair Salon</h2>
+                        <p>Book your appointment easily and quickly</p>
+                    </div>
+                </div>
+
+                <div class="col s12 m7">
+                    <div class="form-panel">
+                        <h4 class="form-heading">Login</h4>
+                        <p class="form-subheading">Don't have an account?
+                            <a href="register.html">Register here</a>
+                        </p>
+
+                        <!-- Error Message-->
+                        <div class="error-message" id="loginError"></div>
+                        <!-- Success Message -->
+                        <div class="success-message" id="loginSuccess"></div>
+
+                        <!--Login Form Section-->
+                        <form id="loginForm">
+
+                            <!-- Email Section -->
+                            <div class="input-field">
+                                <i class="material-icons prefix">email</i>
+                                <input type="email" id="email" required />
+                                <label for="email">Email Address</label>
+                            </div>
+
+                            <!-- Password Section -->
+                            <div class="input-field">
+                                <i class="material-icons prefix">lock</i>
+                                <input type="password" id="password" required />
+                                <label for="password">Password</label>
+                            </div>
+
+                            <!-- Submit -->
+                            <button type="submit" class="btn-custom btn-block waves-effect waves-light">
+                                Login
+                                <i class="material-icons right">login</i>
+                            </button>
+                        </form>
+
+                        <p class="bottom-link">
+                            New to Hair Salon?
+                            <a href="register.html">Create an account</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="page-footer footer-custom">
+        <div class="footer-copyright">
+            <div class="container center-align">
+                &copy; 2026 Hair Salon Appointment Booking System
+            </div>
+        </div>
+    </footer>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Auth JS: Authentication JS file to handle login and registration logic for Frontend -->
+    <script src="js/auth.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            M.Sidenav.init(document.querySelectorAll('.sidenav'));
+        });
+    </script>
+
+</body>
+
+</html>

@@ -13,36 +13,75 @@ body {
 }
 
 /* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 70px;
+nav.navbar-custom {
   background-color: white;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 998;
 }
 
 /* Logo */
-.logo {
-  font-size: 24px;
-  font-weight: bold;
+nav.navbar-custom .brand-logo {
   color: #b35c44;
+  font-weight: bold;
+  font-size: 24px;
 }
 
-/* Navbar links */
-.navbar a {
-  margin-left: 28px;
-  text-decoration: none;
+/* Nav links */
+nav.navbar-custom .hide-on-med-and-down li a {
   color: #333;
   font-weight: 500;
 }
 
-/* Hover effect */
-.navbar a:hover {
+/* Nav links hover */
+nav.navbar-custom .hide-on-med-and-down li a:hover {
   color: #b35c44;
+  background-color: transparent;
+}
+
+/* Active nav link */
+nav.navbar-custom .nav-active {
+  color: #b35c44 !important;
+  font-weight: bold;
+}
+
+#navUserName {
+    display: none;
+}
+
+.sidenav-trigger {
+    color: rgb(8, 1, 1);
+}
+
+.sidenav-overlay {
+  z-index: 997 !important;
+}
+
+.sidenav {
+  z-index: 999 !important;
+}
+
+#navUserNameMobile {
+    display: none;
+}
+
+/* User anme in navbar */
+#navUserName {
+    color: #b35c44 !important;
+    font-weight: bold !important;
+    cursor: pointer;
+}
+
+#navUserName:hover {
+    color: #5c2c22 !important;
+    background-color: transparent !important;
+}
+
+/* Mobile sidenav username */
+#navUserNameMobile {
+    color: #b35c44 !important;
+    font-weight: bold !important;
 }
 
 /* Hero section */
@@ -152,6 +191,188 @@ body {
   box-shadow: 0 20px 45px rgba(92, 44, 34, 0.22);
 }
 
+/* REGISTRATION/LOGIN PAGE */
+/* Register section */
+.register-section {
+  min-height: calc(100vh - 140px);
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+  background-color: #fff7f2;
+}
+
+/* Left panel */
+.left-panel {
+  background: linear-gradient(135deg, #b35c44, #5c2c22);
+  min-height: 480px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px;
+  box-shadow: 0 20px 45px rgba(92, 44, 34, 0.2);
+  margin-bottom: 20px;
+}
+
+.left-panel h2 {
+  color: white;
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.left-panel p {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Form panel */
+.form-panel {
+  background-color: white;
+  border-radius: 20px;
+  padding: 50px 45px;
+  box-shadow: 0 20px 50px rgba(92, 44, 34, 0.1);
+  min-height: 520px;
+}
+
+.form-heading {
+  color: #5c2c22;
+  margin-bottom: 8px;
+  font-size: 28px;
+}
+
+.form-subheading {
+  color: #666;
+  margin-bottom: 28px;
+  font-size: 15px;
+}
+
+/* Subheading link */
+.form-subheading a {
+  color: #b35c44;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.form-subheading a:hover {
+  text-decoration: underline;
+}
+
+/* input */
+.input-field input:focus {
+  border-bottom: 2px solid #b35c44 !important;
+  box-shadow: 0 1px 0 0 #b35c44 !important;
+}
+
+/* label */
+.input-field label {
+  color: #888 !important;
+}
+
+.input-field label.active {
+  color: #b35c44 !important;
+}
+
+/* prefix icon */
+.input-field .prefix {
+  color: #b35c44;
+}
+
+.input-field .prefix.active {
+  color: #b35c44;
+}
+
+.input-field .prefix ~ .select-custom {
+    margin-left: 3rem !important;
+    width: calc(100% - 3rem) !important;
+}
+
+/* Select */
+.select-custom {
+  border: 2px solid #f0d5cc !important;
+  border-radius: 8px !important;
+  padding: 10px !important;
+  padding-left: 3rem !important;
+  background-color: #fff7f2 !important;
+  width: 100% !important;
+  color: #333 !important;
+  margin-top: 10px !important;
+}
+
+/* button */
+.btn-custom {
+  background: linear-gradient(135deg, #b35c44, #e07a5f) !important;
+  border-radius: 35px !important;
+  padding: 0 34px !important;
+  height: 50px !important;
+  line-height: 50px !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  box-shadow: 0 8px 18px rgba(179, 92, 68, 0.35) !important;
+  transition: all 0.3s ease !important;
+}
+
+.btn-custom i.material-icons {
+    line-height: inherit !important;
+    vertical-align: middle !important;
+    margin-left: 8px !important;
+    font-size: 20px !important;
+    float: none !important;
+}
+
+.btn-block {
+  width: 100% !important;
+  margin-top: 10px !important;
+}
+
+.btn-custom:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 12px 24px rgba(179, 92, 68, 0.45) !important;
+}
+
+/* Error message */
+.error-message {
+  display: none;
+  background-color: #fde8e8;
+  color: #c0392b;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  border-left: 4px solid #c0392b;
+}
+
+/* Success message */
+.success-message {
+  display: none;
+  background-color: #e8f5e9;
+  color: #27ae60;
+  padding: 14px 18px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  border-left: 4px solid #27ae60;
+}
+
+/* Bottom register link */
+.bottom-link {
+  text-align: center;
+  margin-top: 24px;
+  color: #666;
+  font-size: 15px;
+}
+
+.bottom-link a {
+  color: #b35c44;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.bottom-link a:hover {
+  text-decoration: underline;
+}
+
+/* BOOKING PAGE */
 /* Floating booking box */
 .booking-box {
   position: absolute;
@@ -279,14 +500,6 @@ body {
   color: #444;
 }
 
-/* Footer */
-footer {
-  padding: 24px;
-  text-align: center;
-  background-color: #5c2c22;
-  color: white;
-}
-
 /* Catalog page */
 .catalog-header {
   padding: 90px 70px 50px;
@@ -388,10 +601,6 @@ footer {
   flex-direction: column;
 }
 
-.index-page footer {
-  margin-top: auto;
-}
-
 .booking-page {
   min-height: 100vh;
   display: flex;
@@ -442,17 +651,6 @@ footer {
   resize: none;
 }
 
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-}
-
-.navbar nav a {
-  position: relative;
-  z-index: 10000;
-}
-
 .search-section {
   display: flex;
   justify-content: center;
@@ -473,4 +671,9 @@ footer {
 .rating {
   font-weight: bold;
   color: #b35c44;
+}
+
+/* Footer */
+.footer-custom {
+  background-color: #5c2c22 !important;
 }
