@@ -27,8 +27,8 @@ app.get('/', (req, res) => {
   res.send('Hair Salon Booking App is running!');
 });
 
-const salonRoutes = require('./routes/salonRoutes');
-app.use("/salons", salonRoutes);
+const salonRoutes = require('./routes/salonroutes');
+app.use("/api/salons", salonRoutes);
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
