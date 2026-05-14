@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Specific Salon Page</title>
+
+    <!-- Materialize CSS-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+    <!-- Common Navigation bar-->
+    <nav class="navbar-custom">
+        <div class="nav-wrapper container">
+
+            <!-- Logo -->
+            <a href="index.html" class="brand-logo">Hair Salon</a>
+
+            <!-- Mobile Menu Icon -->
+            <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+
+            <!-- Deskstop Navigation Links -->
+            <ul class="right hide-on-med-and-down">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html" class="nav-active">Catalog</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="login.html" id="navLoginLink">Login</a></li>
+                <li><a href="#" id="navUserName"></a></li>
+            </ul>
+
+            <!-- Mobile Side Navigation -->
+            <ul class="sidenav" id="mobile-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+                <li><a href="booking.html">Booking</a></li>
+                <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
+                <li><a href="#" id="navUserNameMobile"></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!---Return to Catalog Button -->
+    <div class="container salon-page-return">
+        <a href="catalog.html" class="btn-flat salon-return-btn">
+            <i class="material-icons">arrow_back</i>
+            Back to Catalog
+        </a>
+    </div>
+
+    <!--Buffering spinner -->
+    <div class="container center-align" id="bufferingSpinner">
+        <div class="preloader-wrapper big active salon-spinner">
+            <div class="spinner-layer spinner-red-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div>
+                <div class="gap-patch">
+                    <div class="circle"></div>
+                </div>
+                <div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+        <p class="salon-buffering-text">Loading salon details...</p>
+    </div>
+
+    <!-- Error message -->
+    <div class="container" id="salonError">
+        <div class="card-panel red lighten-4 salon-error-panel">
+            <i class="material-icons left">error</i>
+                <span id="salonErrorText">Unable to load salon details...Please try again later.</span>
+        </div>
+    </div>
+
+    <!-- Specific salon details section -->
+    <section class="specific-salon-detail-section" id="salonDetails">
+        <div class="container">
+
+            <!-- Specific salon hero -->
+            <div class="row">
+                <div class="col s12">
+                    <div class="salon-hero-card card">
+
+                        <!-- Salon image -->
+                        <div class="card-image">
+                            <img id="salonImage" src="" alt="Salon Image" class="salon-hero-image"/>
+                        </div>
+
+                        <!-- Salon basic details -->
+                        <div class="card-content salon-hero-content">
+                            <div class="row valign-wrapper">
+
+                                <!-- Salon name and location -->
+                                <div class="col s12 m8">
+                                    <h4 class="salon-name" id="salonName">
+                                        Salon Name
+                                    </h4>
+                                    <p class="salon-location">
+                                        <i class="material-icons tiny">location_on</i>
+                                        <span id="salonAddress"></span>
+                                    </p>
+                                    <p class="salon-suburb">
+                                        <i class="material-icons tiny">place</i>
+                                        <span id="salonSuburb"></span>
+                                    </p>
+                                </div>
+
+                                <!-- Rating and price -->
+                                <div class="col s12 m4 right-align">
+                                    <div class="salon-rating-badge">
+                                        <i class="material-icons">star</i>
+                                        <span id="salonRating"></span>
+                                    </div>
+                                    <div class="salon-price-badge" id="salonPriceBadge">
+                                        <i class="material-icons tiny">attach_money</i>
+                                        <span id="salonPrice"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Specific Salon services and book appointment -->
+            <div class="row">
+
+                <!-- Services section -->
+                <div class="col s12 m8">
+                    <div class="card salon-services-card">
+                        <div class="card-content">
+
+                            <h5 class="salon-section-title">
+                                <i class="material-icons left">content_cut</i>
+                                Services
+                            </h5>
+
+                            <div class="divider salon-divider"></div>
+
+                            <!-- List of services -->
+                            <div id="servicesList" class="salon-services-list">
+                                <!-- Services loaded dynamically -->
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Reviews section -->
+                    <div class="card salon-reviews-card">
+                        <div class="card-content">
+
+                            <h5 class="salon-section-title">
+                                <i class="material-icons left">rate_review</i>
+                                Customer Reviews
+                            </h5>
+
+                            <div class="divider salon-divider"></div>
+
+                            <!-- List of reviews: Loaded from database -->
+                            <div id="reviewsList">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Book appointment -->
+                <div class="col s12 m4">
+                    <div class="card salon-book-card">
+                        <div class="card-content center-align">
+
+                            <i class="material-icons salon-book-icon">event_available</i>
+
+                            <h5 class="salon-book-title">Ready to Book?</h5>
+
+                            <p class="salon-book-text">
+                                Book your appointment at <strong id="salonNameBook"></strong> today!
+                            </p>
+
+                            <!-- Booking button -->
+                            <a href="booking.html" 
+                               id="bookBtn"
+                               class="btn-custom waves-effect waves-light btn-block">
+                                Book Appointment
+                                <i class="material-icons right">event</i>
+                            </a>
+
+                            <div class="divider salon-divider salon-btn-divider"></div>
+
+                            <!-- Google maps direction -->
+                            <a href="#" 
+                               id="mapsBtn"
+                               target="_blank"
+                               class="btn-maps waves-effect waves-light btn-block">
+                                <i class="material-icons left">map</i>
+                                Get Directions
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <!-- Salon details card -->
+                    <div class="card salon-detail-card">
+                        <div class="card-content">
+
+                            <h5 class="salon-section-title">
+                                <i class="material-icons left">info</i>
+                                Salon Details
+                            </h5>
+
+                            <div class="divider salon-divider"></div>
+
+                            <div class="salon-detail-item">
+                                <i class="material-icons tiny">star</i>
+                                <span>Rating: </span>
+                                <strong id="salonRatingInfo"></strong>
+                            </div>
+
+                            <div class="salon-detail-item">
+                                <i class="material-icons tiny">attach_money</i>
+                                <span>Price Range: </span>
+                                <strong id="salonPriceInfo"></strong>
+                            </div>
+
+                            <div class="salon-detail-item">
+                                <i class="material-icons tiny">place</i>
+                                <span>Suburb: </span>
+                                <strong id="salonSuburbInfo"></strong>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── Footer ── -->
+    <footer class="page-footer footer-custom">
+        <div class="footer-copyright">
+            <div class="container center-align">
+                &copy; 2026 Hair Salon Appointment Booking System
+            </div>
+        </div>
+    </footer>
+
+    <!-- Materialize JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!-- Auth JS: Authentication JS file to handle login and registration logic for Frontend -->
+    <script src="js/auth.js"></script>
+
+    <!-- Specific salon page JS to handle loading of salon details according to URL parameters -->
+    <script src="js/specific-salon-page.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            M.Sidenav.init(document.querySelectorAll('.sidenav'));
+        });
+    </script>
+
+</body>
+
+</html>

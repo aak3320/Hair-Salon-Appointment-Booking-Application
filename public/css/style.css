@@ -556,3 +556,317 @@ nav.navbar-custom .nav-active {
     text-align: center;
   }
 }
+
+/* SPECIFIC SALON PAGE */
+
+/* Return button container */
+.salon-page-return {
+    margin-top: 20px;
+}
+
+/* Return button */
+.salon-return-btn {
+    color: #b35c44 !important;
+    font-weight: 500;
+    margin-bottom: 10px;
+    display: flex !important;
+    align-items: center !important;
+    gap: 4px;
+}
+
+.salon-return-btn:hover {
+    color: #5c2c22 !important;
+}
+
+/* Buffering spinner */
+.salon-spinner {
+    margin-top: 100px;
+}
+
+/* Buffering text */
+.salon-buffering-text {
+    color: #b35c44;
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+/* Error section */
+#salonError {
+    display: none;
+}
+
+/* Error panel */
+.salon-error-panel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #c0392b;
+    margin-top: 30px;
+}
+
+/* Specific salon detail section */
+.specific-salon-detail-section {
+    padding: 20px 0 60px 0;
+    background-color: #fff7f2;
+    min-height: 80vh;
+}
+
+#salonDetails {
+    display: none;
+}
+
+/* Hero card */
+.salon-hero-card {
+    border-radius: 20px !important;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(92, 44, 34, 0.15) !important;
+}
+
+/* Hero image */
+.salon-hero-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Hero content */
+.salon-hero-content {
+    padding: 24px !important;
+    background-color: white;
+}
+
+/* Salon name */
+.salon-name {
+    color: #5c2c22;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Salon location */
+.salon-location,
+.salon-suburb {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #666;
+    margin-bottom: 6px;
+    font-size: 15px;
+}
+
+.salon-location i,
+.salon-suburb i {
+    color: #b35c44;
+    font-size: 16px !important;
+}
+
+/* Rating */
+.salon-rating-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #b35c44, #e07a5f);
+    color: white;
+    padding: 8px 18px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.salon-rating-badge i {
+    font-size: 20px !important;
+}
+
+/* Price */
+.salon-price-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background-color: #fff7f2;
+    color: #b35c44;
+    border: 2px solid #b35c44;
+    padding: 6px 16px;
+    border-radius: 30px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* Section title */
+.salon-section-title {
+    color: #5c2c22;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px !important;
+}
+
+.salon-section-title i {
+    color: #b35c44;
+}
+
+/* Divider */
+.salon-divider {
+    background-color: #f0d5cc !important;
+    margin: 12px 0 !important;
+}
+
+/* Services */
+.salon-services-card {
+    border-radius: 20px !important;
+    box-shadow: 0 8px 25px rgba(92, 44, 34, 0.1) !important;
+}
+
+/* Service item */
+.salon-service-item {
+    padding: 8px 0;
+}
+
+/* Service icon */
+.salon-service-icon {
+    color: #b35c44 !important;
+    margin-right: 8px;
+    font-size: 10px !important;
+}
+
+/* Service name */
+.salon-service-name {
+    color: #333;
+    font-size: 15px;
+}
+
+/* Service price */
+.salon-service-price {
+    color: #b35c44;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* Reviews card */
+.salon-reviews-card {
+    border-radius: 20px !important;
+    box-shadow: 0 8px 25px rgba(92, 44, 34, 0.1) !important;
+}
+
+/* No reviews */
+.salon-no-reviews {
+    padding: 30px 0;
+}
+
+.salon-no-reviews-icon {
+    font-size: 48px !important;
+    color: #f0d5cc;
+}
+
+.salon-no-reviews p {
+    color: #888;
+    margin: 8px 0;
+}
+
+/* Booking */
+.salon-book-card {
+    border-radius: 20px !important;
+    box-shadow: 0 8px 25px rgba(92, 44, 34, 0.1) !important;
+}
+
+/* Booking icon */
+.salon-book-icon {
+    font-size: 48px !important;
+    color: #b35c44;
+    margin-bottom: 10px;
+}
+
+/* Booking title */
+.salon-book-title {
+    color: #5c2c22;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Book text */
+.salon-book-text {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Booking button */
+.btn-custom {
+    background: linear-gradient(135deg, #b35c44, #e07a5f) !important;
+    color: white !important;
+    border-radius: 35px !important;
+    height: 50px !important;
+    line-height: 50px !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+    width: 100% !important;
+    display: block !important;
+    text-align: center !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-custom:hover {
+    background: linear-gradient(135deg, #5c2c22, #b35c44) !important;
+    color: white !important;
+}
+
+/* Maps button */
+.btn-maps {
+    background-color: white !important;
+    color: #b35c44 !important;
+    border: 2px solid #b35c44 !important;
+    border-radius: 35px !important;
+    height: 50px !important;
+    line-height: 50px !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px;
+    transition: all 0.3s ease !important;
+}
+
+.btn-maps:hover {
+    background-color: #b35c44 !important;
+    color: white !important;
+}
+
+.salon-btn-divider {
+    margin: 20px 0;
+}
+
+.btn-maps i {
+    color: inherit !important;
+    float: none !important;
+    margin: 0 !important;
+    line-height: inherit !important;
+}
+
+/* Salon detail card */
+.salon-detail-card {
+    border-radius: 20px !important;
+    box-shadow: 0 8px 25px rgba(92, 44, 34, 0.1) !important;
+}
+
+/* Salon detail item */
+.salon-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 0;
+    border-bottom: 1px solid #f0d5cc;
+    color: #555;
+    font-size: 15px;
+}
+
+.salon-detail-item:last-child {
+    border-bottom: none;
+}
+
+.salon-detail-item i {
+    color: #b35c44;
+}
