@@ -498,3 +498,61 @@ nav.navbar-custom .nav-active {
   padding: 0;
   background: transparent;
 }
+
+.suggestion-section {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.how-it-works {
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+/* Mobile Responsive Improvements */
+
+@media screen and (max-width: 768px) {
+
+  .hero {
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    margin-top: 20px;
+  }
+
+  .hero-actions a {
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  .booking-card {
+    margin-top: 30px;
+  }
+
+  .about img {
+    margin-bottom: 20px;
+  }
+
+  .card {
+    margin-bottom: 20px;
+  }
+
+  .nav-wrapper .brand-logo {
+    font-size: 1.5rem;
+  }
+
+  .page-footer {
+    text-align: center;
+  }
+}
