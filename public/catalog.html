@@ -80,13 +80,7 @@
     <div class="container">
       <div class="row" id="salonContainer">
  
-        <!-- ============================================================
-             STATIC FALLBACK SALON CARDS
-             These are commented out because Yelp API loads salons dynamically.
-             If Yelp stops working in the future, uncomment these cards
-             and comment out the loadSalons() call in DOMContentLoaded below.
-             URLs include all necessary params for specific-salon-page.js fallback.
-        ===============================================================
+        <!-- STATIC FALLBACK SALON CARDS
  
         Salon 1
         <div class="col s12 m6 l4 salon-item">
@@ -164,9 +158,7 @@
             </div>
  
           </div>
-        </div>
- 
-        ============================================================ -->
+        </div> -->
  
       </div>
     </div>
@@ -207,17 +199,13 @@
  
       M.Sidenav.init(document.querySelectorAll('.sidenav'));
  
-      // Load suburb options into dropdown
       loadSuburbs();
  
       // Load salons dynamically from Yelp API
-      // NOTE: If Yelp stops working, comment out loadSalons() and
-      // uncomment the static salon cards in the HTML above instead.
       loadSalons();
  
     });
- 
-    // Populate suburb dropdown dynamically
+
     function loadSuburbs() {
  
       melbourneSuburbs.forEach((suburb) => {
@@ -228,23 +216,19 @@
         filterSelect.appendChild(option);
  
       });
- 
-      // Re-init Materialize select after adding options
+
       M.FormSelect.init(document.querySelectorAll('select'));
  
     }
- 
-    // Fetch salons from backend (Yelp API via salonController)
+
     async function loadSalons() {
- 
-      // Determine which suburb to search
+
       let suburb = searchBar.value.trim();
  
       if (suburb === "") {
         suburb = filterSelect.value;
       }
  
-      // Default to Melbourne CBD if nothing selected
       if (suburb === "all" || suburb === "") {
         suburb = "Melbourne CBD";
       }
@@ -252,8 +236,7 @@
       try {
  
         salonContainer.innerHTML = "<p class='center-align'>Loading salons...</p>";
- 
-        // FIX: correct API route is /api/salons not /salons
+
         const response = await fetch(`/api/salons?suburb=${encodeURIComponent(suburb)}`);
  
         const salons = await response.json();
@@ -268,8 +251,7 @@
       }
  
     }
- 
-    // Build and inject salon cards into the page
+
     function displaySalons(salons, suburb) {
  
       salonContainer.innerHTML = "";
@@ -290,9 +272,7 @@
           : "Hair salon services";
  
         const price = salon.price || "N/A";
- 
-        // Build URL params so specific-salon-page.js has all data it needs
-        // even if Yelp name matching fails (fallback support)
+
         const params = new URLSearchParams({
           name: salon.name,
           suburb: suburb,
@@ -337,15 +317,13 @@
       });
  
     }
- 
-    // Search on Enter key
+
     searchBar.addEventListener("keydown", function (event) {
       if (event.key === "Enter") {
         loadSalons();
       }
     });
- 
-    // Filter by suburb on dropdown change
+
     filterSelect.addEventListener("change", function () {
       searchBar.value = "";
       loadSalons();
