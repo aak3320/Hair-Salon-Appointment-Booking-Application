@@ -4,39 +4,47 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Booking</title>
+
+  <title>Contact Us</title>
 
   <!-- Materialize CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body class="booking-page">
+<body class="contact-page">
 
-  <!-- Common Navigation bar -->
+  <!-- Navigation -->
   <nav class="navbar-custom">
     <div class="nav-wrapper container">
 
       <a href="index.html" class="brand-logo">Hair Salon</a>
 
+      <!-- Mobile Menu -->
       <a href="#" data-target="mobile-menu" class="sidenav-trigger">
         <i class="material-icons">menu</i>
       </a>
 
+      <!-- Desktop Navigation -->
       <ul class="right hide-on-med-and-down">
         <li><a href="index.html">Home</a></li>
         <li><a href="catalog.html">Catalog</a></li>
-        <li><a href="booking.html" class="nav-active">Booking</a></li>
+        <li><a href="booking.html">Booking</a></li>
+        <li><a href="contact.html" class="nav-active">Contact Us</a></li>
         <li><a href="login.html" id="navLoginLink">Login</a></li>
         <li><a href="#" id="navUserName"></a></li>
       </ul>
 
+      <!-- Mobile Navigation -->
       <ul class="sidenav" id="mobile-menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="catalog.html">Catalog</a></li>
         <li><a href="booking.html">Booking</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
         <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
         <li><a href="#" id="navUserNameMobile"></a></li>
       </ul>
@@ -44,77 +52,94 @@
     </div>
   </nav>
 
-  <!-- Booking Section -->
-  <section class="booking-section">
+  <!-- Contact Section -->
+  <section class="section contact-section">
     <div class="container">
 
-      <h1>Book an Appointment</h1>
-      <p>Please fill in the form below to book your salon appointment.</p>
+      <div class="center-align">
+        <h2>Contact Us</h2>
+
+        <p>
+          If you have any questions or need help with your booking,
+          feel free to contact our team.
+        </p>
+      </div>
 
       <div class="row">
-        <div class="col s12 m10 l6 offset-m1 offset-l3">
 
-          <div class="card booking-form-card">
+        <!-- Contact Information -->
+        <div class="col s12 m5">
+          <div class="card">
             <div class="card-content">
 
-              <form class="booking-form">
+              <span class="card-title">Get In Touch</span>
+
+              <p>
+                <i class="material-icons tiny">email</i>
+                support@hairsalon.com
+              </p>
+
+              <br>
+
+              <p>
+                <i class="material-icons tiny">phone</i>
+                +61 412 345 678
+              </p>
+
+              <br>
+
+              <p>
+                <i class="material-icons tiny">location_on</i>
+                Melbourne, Victoria
+              </p>
+
+              <br>
+
+              <p>
+                <i class="material-icons tiny">schedule</i>
+                Mon - Sat : 9:00 AM - 7:00 PM
+              </p>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-content">
+
+              <span class="card-title">Send Us a Message</span>
+
+              <form>
 
                 <div class="input-field">
-                  <i class="material-icons prefix">person</i>
-                  <input type="text" id="fullName" required>
-                  <label for="fullName">Full Name</label>
+                  <input type="text" id="name" required>
+                  <label for="name">Full Name</label>
                 </div>
 
                 <div class="input-field">
-                  <i class="material-icons prefix">email</i>
                   <input type="email" id="email" required>
                   <label for="email">Email Address</label>
                 </div>
 
                 <div class="input-field">
-                  <i class="material-icons prefix">store</i>
-                  <select id="salonSelect" required>
-                    <option value="" disabled selected>Select Salon</option>
-                    <option value="Elite Hair Studio">Elite Hair Studio</option>
-                    <option value="Modern Cuts">Modern Cuts</option>
-                    <option value="Luxury Salon">Luxury Salon</option>
-                  </select>
-                  <label for="salonSelect">Salon</label>
+                  <textarea id="message" class="materialize-textarea" required></textarea>
+                  <label for="message">Message</label>
                 </div>
 
-                <div class="row">
-                  <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">event</i>
-                    <input type="text" class="datepicker" id="bookingDate" required>
-                    <label for="bookingDate">Date</label>
-                  </div>
-
-                  <div class="input-field col s12 m6">
-                    <i class="material-icons prefix">access_time</i>
-                    <input type="text" class="timepicker" id="bookingTime" required>
-                    <label for="bookingTime">Time</label>
-                  </div>
-                </div>
-
-                <div class="input-field">
-                  <i class="material-icons prefix">message</i>
-                  <textarea id="notes" class="materialize-textarea"></textarea>
-                  <label for="notes">Additional notes</label>
-                </div>
-
-                <button class="waves-effect waves-light btn btn-primary btn-block" type="submit">
-                  Confirm Booking
-                  <i class="material-icons right">check</i>
+                <button class="btn waves-effect waves-light btn-custom" type="submit">
+                  Send Message
+                  <i class="material-icons right">send</i>
                 </button>
 
               </form>
 
             </div>
           </div>
-
         </div>
-      </div>
 
+      </div>
     </div>
   </section>
 
@@ -168,7 +193,8 @@
   </footer>
 
   <!-- Materialize JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
   <!-- Auth JS -->
   <script src="js/auth.js"></script>
@@ -176,14 +202,6 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       M.Sidenav.init(document.querySelectorAll('.sidenav'));
-      M.FormSelect.init(document.querySelectorAll('select'));
-      M.Datepicker.init(document.querySelectorAll('.datepicker'), {
-        format: 'yyyy-mm-dd',
-        autoClose: true
-      });
-      M.Timepicker.init(document.querySelectorAll('.timepicker'), {
-        twelveHour: false
-      });
     });
   </script>
 

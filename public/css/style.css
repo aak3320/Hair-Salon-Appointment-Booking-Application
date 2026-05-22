@@ -556,3 +556,17 @@ nav.navbar-custom .nav-active {
     text-align: center;
   }
 }
+
+.footer-custom {
+  background-color: #b35c44;
+  padding-top: 30px;
+}
+
+.footer-custom a:hover {
+  color: white;
+}
+
+.footer-custom .material-icons {
+  vertical-align: middle;
+  margin-right: 6px;
+}
