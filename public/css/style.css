@@ -350,6 +350,7 @@ nav.navbar-custom .nav-active {
 .catalog-card img {
   height: 200px;
   object-fit: cover;
+  width: 100%;
 }
 
 .service-card h3,
@@ -406,6 +407,40 @@ nav.navbar-custom .nav-active {
 .rating {
   font-weight: bold;
   color: #b35c44;
+}
+
+/* Equal height cards */
+.salon-item {
+    display: flex;
+}
+
+.catalog-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.catalog-card .card-content {
+    flex-grow: 1;
+}
+
+/* Card title */
+.catalog-card .card-title {
+    display: block;
+    font-size: 20px;
+    color: #5c2c22;
+    font-weight: bold;
+    margin-bottom: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Card address */
+.catalog-card .card-content p:first-of-type {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* Booking page */
@@ -555,18 +590,4 @@ nav.navbar-custom .nav-active {
   .page-footer {
     text-align: center;
   }
-}
-
-.footer-custom {
-  background-color: #b35c44;
-  padding-top: 30px;
-}
-
-.footer-custom a:hover {
-  color: white;
-}
-
-.footer-custom .material-icons {
-  vertical-align: middle;
-  margin-right: 6px;
 }
