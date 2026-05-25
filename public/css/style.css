@@ -778,6 +778,94 @@ nav.navbar-custom .nav-active {
     font-size: 14px;
 }
 
+/* Service row */
+.service-row {
+    margin-bottom: 0 !important;
+    padding: 4px 0;
+}
+
+/* Add button */
+.service-add-btn {
+    background-color: white !important;
+    color: #b35c44 !important;
+    border: 2px solid #b35c44 !important;
+    border-radius: 20px !important;
+    padding: 6px 18px !important;
+    font-size: 14px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+}
+
+.service-add-btn:hover {
+    background-color: #b35c44 !important;
+    color: white !important;
+}
+
+/* Added/Remove button state */
+.service-added {
+    background-color: #b35c44 !important;
+    color: white !important;
+}
+
+.service-added:hover {
+    background-color: #5c2c22 !important;
+    border-color: #5c2c22 !important;
+}
+
+/* Services summary section */
+.services-summary-card {
+    display: none;
+    margin-top: 16px;
+    background-color: #fff7f2;
+    border-radius: 12px;
+    padding: 16px;
+    border: 2px solid #f0d5cc;
+}
+
+.services-summary-title {
+    color: #5c2c22 !important;
+    font-weight: bold !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin-bottom: 8px !important;
+}
+
+.services-summary-title i {
+    color: #b35c44;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 6px 0;
+    border-bottom: 1px solid #f0d5cc;
+    font-size: 14px;
+}
+
+.summary-item:last-child {
+    border-bottom: none;
+}
+
+.summary-item-name {
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.summary-item-name i {
+    color: #b35c44;
+    font-size: 8px !important;
+}
+
+.summary-item-price {
+    color: #b35c44;
+    font-weight: bold;
+}
+
 /* Reviews card */
 .salon-reviews-card {
     border-radius: 20px !important;

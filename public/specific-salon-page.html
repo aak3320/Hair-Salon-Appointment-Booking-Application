@@ -77,7 +77,7 @@
     <div class="container" id="salonError">
         <div class="card-panel red lighten-4 salon-error-panel">
             <i class="material-icons left">error</i>
-                <span id="salonErrorText">Unable to load salon details...Please try again later.</span>
+            <span id="salonErrorText">Unable to load salon details...Please try again later.</span>
         </div>
     </div>
 
@@ -92,7 +92,7 @@
 
                         <!-- Salon image -->
                         <div class="card-image">
-                            <img id="salonImage" src="" alt="Salon Image" class="salon-hero-image"/>
+                            <img id="salonImage" src="" alt="Salon Image" class="salon-hero-image" />
                         </div>
 
                         <!-- Salon basic details -->
@@ -156,6 +156,9 @@
                         </div>
                     </div>
 
+                    <div id="servicesSummary" class="card services-summary-card">
+                    </div>
+
                     <!-- Reviews section -->
                     <div class="card salon-reviews-card">
                         <div class="card-content">
@@ -180,6 +183,8 @@
                     <div class="card salon-book-card">
                         <div class="card-content center-align">
 
+                            <div class="error-message" id="serviceError"></div>
+
                             <i class="material-icons salon-book-icon">event_available</i>
 
                             <h5 class="salon-book-title">Ready to Book?</h5>
@@ -189,9 +194,7 @@
                             </p>
 
                             <!-- Booking button -->
-                            <a href="booking.html" 
-                               id="bookBtn"
-                               class="btn-custom waves-effect waves-light btn-block">
+                            <a href="booking.html" id="bookBtn" class="btn-custom waves-effect waves-light btn-block">
                                 Book Appointment
                                 <i class="material-icons right">event</i>
                             </a>
@@ -199,10 +202,8 @@
                             <div class="divider salon-divider salon-btn-divider"></div>
 
                             <!-- Google maps direction -->
-                            <a href="#" 
-                               id="mapsBtn"
-                               target="_blank"
-                               class="btn-maps waves-effect waves-light btn-block">
+                            <a href="#" id="mapsBtn" target="_blank"
+                                class="btn-maps waves-effect waves-light btn-block">
                                 <i class="material-icons left">map</i>
                                 Get Directions
                             </a>
