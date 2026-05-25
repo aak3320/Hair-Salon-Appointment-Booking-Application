@@ -19,35 +19,56 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        // Fetch salons from API
-        const response = await fetch(`/api/salons?suburb=${encodeURIComponent(salonSuburb)}`);
 
-        const salons = await response.json();
+        const salonID = urlParams.get('salonID');
 
-        // Find specific salon by name
-        const salon = salons.find(
-            s => s.name.toLowerCase().includes(salonName.toLowerCase()) ||
-                salonName.toLowerCase().includes(s.name.toLowerCase())
-        );
+        if (salonID) {
+            const response = await fetch(`/api/salons/${salonID}`);
+            const salon = await response.json();
 
-        if (salon) {
-            // Found a real Yelp match
-            displaySalonDetails(salon, salonSuburb);
+            if (!salon || salon.messafge) {
+
+                // Salon not found
+                bufferingSpinner.style.display = 'none';
+                salonError.style.display = 'block';
+                return;
+            }
+
+            // Found real salon from database
+            displaySalonDetails(salon, salonSuburb || salonSuburb);
         }
         else {
-            // Fallback to salon object from URL params
-            const fallbackSalon = {
-                name: salonName,
-                address: urlParams.get('address') || 'Address not available',
-                ratings: urlParams.get('rating') || 'N/A',
-                price: urlParams.get('price') || 'N/A',
-                photos: [urlParams.get('image') || ''],
-                services: [],
-                prices: []
-            };
 
-            // Display Salon Details
-            displaySalonDetails(fallbackSalon, salonSuburb);
+            // Fetch salons from API
+            const response = await fetch(`/api/salons?suburb=${encodeURIComponent(salonSuburb)}`);
+
+            const salons = await response.json();
+
+            // Find specific salon by name
+            const salon = salons.find(
+                s => s.name.toLowerCase().includes(salonName.toLowerCase()) ||
+                    salonName.toLowerCase().includes(s.name.toLowerCase())
+            );
+
+            if (salon) {
+                // Found a real Yelp match
+                displaySalonDetails(salon, salonSuburb);
+            }
+            else {
+                // Fallback to salon object from URL params
+                const fallbackSalon = {
+                    name: salonName,
+                    address: urlParams.get('address') || 'Address not available',
+                    ratings: urlParams.get('rating') || 'N/A',
+                    price: urlParams.get('price') || 'N/A',
+                    photos: [urlParams.get('image') || ''],
+                    services: [],
+                    prices: []
+                };
+
+                // Display Salon Details
+                displaySalonDetails(fallbackSalon, salonSuburb);
+            }
         }
 
     } catch (err) {
@@ -279,7 +300,11 @@ const displaySalonDetails = (salon, suburb) => {
             name: salon.name,
             suburb: suburb,
             services: selectedServices.join(',')
-        });
+        }); 
+
+        if( salo._id ) {
+            params.append('salonID', salon._id);
+        }
 
         window.location.href = `booking.html?${params.toString()}`;
 
