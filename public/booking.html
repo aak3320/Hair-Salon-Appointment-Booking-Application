@@ -61,7 +61,7 @@
           <div class="card booking-form-card">
             <div class="card-content">
 
-              <form class="booking-form">
+              <form class="booking-form" id="bookingForm">
 
                 <div class="input-field">
                   <i class="material-icons prefix">person</i>
@@ -75,13 +75,13 @@
                   <label for="email">Email Address</label>
                 </div>
 
-                <div class="input-field">
+                <!-- <div class="input-field">
                   <i class="material-icons prefix">store</i>
                   <select id="salonSelect" required>
                     <option value="" disabled selected>Select Salon</option>
                   </select>
                   <label for="salonSelect">Salon</label>
-                </div>
+                </div> -->
 
                 <div class="row">
                   <div class="input-field col s12 m6">
@@ -174,19 +174,54 @@
   <!-- Auth JS -->
   <script src="js/auth.js"></script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      M.Sidenav.init(document.querySelectorAll('.sidenav'));
-      M.FormSelect.init(document.querySelectorAll('select'));
-      M.Datepicker.init(document.querySelectorAll('.datepicker'), {
-        format: 'yyyy-mm-dd',
-        autoClose: true
-      });
-      M.Timepicker.init(document.querySelectorAll('.timepicker'), {
-        twelveHour: false
-      });
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    M.Sidenav.init(document.querySelectorAll('.sidenav'));
+
+    M.Datepicker.init(document.querySelectorAll('.datepicker'), {
+      format: 'yyyy-mm-dd',
+      autoClose: true
     });
-  </script>
+
+    M.Timepicker.init(document.querySelectorAll('.timepicker'), {
+      twelveHour: false
+    });
+  });
+
+  document
+    .getElementById("bookingForm")
+    .addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const bookingData = {
+        fullName: document.getElementById("fullName").value,
+        email: document.getElementById("email").value,
+        appointmentDate: document.getElementById("bookingDate").value,
+        appointmentTime: document.getElementById("bookingTime").value,
+        notes: document.getElementById("notes").value
+      };
+
+      try {
+        const response = await fetch("/appointments", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(bookingData)
+        });
+
+        const result = await response.json();
+
+        alert(result.message);
+
+        document.getElementById("bookingForm").reset();
+
+      } catch (error) {
+        console.log(error);
+        alert("Booking failed");
+      }
+    });
+</script>
 
 </body>
 
