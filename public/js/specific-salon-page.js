@@ -59,6 +59,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 });
 
+let selectedServices = [];
+
 // Display Salon Details Function
 const displaySalonDetails = (salon, suburb) => {
 
@@ -96,51 +98,192 @@ const displaySalonDetails = (salon, suburb) => {
     // Services List
     const servicesList = document.getElementById('servicesList');
 
+    let servicesToShow = [];
+
     if (salon.services && salon.services.length > 0) {
-        // Show services from database
-        servicesList.innerHTML = salon.services.map((service, index) => `
-            <div class="salon-service-item">
-                <div class="row valign-wrapper" style="margin-bottom: 0;">
-                    <div class="col s8">
-                        <i class="material-icons tiny salon-service-icon">fiber_manual_record</i>
-                        <span class="salon-service-name">${service}</span>
-                    </div>
-                    <div class="col s4 right-align">
-                        <span class="salon-service-price">
-                            ${salon.prices && salon.prices[index]
-                ? `$${salon.prices[index]}`
-                : 'Contact for price'
+        for (let i = 0; i < salon.services.length; i++) {
+
+            // Check if price exists for this service
+            let price = 'Contact for price';
+            if (salon.prices && salon.prices[i]) {
+                price = `$${salon.prices[i]}`;
             }
-                        </span>
-                    </div>
-                </div>
-                <div class="divider salon-divider"></div>
-            </div>
-        `).join('');
-    } else {
+
+            // Add to services array
+            servicesToShow.push({
+                name: salon.services[i],
+                price: price
+            });
+        }
+    }
+    else {
         // Default services if none in database
-        const defaultServices = [
+        servicesToShow = [
             { name: 'Haircut', price: 'Contact for price' },
             { name: 'Hair Colouring', price: 'Contact for price' },
             { name: 'Hair Treatment', price: 'Contact for price' },
             { name: 'Blow Dry', price: 'Contact for price' },
         ];
-
-        servicesList.innerHTML = defaultServices.map(service => `
-            <div class="salon-service-item">
-                <div class="row valign-wrapper" style="margin-bottom: 0;">
-                    <div class="col s8">
-                        <i class="material-icons tiny salon-service-icon">fiber_manual_record</i>
-                        <span class="salon-service-name">${service.name}</span>
-                    </div>
-                    <div class="col s4 right-align">
-                        <span class="salon-service-price">${service.price}</span>
-                    </div>
-                </div>
-                <div class="divider salon-divider"></div>
-            </div>
-        `).join('');
     }
+
+    // Display services with Add/Remove button
+    const renderServices = () => {
+
+        servicesList.innerHTML = '';
+
+        for (let i = 0; i < servicesToShow.length; i++) {
+
+            const service = servicesToShow[i];
+
+            // Check if this service is already selected
+            const isSelected = selectedServices.includes(service.name);
+
+            // Set ADD or REMOVE button text and class based on selection
+            const btnText = isSelected ? 'Remove' : 'Add';
+            const btnClass = isSelected ? 'service-add-btn service-added' : 'service-add-btn';
+
+            // Build service item HTML
+            const serviceHTML = `
+                <div class="salon-service-item">
+                    <div class="row valign-wrapper service-row">
+                        <div class="col s8">
+                            <span class="salon-service-name">${service.name}</span>
+                            <br>
+                            <span class="salon-service-price">${service.price}</span>
+                        </div>
+                        <div class="col s4 right-align">
+                            <button
+                                class="${btnClass}"
+                                onclick="toggleService('${service.name}')">
+                                ${btnText}
+                            </button>
+                        </div>
+                    </div>
+                    <div class="divider salon-divider"></div>
+                </div>
+            `;
+
+            servicesList.innerHTML += serviceHTML;
+        }
+    };
+
+    // Render summary of selected services
+    const renderSummary = () => {
+
+        const summarySection = document.getElementById('servicesSummary');
+
+        // Hide summary if no services selected
+        if (selectedServices.length === 0) {
+            summarySection.style.display = 'none';
+            return;
+        }
+
+
+        summarySection.style.display = 'block';
+
+        // Build summary items in HTML
+        let summaryItemsHTML = '';
+
+        for (let i = 0; i < selectedServices.length; i++) {
+
+            const selectedName = selectedServices[i];
+
+            // Find price for this service
+            let selectedPrice = 'Contact for price';
+            for (let j = 0; j < servicesToShow.length; j++) {
+                if (servicesToShow[j].name === selectedName) {
+                    selectedPrice = servicesToShow[j].price;
+                }
+            }
+
+            summaryItemsHTML += `
+                <div class="summary-item">
+                    <span class="summary-item-name">
+                        <i class="material-icons tiny">fiber_manual_record</i>
+                        ${selectedName}
+                    </span>
+                    <span class="summary-item-price">
+                        ${selectedPrice}
+                    </span>
+                </div>
+            `;
+        }
+
+        // Update summary section HTML
+        summarySection.innerHTML = `
+            <div class="services-summary-content">
+                <h6 class="services-summary-title">
+                    <i class="material-icons tiny">check_circle</i>
+                    Selected Services (${selectedServices.length})
+                </h6>
+                <div class="divider salon-divider"></div>
+                ${summaryItemsHTML}
+            </div>
+        `;
+
+    };
+
+    // Toggle service selcetion button
+    window.toggleService = (serviceName) => {
+
+        // Check if service is already selected
+        const index = selectedServices.indexOf(serviceName);
+
+        if (index !== -1) {
+            selectedServices.splice(index, 1);
+        }
+        else {
+            // Add service to selected list
+            selectedServices.push(serviceName);
+        }
+
+        // Re-rendering
+        renderServices();
+        renderSummary();
+
+    };
+
+    renderServices();
+
+    const bookBtn = document.getElementById('bookBtn');
+
+    bookBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+
+        // Check if user is logged in
+        const token = localStorage.getItem('token');
+        if (!token) {
+            //Redirect to login page
+            window.location.href = 'login.html';
+            return;
+        }
+
+        // Check if at least one service is selected
+        if (selectedServices.length === 0) {
+
+            // Show error message
+            const errorBox = document.getElementById('serviceError');
+            errorBox.style.display = 'block';
+            errorBox.textContent = 'Please select at least one service before booking.';
+
+            // Hide error after 3 seconds
+            setTimeout(() => {
+                errorBox.style.display = 'none';
+            }, 3000);
+
+            return;
+        }
+
+        // Pass salon details and selected services to appointment booking page via URL params
+        const params = new URLSearchParams({
+            name: salon.name,
+            suburb: suburb,
+            services: selectedServices.join(',')
+        });
+
+        window.location.href = `booking.html?${params.toString()}`;
+
+    });
 
     // Reviews List
     const reviewsList = document.getElementById('reviewsList');
