@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Payment</title>
@@ -12,8 +13,52 @@
 <body>
 
   <!-- Common Navigation bar -->
-    <!-- Common Navigation bar -->
   <nav class="navbar-custom">
+    <div class="nav-wrapper container">
+
+      <a href="index.html" class="brand-logo">
+        <img src="images/download.png" alt="Logo" class="navbar-logo">
+      </a>
+
+      <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+
+      <ul class="center-menu hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+
+      <ul class="right-menu hide-on-med-and-down">
+        <li>
+          <a href="login.html" id="navLoginLink" class="login-btn">Login</a>
+        </li>
+        <li class="user-dropdown-wrapper">
+          <a href="#" id="navUserName"></a>
+          <div class="user-dropdown-menu" id="userDropdownMenu">
+            <a href="profile.html">
+              <i class="material-icons">account_circle</i> View Profile
+            </a>
+            <a href="#" id="dropdownLogoutBtn">
+              <i class="material-icons">logout</i> Logout
+            </a>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="sidenav" id="mobile-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
+        <li><a href="#" id="navUserNameMobile"></a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!--<nav class="navbar-custom">
     <div class="nav-wrapper container custom-navbar">
 
       <a href="index.html" class="brand-logo">
@@ -30,24 +75,26 @@
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
       <ul class="right-menu hide-on-med-and-down">
-        <li>
-          <a href="login.html" id="navLoginLinkMobile" class="login-btn">Login</a>
-        </li>
-        <li><a href="#" id="navUserName"></a></li>
-      </ul>
+      <li>
+        <a href="login.html" id="navLoginLinkMobile" class="login-btn">Login</a>
+      </li>
+      <li><a href="#" id="navUserName"></a></li>
+    </ul>
 
-      <!-- <ul class="sidenav" id="mobile-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="catalog.html">Catalog</a></li>
-        <li><a href="booking.html">Booking</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
-        <li><a href="#" id="navUserNameMobile"></a></li>
-      </ul> -->
+    <ul class="sidenav" id="mobile-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="catalog.html">Catalog</a></li>
+      <li><a href="booking.html">Booking</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
+      <li><a href="#" id="navUserNameMobile"></a></li>
+    </ul> 
 
-    </div>
-  </nav>
+  </div> 
+  </nav> -->
+
+
   <!-- Mobile Navigation -->
   <ul class="sidenav" id="mobile-menu">
     <li><a href="index.html">Home</a></li>
@@ -57,56 +104,56 @@
     <li><a href="#" id="navUserNameMobile"></a></li>
   </ul>
 
-<section class="payment-section">
-  <div class="container">
-    <div class="payment-card">
+  <section class="payment-section">
+    <div class="container">
+      <div class="payment-card">
 
-      <h2>Payment Summary</h2>
-      <p>Your appointment has been booked successfully.</p>
+        <h2>Payment Summary</h2>
+        <p>Your appointment has been booked successfully.</p>
 
-      <div class="summary-box">
-        <p><strong>Appointment ID:</strong> <span id="appointmentId"></span></p>
-        <p><strong>Service Fee:</strong> $50</p>
-        <p><strong>Status:</strong> Pending Payment</p>
+        <div class="summary-box">
+          <p><strong>Appointment ID:</strong> <span id="appointmentId"></span></p>
+          <p><strong>Service Fee:</strong> $50</p>
+          <p><strong>Status:</strong> Pending Payment</p>
+        </div>
+
+        <h2>Payment Details</h2>
+
+        <div class="input-field payment-input">
+          <i class="material-icons prefix">person</i>
+          <input type="text" id="cardName">
+          <label for="cardName">Cardholder Name</label>
+        </div>
+
+        <div class="input-field payment-input">
+          <i class="material-icons prefix">credit_card</i>
+          <input type="text" id="cardNumber">
+          <label for="cardNumber">Card Number</label>
+        </div>
+
+        <div class="row">
+
+          <div class="input-field col s12 m6 payment-input">
+            <i class="material-icons prefix">date_range</i>
+            <input type="text" id="expiry">
+            <label for="expiry">MM/YY</label>
+          </div>
+
+          <div class="input-field col s12 m6 payment-input">
+            <i class="material-icons prefix">lock</i>
+            <input type="password" id="cvv">
+            <label for="cvv">CVV</label>
+          </div>
+
+        </div>
+
+        <button class="btn btn-primary btn-block payment-btn" onclick="payNow()">
+          <i class="material-icons left">payment</i>
+          Pay Now
+        </button>
       </div>
-
-      <h2>Payment Details</h2>
-
-<div class="input-field payment-input">
-  <i class="material-icons prefix">person</i>
-  <input type="text" id="cardName">
-  <label for="cardName">Cardholder Name</label>
-</div>
-
-<div class="input-field payment-input">
-  <i class="material-icons prefix">credit_card</i>
-  <input type="text" id="cardNumber">
-  <label for="cardNumber">Card Number</label>
-</div>
-
-<div class="row">
-
-  <div class="input-field col s12 m6 payment-input">
-    <i class="material-icons prefix">date_range</i>
-    <input type="text" id="expiry">
-    <label for="expiry">MM/YY</label>
-  </div>
-
-  <div class="input-field col s12 m6 payment-input">
-    <i class="material-icons prefix">lock</i>
-    <input type="password" id="cvv">
-    <label for="cvv">CVV</label>
-  </div>
-
-</div>
-
-<button class="btn btn-primary btn-block payment-btn" onclick="payNow()">
-  <i class="material-icons left">payment</i>
-  Pay Now
-</button>
     </div>
-  </div>
-</section>
+  </section>
 
   <!-- Footer -->
   <footer class="page-footer footer-custom">
@@ -165,17 +212,18 @@
   </footer>
 
 
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const appointmentId = params.get("appointmentId");
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const appointmentId = params.get("appointmentId");
 
-  document.getElementById("appointmentId").textContent = appointmentId || "N/A";
+    document.getElementById("appointmentId").textContent = appointmentId || "N/A";
 
-  function payNow() {
-    alert("Payment successful!");
-    window.location.href = "profile.html";
-  }
-</script>
+    function payNow() {
+      alert("Payment successful!");
+      window.location.href = "profile.html";
+    }
+  </script>
 
 </body>
+
 </html>

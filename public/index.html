@@ -84,7 +84,7 @@
         <li><a href="#" id="navUserName"></a></li>
       </ul> 
 
-      <!-- <ul class="sidenav" id="mobile-menu">
+      <ul class="sidenav" id="mobile-menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="catalog.html">Catalog</a></li>
         <li><a href="booking.html">Booking</a></li>
@@ -92,10 +92,10 @@
         <li><a href="profile.html">Profile</a></li>
         <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
         <li><a href="#" id="navUserNameMobile"></a></li>
-      </ul> -->
+      </ul> 
 
-    </div>
-  </nav>
+  </div>
+  </nav> -->
 
   <!-- Hero Section -->
   <section class="hero section">
@@ -503,14 +503,14 @@
           </div>
         </div>
 
-      <div class="col s12 m4">
-        <div class="testimonial-card">
-          <i class="material-icons quote-icon">format_quote</i>
-          <p>This system saves time for customers and makes appointment management easier for salons.</p>
-          <h4>Akash P.</h4>
-          <span>Salon Staff</span>
+        <div class="col s12 m4">
+          <div class="testimonial-card">
+            <i class="material-icons quote-icon">format_quote</i>
+            <p>This system saves time for customers and makes appointment management easier for salons.</p>
+            <h4>Akash P.</h4>
+            <span>Salon Staff</span>
+          </div>
         </div>
-      </div>
 
       </div>
     </div>
@@ -582,17 +582,17 @@
     document.addEventListener('DOMContentLoaded', function () {
       M.Sidenav.init(document.querySelectorAll('.sidenav'));
     });
-  
-  document.addEventListener('DOMContentLoaded', function () {
-    M.Collapsible.init(document.querySelectorAll('.collapsible'));
-  });
- M.Carousel.init(document.querySelectorAll('.carousel'), {
-  indicators: true,
-  dist: -40,
-  shift: 20,
-  padding: 40,
-  numVisible: 3
-});
+
+    document.addEventListener('DOMContentLoaded', function () {
+      M.Collapsible.init(document.querySelectorAll('.collapsible'));
+    });
+    M.Carousel.init(document.querySelectorAll('.carousel'), {
+      indicators: true,
+      dist: -40,
+      shift: 20,
+      padding: 40,
+      numVisible: 3
+    });
 
   </script>
 
