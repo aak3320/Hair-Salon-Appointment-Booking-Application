@@ -85,3 +85,24 @@ exports.getNearbySalons = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+//Get salon by ID from monogodb
+exports.getSalonById = async (req, res) => {
+  try {
+    const Salon = require("../models/salon");
+
+    // Fetch salon id from params
+    const salonID = req.params.id;
+
+    //Now find salon by fetched ID
+    const salon = await Salon.findById(salonID);
+
+    if (!salon) {
+      return res.status(404).json({ message: "Salon not found" });
+    }
+
+    res.json(salon);
+  } catch (error) {
+    res.status(500).json({ message: "Unable to fetch salon details" });
+  }
+};
