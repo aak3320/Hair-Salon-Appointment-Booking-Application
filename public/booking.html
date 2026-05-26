@@ -199,42 +199,50 @@
       });
     });
 
-    document
-      .getElementById("bookingForm")
-      .addEventListener("submit", async function (event) {
-        event.preventDefault();
+    document.getElementById("bookingForm").addEventListener("submit", async function (event) {
+      event.preventDefault();
 
-        const bookingData = {
-          fullName: document.getElementById("fullName").value,
-          email: document.getElementById("email").value,
-          appointmentDate: document.getElementById("bookingDate").value,
-          appointmentTime: document.getElementById("bookingTime").value,
-          notes: document.getElementById("notes").value
-        };
+      const token = localStorage.getItem("token");
 
-        try {
-          const response = await fetch("/appointments", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              "Authorization": `Bearer ${token}`
-            },
-            body: JSON.stringify(bookingData)
-          });
+      if (!token) {
+        alert("Please login before booking an appointment.");
+        window.location.href = "login.html";
+        return;
+      }
 
-          const result = await response.json();
+      const bookingData = {
+        fullName: document.getElementById("fullName").value,
+        email: document.getElementById("email").value,
+        appointmentDate: document.getElementById("bookingDate").value,
+        appointmentTime: document.getElementById("bookingTime").value,
+        notes: document.getElementById("notes").value
+      };
 
-          alert(result.message);
+      try {
+        const response = await fetch("/appointments", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${token}`
+          },
+          body: JSON.stringify(bookingData)
+        });
 
+        const result = await response.json();
+
+        alert(result.message);
+
+        if (response.ok && result.appointment && result.appointment._id) {
           document.getElementById("bookingForm").reset();
-
-        } catch (error) {
-          console.log(error);
-          alert("Booking failed");
+          window.location.href = `payment.html?appointmentId=${result.appointment._id}`;
         }
-      });
-  </script>
 
+      } catch (error) {
+        console.log(error);
+        alert("Booking failed");
+      }
+    });
+  </script>
 </body>
 
 </html>
