@@ -993,3 +993,794 @@ nav.navbar-custom .nav-active {
 .salon-detail-item i {
     color: #b35c44;
 }
+
+
+/* =========================================================
+   KRISHA MERGED UI OVERRIDES
+   - Keeps existing teammate styles above
+   - Adds/overrides Krisha navbar, catalog, login/register,
+     footer, contact, FAQ and testimonial UI safely
+   ========================================================= */
+
+/* Navbar - supports both old Materialize menu and new centered menu */
+nav.navbar-custom {
+  background-color: #ffffff !important;
+  min-height: 85px;
+  line-height: normal !important;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+nav.navbar-custom .nav-wrapper,
+.custom-navbar {
+  min-height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav.navbar-custom .brand-logo {
+  color: #b35c44 !important;
+  font-weight: bold;
+  font-size: 26px;
+  display: flex !important;
+  align-items: center;
+  position: relative !important;
+  left: 0 !important;
+  transform: none !important;
+}
+
+.navbar-logo {
+  height: 62px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.center-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+  margin: 0 auto;
+}
+
+.center-menu li,
+.right-menu li {
+  list-style: none;
+}
+
+.center-menu li a,
+nav.navbar-custom .hide-on-med-and-down li a {
+  color: #333 !important;
+  font-size: 17px;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.center-menu li a:hover,
+nav.navbar-custom .hide-on-med-and-down li a:hover,
+nav.navbar-custom .nav-active,
+.nav-active {
+  color: #b35c44 !important;
+  background-color: transparent !important;
+  font-weight: 700 !important;
+}
+
+.right-menu {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.login-btn {
+  background-color: #b35c44;
+  color: #ffffff !important;
+  padding: 0 34px;
+  height: 54px;
+  line-height: 54px;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 17px;
+  display: inline-block;
+  transition: 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #8f4634;
+  color: #ffffff !important;
+}
+
+.sidenav-trigger {
+  color: #333 !important;
+}
+
+.sidenav-overlay {
+  z-index: 997 !important;
+}
+
+.sidenav {
+  z-index: 999 !important;
+}
+
+#navUserName,
+#navUserNameMobile {
+  display: none;
+  color: #b35c44 !important;
+  font-weight: bold !important;
+}
+
+/* Catalog filter/card polish */
+.search-section {
+  background-color: #fff7f2;
+  padding: 42px 0 35px;
+}
+
+.search-section .row {
+  margin-bottom: 0;
+}
+
+.catalog-section {
+  padding: 55px 0 75px;
+  background-color: #fff7f2;
+  flex: 1;
+}
+
+.salon-item {
+  display: flex;
+  margin-bottom: 28px;
+}
+
+.catalog-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 22px !important;
+  overflow: hidden;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.08) !important;
+  transition: all 0.3s ease;
+}
+
+.catalog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 34px rgba(179, 92, 68, 0.18) !important;
+}
+
+.catalog-card .card-image img,
+.catalog-card img {
+  height: 220px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.catalog-card .card-content {
+  flex-grow: 1;
+  padding: 24px 26px !important;
+}
+
+.catalog-card .card-title {
+  display: block;
+  font-size: 21px !important;
+  color: #5c2c22 !important;
+  font-weight: 700 !important;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.catalog-card .card-content p:first-of-type {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.catalog-card .card-action {
+  border-top: 1px solid #f1e1db !important;
+  padding: 18px 26px !important;
+}
+
+/* Register/Login page */
+.register-section,
+.registration-section {
+  min-height: calc(100vh - 85px);
+  display: flex;
+  align-items: center;
+  padding: 120px 0 80px;
+  background: linear-gradient(135deg, #fff7f2 0%, #ffffff 100%);
+}
+
+.form-row {
+  display: flex;
+  align-items: stretch;
+}
+
+.left-panel {
+  min-height: 540px;
+  border-radius: 28px 0 0 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 55px 48px;
+  background:
+    linear-gradient(rgba(92, 44, 34, 0.35), rgba(92, 44, 34, 0.78)),
+    url("images/salon-login.jpg");
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 24px 55px rgba(92, 44, 34, 0.18);
+}
+
+.left-panel h2 {
+  color: #ffffff;
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.left-panel p {
+  color: rgba(255, 255, 255, 0.95);
+  font-size: 18px;
+  line-height: 1.7;
+}
+
+.form-panel {
+  background-color: #ffffff;
+  border-radius: 0 28px 28px 0;
+  padding: 70px 58px;
+  box-shadow: 0 24px 55px rgba(92, 44, 34, 0.12);
+  min-height: 540px;
+}
+
+.form-heading {
+  color: #5c2c22;
+  margin-bottom: 10px;
+  font-size: 34px;
+  font-weight: 600;
+}
+
+.form-subheading {
+  color: #666;
+  margin-bottom: 34px;
+  font-size: 16px;
+}
+
+.form-subheading a,
+.bottom-link a {
+  color: #b35c44;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.form-subheading a:hover,
+.bottom-link a:hover {
+  color: #5c2c22;
+  text-decoration: underline;
+}
+
+.form-panel .input-field {
+  margin-top: 32px;
+}
+
+.input-field input,
+.input-field textarea {
+  border-bottom: 1px solid #aaa !important;
+}
+
+.input-field input:focus,
+.input-field textarea:focus {
+  border-bottom: 2px solid #b35c44 !important;
+  box-shadow: 0 1px 0 0 #b35c44 !important;
+}
+
+.input-field label {
+  color: #777 !important;
+}
+
+.input-field label.active {
+  color: #b35c44 !important;
+}
+
+.input-field .prefix,
+.input-field .prefix.active {
+  color: #b35c44;
+}
+
+/* Why Choose Us */
+.why-choose-us {
+  background-color: #ffffff;
+  padding: 90px 0;
+}
+
+.why-heading {
+  margin-bottom: 45px;
+}
+
+.why-heading h2 {
+  color: #5c2c22;
+  font-size: 44px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.why-heading p {
+  color: #333;
+  font-size: 17px;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.why-card {
+  background: #fff7f2;
+  padding: 36px 24px;
+  min-height: 260px;
+  border-radius: 18px;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 16px 32px rgba(179, 92, 68, 0.22);
+}
+
+.why-card i {
+  font-size: 48px;
+  color: #b35c44;
+  margin-bottom: 18px;
+}
+
+.why-card h4 {
+  color: #5c2c22;
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+.why-card p {
+  color: #333;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* How It Works */
+.how-it-works {
+  background-color: #fff7f2;
+  padding: 90px 0;
+}
+
+.how-heading {
+  margin-bottom: 45px;
+}
+
+.how-heading h2 {
+  color: #333;
+  font-size: 52px;
+  font-weight: 400;
+  margin-bottom: 18px;
+}
+
+.how-heading p {
+  font-size: 17px;
+  color: #333;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.how-cards {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.how-card {
+  min-height: 280px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.how-card:hover {
+  transform: translateY(-12px) scale(1.02);
+  box-shadow: 0 14px 30px rgba(179, 92, 68, 0.25);
+}
+
+.how-card .card-content {
+  padding: 38px 28px;
+}
+
+.how-card i {
+  color: #b35c44;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.how-card:hover i {
+  transform: scale(1.15) rotate(5deg);
+}
+
+.how-card .card-title {
+  display: block;
+  color: #333;
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+/* Contact Section */
+.contact-section {
+  background-color: #fff7f2;
+  padding: 90px 0;
+}
+
+.contact-section .center-align {
+  margin-bottom: 45px;
+}
+
+.contact-section h2 {
+  color: #5c2c22;
+  font-size: 48px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.contact-section .center-align p {
+  color: #333;
+  font-size: 17px;
+  max-width: 720px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.contact-section .row {
+  display: flex;
+  align-items: stretch;
+}
+
+.contact-section .card {
+  height: 100%;
+  border-radius: 18px;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.contact-section .card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 36px rgba(179, 92, 68, 0.18);
+}
+
+.contact-section .card-content {
+  padding: 38px 34px;
+}
+
+.contact-section .card-title {
+  color: #5c2c22;
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 28px;
+}
+
+.contact-section p {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.contact-section i {
+  color: #b35c44;
+  margin-right: 10px;
+}
+
+/* FAQ Section */
+.faq-section {
+  background-color: #ffffff;
+  padding: 90px 0;
+}
+
+.faq-heading {
+  margin-bottom: 42px;
+}
+
+.faq-heading h2 {
+  color: #5c2c22;
+  font-size: 46px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.faq-heading p {
+  color: #333;
+  font-size: 17px;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.faq-list {
+  max-width: 850px;
+  margin: 0 auto;
+  border: none;
+  box-shadow: none;
+}
+
+.faq-list li {
+  margin-bottom: 18px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.faq-list li:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(179, 92, 68, 0.18);
+}
+
+.faq-list .collapsible-header {
+  background-color: #fff7f2;
+  color: #5c2c22;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 22px 26px;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+}
+
+.faq-list .collapsible-header i {
+  color: #b35c44;
+  margin-right: 14px;
+}
+
+.faq-list .collapsible-body {
+  background-color: #ffffff;
+  color: #333;
+  font-size: 16px;
+  line-height: 1.7;
+  padding: 22px 30px;
+  border-bottom: none;
+}
+
+/* Testimonials */
+.testimonial-section {
+  background-color: #fff7f2;
+  padding: 90px 0;
+}
+
+.testimonial-heading {
+  margin-bottom: 45px;
+}
+
+.testimonial-heading h2 {
+  color: #5c2c22;
+  font-size: 46px;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.testimonial-heading p {
+  color: #333;
+  font-size: 17px;
+}
+
+.testimonial-row {
+  display: flex;
+  align-items: stretch;
+}
+
+.testimonial-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 42px 30px;
+  min-height: 320px;
+  text-align: center;
+  box-shadow: 0 14px 36px rgba(0,0,0,0.10);
+  transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 42px rgba(179, 92, 68, 0.22);
+}
+
+.quote-icon {
+  font-size: 50px;
+  color: #b35c44;
+  margin-bottom: 22px;
+}
+
+.testimonial-card p {
+  color: #333;
+  font-size: 16px;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.testimonial-card h4 {
+  color: #5c2c22;
+  font-size: 26px;
+  margin-bottom: 8px;
+}
+
+.testimonial-card span {
+  color: #b35c44;
+  font-weight: 700;
+}
+
+/* Footer - centered and safe with Materialize columns */
+.footer-custom {
+  background-color: #6b2f25 !important;
+  padding-top: 60px;
+  color: #ffffff;
+}
+
+.footer-custom .container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.footer-custom .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 70px;
+  margin: 0;
+}
+
+.footer-custom .col {
+  width: 33.33% !important;
+  padding: 0 15px !important;
+}
+
+.footer-custom h5 {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.footer-custom p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.footer-custom ul li {
+  margin-bottom: 10px;
+}
+
+.footer-custom ul li a {
+  color: #ffffff !important;
+  font-size: 16px;
+}
+
+.footer-custom ul li a:hover {
+  color: #ffd8c8 !important;
+}
+
+.footer-custom i {
+  color: #ffd8c8;
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.footer-copyright {
+  background-color: #5c2c22 !important;
+  margin-top: 45px;
+  padding: 16px 0;
+}
+
+/* Responsive final fixes */
+@media screen and (max-width: 992px) {
+  nav.navbar-custom,
+  nav.navbar-custom .nav-wrapper,
+  .custom-navbar {
+    min-height: 78px;
+  }
+
+  .navbar-logo {
+    height: 54px;
+  }
+
+  .center-menu,
+  .right-menu {
+    display: none;
+  }
+
+  .sidenav-trigger {
+    display: block;
+    margin-left: auto;
+  }
+
+  .register-section,
+  .registration-section {
+    padding: 70px 0;
+  }
+
+  .form-row {
+    display: block;
+  }
+
+  .left-panel {
+    min-height: 320px;
+    border-radius: 28px 28px 0 0;
+    padding: 40px;
+  }
+
+  .form-panel {
+    min-height: auto;
+    border-radius: 0 0 28px 28px;
+    padding: 50px 36px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .footer-custom {
+    text-align: center;
+  }
+
+  .footer-custom .row,
+  .contact-section .row,
+  .testimonial-row,
+  .how-cards {
+    display: block;
+  }
+
+  .footer-custom .col {
+    width: 100% !important;
+    margin-bottom: 30px;
+  }
+
+  .why-card,
+  .how-card,
+  .testimonial-card,
+  .contact-section .card {
+    margin-bottom: 24px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  nav.navbar-custom .brand-logo {
+    font-size: 20px;
+  }
+
+  .hero h1,
+  .catalog-header h1,
+  .booking-section h1 {
+    font-size: 36px;
+  }
+
+  .hero p,
+  .catalog-header p,
+  .booking-section p {
+    font-size: 16px;
+  }
+
+  .booking-card img {
+    height: 240px;
+  }
+
+  .form-panel {
+    padding: 40px 24px;
+  }
+
+  .left-panel {
+    min-height: 260px;
+    padding: 32px 26px;
+  }
+
+  .left-panel h2,
+  .form-heading {
+    font-size: 30px;
+  }
+
+  .how-heading h2,
+  .contact-section h2,
+  .faq-heading h2,
+  .testimonial-heading h2 {
+    font-size: 36px;
+  }
+}
