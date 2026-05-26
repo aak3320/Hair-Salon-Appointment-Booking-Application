@@ -22,6 +22,29 @@ const updateNavBar = () => {
         if (navUserName) {
             navUserName.style.display = 'block';
             navUserName.textContent = `Hi, ${userData.name.split(' ')[0]}`;
+            navUserName.href = '#';
+
+            navUserName.addEventListener('click', function (e) {
+                e.preventDefault();
+                const menu = document.getElementById('userDropdownMenu');
+                menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+            });
+
+            document.addEventListener('click', function (e) {
+                const wrapper = document.querySelector('.user-dropdown-wrapper');
+                if (wrapper && !wrapper.contains(e.target)) {
+                    document.getElementById('userDropdownMenu').style.display = 'none';
+                }
+            });
+
+            const dropdownLogout = document.getElementById('dropdownLogoutBtn');
+            if (dropdownLogout) {
+                dropdownLogout.addEventListener('click', function () {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('user');
+                    window.location.href = 'login.html';
+                });
+            }
         }
 
         //Update Navbar for mobile
@@ -29,6 +52,7 @@ const updateNavBar = () => {
         if (navUserNameMobile) {
             navUserNameMobile.style.display = 'block';
             navUserNameMobile.textContent = `Hi, ${userData.name.split(' ')[0]}`;
+            navUserNameMobile.href = 'profile.html';
         }
     } else {
         // If user is not logged in

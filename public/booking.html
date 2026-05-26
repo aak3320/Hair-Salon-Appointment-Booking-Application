@@ -15,8 +15,53 @@
 
 <body class="booking-page">
 
-   <!-- Common Navigation bar -->
+  <!-- Common Navigation bar -->
   <nav class="navbar-custom">
+    <div class="nav-wrapper container">
+
+      <a href="index.html" class="brand-logo">
+        <img src="images/download.png" alt="Logo" class="navbar-logo">
+      </a>
+
+      <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+
+      <ul class="center-menu hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+
+      <ul class="right-menu hide-on-med-and-down">
+        <li>
+          <a href="login.html" id="navLoginLink" class="login-btn">Login</a>
+        </li>
+        <li class="user-dropdown-wrapper">
+          <a href="#" id="navUserName"></a>
+          <div class="user-dropdown-menu" id="userDropdownMenu">
+            <a href="profile.html">
+              <i class="material-icons">account_circle</i> View Profile
+            </a>
+            <a href="#" id="dropdownLogoutBtn">
+              <i class="material-icons">logout</i> Logout
+            </a>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="sidenav" id="mobile-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
+        <li><a href="#" id="navUserNameMobile"></a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!--<nav class="navbar-custom">
     <div class="nav-wrapper container custom-navbar">
 
       <a href="index.html" class="brand-logo">
@@ -37,20 +82,9 @@
         <a href="login.html" id="navLoginLinkMobile" class="login-btn">Login</a>
       </li>
       <li><a href="#" id="navUserName"></a></li>
-    </ul>
-
-      <!-- <ul class="sidenav" id="mobile-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="catalog.html">Catalog</a></li>
-        <li><a href="booking.html">Booking</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
-        <li><a href="#" id="navUserNameMobile"></a></li>
-      </ul> -->
-
-    </div>
-  </nav>
+    </ul> 
+  </div>
+  </nav> -->
 
   <!-- Booking Section -->
   <section class="booking-section">
@@ -123,7 +157,7 @@
     </div>
   </section>
 
-   <!-- Footer -->
+  <!-- Footer -->
   <footer class="page-footer footer-custom">
     <div class="container">
       <div class="row">
@@ -185,54 +219,54 @@
   <!-- Auth JS -->
   <script src="js/auth.js"></script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    M.Sidenav.init(document.querySelectorAll('.sidenav'));
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      M.Sidenav.init(document.querySelectorAll('.sidenav'));
 
-    M.Datepicker.init(document.querySelectorAll('.datepicker'), {
-      format: 'yyyy-mm-dd',
-      autoClose: true
+      M.Datepicker.init(document.querySelectorAll('.datepicker'), {
+        format: 'yyyy-mm-dd',
+        autoClose: true
+      });
+
+      M.Timepicker.init(document.querySelectorAll('.timepicker'), {
+        twelveHour: false
+      });
     });
 
-    M.Timepicker.init(document.querySelectorAll('.timepicker'), {
-      twelveHour: false
-    });
-  });
+    document
+      .getElementById("bookingForm")
+      .addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-  document
-    .getElementById("bookingForm")
-    .addEventListener("submit", async function (event) {
-      event.preventDefault();
+        const bookingData = {
+          fullName: document.getElementById("fullName").value,
+          email: document.getElementById("email").value,
+          appointmentDate: document.getElementById("bookingDate").value,
+          appointmentTime: document.getElementById("bookingTime").value,
+          notes: document.getElementById("notes").value
+        };
 
-      const bookingData = {
-        fullName: document.getElementById("fullName").value,
-        email: document.getElementById("email").value,
-        appointmentDate: document.getElementById("bookingDate").value,
-        appointmentTime: document.getElementById("bookingTime").value,
-        notes: document.getElementById("notes").value
-      };
+        try {
+          const response = await fetch("/appointments", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(bookingData)
+          });
 
-      try {
-        const response = await fetch("/appointments", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(bookingData)
-        });
+          const result = await response.json();
 
-        const result = await response.json();
+          alert(result.message);
 
-        alert(result.message);
+          document.getElementById("bookingForm").reset();
 
-        document.getElementById("bookingForm").reset();
-
-      } catch (error) {
-        console.log(error);
-        alert("Booking failed");
-      }
-    });
-</script>
+        } catch (error) {
+          console.log(error);
+          alert("Booking failed");
+        }
+      });
+  </script>
 
 </body>
 

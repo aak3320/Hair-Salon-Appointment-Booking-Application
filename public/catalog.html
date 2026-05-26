@@ -1,22 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Salon Catalog</title>
- 
+
   <!-- Materialize CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
- 
+
   <link rel="stylesheet" href="css/style.css" />
 </head>
- 
+
 <body class="catalog-page">
- 
-    <!-- Common Navigation bar -->
+
+  <!-- Common Navigation bar -->
   <nav class="navbar-custom">
+    <div class="nav-wrapper container">
+
+      <a href="index.html" class="brand-logo">
+        <img src="images/download.png" alt="Logo" class="navbar-logo">
+      </a>
+
+      <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+
+      <ul class="center-menu hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html" class="nav-active">Catalog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+
+      <ul class="right-menu hide-on-med-and-down">
+        <li>
+          <a href="login.html" id="navLoginLink" class="login-btn">Login</a>
+        </li>
+        <li class="user-dropdown-wrapper">
+          <a href="#" id="navUserName"></a>
+          <div class="user-dropdown-menu" id="userDropdownMenu">
+            <a href="profile.html">
+              <i class="material-icons">account_circle</i> View Profile
+            </a>
+            <a href="#" id="dropdownLogoutBtn">
+              <i class="material-icons">logout</i> Logout
+            </a>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="sidenav" id="mobile-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html" class="nav-active">Catalog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
+        <li><a href="#" id="navUserNameMobile"></a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!--<nav class="navbar-custom">
     <div class="nav-wrapper container custom-navbar">
 
       <a href="index.html" class="brand-logo">
@@ -37,21 +82,11 @@
         <a href="login.html" id="navLoginLinkMobile" class="login-btn">Login</a>
       </li>
       <li><a href="#" id="navUserName"></a></li>
-    </ul>
+    </ul> 
 
-      <!-- <ul class="sidenav" id="mobile-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="catalog.html">Catalog</a></li>
-        <li><a href="booking.html">Booking</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
-        <li><a href="#" id="navUserNameMobile"></a></li>
-      </ul> -->
+  </div>
+  </nav> -->
 
-    </div>
-  </nav>
- 
   <!-- Header -->
   <section class="catalog-header">
     <div class="container">
@@ -59,50 +94,50 @@
       <p>Browse available salons, compare ratings, and find the best salon near you.</p>
     </div>
   </section>
- 
+
   <!-- Search + Filter -->
 
-<section class="search-section">
-  <div class="container">
-    <div class="row">
+  <section class="search-section">
+    <div class="container">
+      <div class="row">
 
-      <div class="input-field col s12 m6 l3">
-        <i class="material-icons prefix">search</i>
-        <input type="text" id="searchBar">
-        <label for="searchBar">Search suburb</label>
+        <div class="input-field col s12 m6 l3">
+          <i class="material-icons prefix">search</i>
+          <input type="text" id="searchBar">
+          <label for="searchBar">Search suburb</label>
+        </div>
+
+        <div class="input-field col s12 m6 l3">
+          <select id="filterSelect">
+            <option value="all" selected>All Suburbs</option>
+          </select>
+          <label>Filter by suburb</label>
+        </div>
+
+        <div class="input-field col s12 m6 l3">
+          <select id="ratingFilter">
+            <option value="0" selected>All Ratings</option>
+            <option value="4">4+ Rating</option>
+            <option value="4.5">4.5+ Rating</option>
+            <option value="5">5 Rating</option>
+          </select>
+          <label>Filter by reviews</label>
+        </div>
+
+        <div class="input-field col s12 m6 l3">
+          <select id="priceFilter">
+            <option value="" selected>All Prices</option>
+            <option value="$">$</option>
+            <option value="$$">$$</option>
+            <option value="$$$">$$$</option>
+            <option value="$$$$">$$$$</option>
+          </select>
+          <label>Filter by price level</label>
+        </div>
+
       </div>
-
-      <div class="input-field col s12 m6 l3">
-        <select id="filterSelect">
-          <option value="all" selected>All Suburbs</option>
-        </select>
-        <label>Filter by suburb</label>
-      </div>
-
-      <div class="input-field col s12 m6 l3">
-        <select id="ratingFilter">
-          <option value="0" selected>All Ratings</option>
-          <option value="4">4+ Rating</option>
-          <option value="4.5">4.5+ Rating</option>
-          <option value="5">5 Rating</option>
-        </select>
-        <label>Filter by reviews</label>
-      </div>
-
-      <div class="input-field col s12 m6 l3">
-        <select id="priceFilter">
-          <option value="" selected>All Prices</option>
-          <option value="$">$</option>
-          <option value="$$">$$</option>
-          <option value="$$$">$$$</option>
-          <option value="$$$$">$$$$</option>
-        </select>
-        <label>Filter by price level</label>
-      </div>
-
     </div>
-  </div>
-</section>
+  </section>
   <!-- Salon Cards -->
   <section class="catalog-section">
     <div class="container">
@@ -111,7 +146,7 @@
       </div>
     </div>
   </section>
-   <!-- Footer -->
+  <!-- Footer -->
   <footer class="page-footer footer-custom">
     <div class="container">
       <div class="row">
@@ -166,104 +201,104 @@
       </div>
     </div>
   </footer>
- 
+
   <!-- Materialize JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
- 
+
   <!-- Auth JS -->
   <script src="js/auth.js"></script>
-<script>
-  const melbourneSuburbs = [
-    "Melbourne CBD", "Clayton", "Burwood", "Box Hill", "Richmond",
-    "Dandenong", "Springvale", "Glen Waverley", "Mount Waverley",
-    "Chadstone", "Oakleigh", "Caulfield", "St Kilda", "South Yarra",
-    "Prahran", "Carlton", "Brunswick", "Footscray", "Sunshine",
-    "Preston", "Coburg", "Hawthorn", "Doncaster", "Ringwood",
-    "Frankston", "Noble Park", "Malvern", "Toorak", "Brighton",
-    "Werribee", "Point Cook", "Narre Warren"
-  ];
+  <script>
+    const melbourneSuburbs = [
+      "Melbourne CBD", "Clayton", "Burwood", "Box Hill", "Richmond",
+      "Dandenong", "Springvale", "Glen Waverley", "Mount Waverley",
+      "Chadstone", "Oakleigh", "Caulfield", "St Kilda", "South Yarra",
+      "Prahran", "Carlton", "Brunswick", "Footscray", "Sunshine",
+      "Preston", "Coburg", "Hawthorn", "Doncaster", "Ringwood",
+      "Frankston", "Noble Park", "Malvern", "Toorak", "Brighton",
+      "Werribee", "Point Cook", "Narre Warren"
+    ];
 
-  const searchBar = document.getElementById("searchBar");
-  const filterSelect = document.getElementById("filterSelect");
-  const ratingFilter = document.getElementById("ratingFilter");
-  const priceFilter = document.getElementById("priceFilter");
-  const salonContainer = document.getElementById("salonContainer");
+    const searchBar = document.getElementById("searchBar");
+    const filterSelect = document.getElementById("filterSelect");
+    const ratingFilter = document.getElementById("ratingFilter");
+    const priceFilter = document.getElementById("priceFilter");
+    const salonContainer = document.getElementById("salonContainer");
 
-  document.addEventListener('DOMContentLoaded', function () {
-    M.Sidenav.init(document.querySelectorAll('.sidenav'));
-    loadSuburbs();
-    loadSalons();
-  });
-
-  function loadSuburbs() {
-    melbourneSuburbs.forEach((suburb) => {
-      const option = document.createElement("option");
-      option.value = suburb;
-      option.textContent = suburb;
-      filterSelect.appendChild(option);
+    document.addEventListener('DOMContentLoaded', function () {
+      M.Sidenav.init(document.querySelectorAll('.sidenav'));
+      loadSuburbs();
+      loadSalons();
     });
 
-    M.FormSelect.init(document.querySelectorAll('select'));
-  }
-
-  async function loadSalons() {
-    let suburb = searchBar.value.trim();
-
-    if (suburb === "") {
-      suburb = filterSelect.value;
-    }
-
-    if (suburb === "all" || suburb === "") {
-      suburb = "Melbourne CBD";
-    }
-
-    try {
-      salonContainer.innerHTML = "<p class='center-align'>Loading salons...</p>";
-
-      const response = await fetch(
-        `/salons?suburb=${encodeURIComponent(suburb)}&rating=${ratingFilter.value}&price=${encodeURIComponent(priceFilter.value)}`
-      );
-
-      const salons = await response.json();
-
-      displaySalons(salons, suburb);
-    } catch (error) {
-      console.log("Error loading salons:", error);
-      salonContainer.innerHTML = "<p class='center-align'>Unable to load salons.</p>";
-    }
-  }
-
-  function displaySalons(salons, suburb) {
-    salonContainer.innerHTML = "";
-
-    if (!salons || salons.length === 0) {
-      salonContainer.innerHTML = `<p class='center-align'>No salons found for ${suburb}.</p>`;
-      return;
-    }
-
-    salons.forEach((salon) => {
-      const image = salon.photos && salon.photos[0]
-        ? salon.photos[0]
-        : "images/salon1.png";
-
-      const services = salon.services
-        ? salon.services.join(", ")
-        : "Hair salon services";
-
-      const price = salon.price || "N/A";
-      const reviewCount = salon.reviewCount || 0;
-
-      const params = new URLSearchParams({
-        name: salon.name,
-        suburb: suburb,
-        rating: salon.ratings || "N/A",
-        reviews: reviewCount,
-        price: price,
-        address: salon.address || suburb,
-        image: image
+    function loadSuburbs() {
+      melbourneSuburbs.forEach((suburb) => {
+        const option = document.createElement("option");
+        option.value = suburb;
+        option.textContent = suburb;
+        filterSelect.appendChild(option);
       });
 
-      const cardHTML = `
+      M.FormSelect.init(document.querySelectorAll('select'));
+    }
+
+    async function loadSalons() {
+      let suburb = searchBar.value.trim();
+
+      if (suburb === "") {
+        suburb = filterSelect.value;
+      }
+
+      if (suburb === "all" || suburb === "") {
+        suburb = "Melbourne CBD";
+      }
+
+      try {
+        salonContainer.innerHTML = "<p class='center-align'>Loading salons...</p>";
+
+        const response = await fetch(
+          `/salons?suburb=${encodeURIComponent(suburb)}&rating=${ratingFilter.value}&price=${encodeURIComponent(priceFilter.value)}`
+        );
+
+        const salons = await response.json();
+
+        displaySalons(salons, suburb);
+      } catch (error) {
+        console.log("Error loading salons:", error);
+        salonContainer.innerHTML = "<p class='center-align'>Unable to load salons.</p>";
+      }
+    }
+
+    function displaySalons(salons, suburb) {
+      salonContainer.innerHTML = "";
+
+      if (!salons || salons.length === 0) {
+        salonContainer.innerHTML = `<p class='center-align'>No salons found for ${suburb}.</p>`;
+        return;
+      }
+
+      salons.forEach((salon) => {
+        const image = salon.photos && salon.photos[0]
+          ? salon.photos[0]
+          : "images/salon1.png";
+
+        const services = salon.services
+          ? salon.services.join(", ")
+          : "Hair salon services";
+
+        const price = salon.price || "N/A";
+        const reviewCount = salon.reviewCount || 0;
+
+        const params = new URLSearchParams({
+          name: salon.name,
+          suburb: suburb,
+          rating: salon.ratings || "N/A",
+          reviews: reviewCount,
+          price: price,
+          address: salon.address || suburb,
+          image: image
+        });
+
+        const cardHTML = `
         <div class="col s12 m6 l4 salon-item">
           <div class="card catalog-card">
 
@@ -296,24 +331,24 @@
         </div>
       `;
 
-      salonContainer.insertAdjacentHTML("beforeend", cardHTML);
-    });
-  }
-
-  searchBar.addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-      loadSalons();
+        salonContainer.insertAdjacentHTML("beforeend", cardHTML);
+      });
     }
-  });
 
-  filterSelect.addEventListener("change", function () {
-    searchBar.value = "";
-    loadSalons();
-  });
+    searchBar.addEventListener("keydown", function (event) {
+      if (event.key === "Enter") {
+        loadSalons();
+      }
+    });
 
-  ratingFilter.addEventListener("change", loadSalons);
-  priceFilter.addEventListener("change", loadSalons);
-</script>
+    filterSelect.addEventListener("change", function () {
+      searchBar.value = "";
+      loadSalons();
+    });
+
+    ratingFilter.addEventListener("change", loadSalons);
+    priceFilter.addEventListener("change", loadSalons);
+  </script>
 </body>
- 
+
 </html>

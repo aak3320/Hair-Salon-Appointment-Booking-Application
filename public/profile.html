@@ -16,8 +16,53 @@
 
 <body class="profile-page">
 
-   <!-- Common Navigation bar -->
+  <!-- Common Navigation bar -->
   <nav class="navbar-custom">
+    <div class="nav-wrapper container">
+
+      <a href="index.html" class="brand-logo">
+        <img src="images/download.png" alt="Logo" class="navbar-logo">
+      </a>
+
+      <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+
+      <ul class="center-menu hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+
+      <ul class="right-menu hide-on-med-and-down">
+        <li>
+          <a href="login.html" id="navLoginLink" class="login-btn nav-active">Login</a>
+        </li>
+        <li class="user-dropdown-wrapper">
+          <a href="#" id="navUserName"></a>
+          <div class="user-dropdown-menu" id="userDropdownMenu">
+            <a href="profile.html">
+              <i class="material-icons">account_circle</i> View Profile
+            </a>
+            <a href="#" id="dropdownLogoutBtn">
+              <i class="material-icons">logout</i> Logout
+            </a>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="sidenav" id="mobile-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="login.html" id="navLoginLinkMobile" class="nav-active">Login</a></li>
+        <li><a href="#" id="navUserNameMobile"></a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!--<nav class="navbar-custom">
     <div class="nav-wrapper container custom-navbar">
 
       <a href="index.html" class="brand-logo">
@@ -38,20 +83,9 @@
         <a href="login.html" id="navLoginLinkMobile" class="login-btn">Login</a>
       </li>
       <li><a href="#" id="navUserName"></a></li>
-    </ul>
-
-      <!-- <ul class="sidenav" id="mobile-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="catalog.html">Catalog</a></li>
-        <li><a href="booking.html">Booking</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
-        <li><a href="#" id="navUserNameMobile"></a></li>
-      </ul> -->
-
-    </div>
-  </nav>
+    </ul> 
+  </div>
+  </nav> -->
 
   <!-- Profile Section -->
   <section class="section profile-section">
@@ -204,29 +238,78 @@
   <script src="js/auth.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    document.addEventListener('DOMContentLoaded', async function () {
+
       M.Sidenav.init(document.querySelectorAll('.sidenav'));
 
+      // Get token from localStorage
+      const token = localStorage.getItem('token');
       const user = JSON.parse(localStorage.getItem('user'));
 
-      if (!user) {
+      // If not logged in redirect to login
+      if (!token || !user) {
         window.location.href = 'login.html';
         return;
       }
 
+      // Show data from localStorage first
       document.getElementById('profileName').textContent = user.name || 'Guest User';
       document.getElementById('profileRole').textContent = user.role || 'Customer';
-
       document.getElementById('displayName').textContent = user.name || 'Not available';
       document.getElementById('displayEmail').textContent = user.email || 'Not available';
       document.getElementById('displayMobile').textContent = user.mobileNumber || 'Not available';
       document.getElementById('displayRole').textContent = user.role || 'Customer';
 
+      try {
+
+        // Fetch fresh data from backend API
+        const response = await fetch('/api/profile', {
+          method: 'GET',
+          headers: {
+            // Send token in header for authentication
+            'Authorization': `Bearer ${token}`
+          }
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+
+          // Update page with fresh data from database
+          const freshUser = data.user;
+
+          document.getElementById('profileName').textContent = freshUser.name || 'Guest User';
+          document.getElementById('profileRole').textContent = freshUser.role || 'Customer';
+          document.getElementById('displayName').textContent = freshUser.name || 'Not available';
+          document.getElementById('displayEmail').textContent = freshUser.email || 'Not available';
+          document.getElementById('displayMobile').textContent = freshUser.mobileNumber || 'Not available';
+          document.getElementById('displayRole').textContent = freshUser.role || 'Customer';
+
+          // Update localStorage with fresh data
+          localStorage.setItem('user', JSON.stringify(freshUser));
+
+        } else {
+
+          // Token invalid redirect to login
+          localStorage.clear();
+          window.location.href = 'login.html';
+
+        }
+
+      } catch (err) {
+
+        // If API fails still show localStorage data
+        console.error('Error fetching profile:', err);
+
+      }
+
+      // Logout button
       document.getElementById('logoutBtn').addEventListener('click', function () {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         window.location.href = 'login.html';
       });
+
     });
   </script>
 

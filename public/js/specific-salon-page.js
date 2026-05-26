@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const response = await fetch(`/api/salons/${salonID}`);
             const salon = await response.json();
 
-            if (!salon || salon.messafge) {
+            if (!salon || salon.message) {
 
                 // Salon not found
                 bufferingSpinner.style.display = 'none';
@@ -300,9 +300,9 @@ const displaySalonDetails = (salon, suburb) => {
             name: salon.name,
             suburb: suburb,
             services: selectedServices.join(',')
-        }); 
+        });
 
-        if( salo._id ) {
+        if (salon._id) {
             params.append('salonID', salon._id);
         }
 

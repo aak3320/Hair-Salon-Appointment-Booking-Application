@@ -30,6 +30,10 @@ app.get("/", (req, res) => {
   res.send("Hair Salon Booking App is running!");
 });
 
+// Profile Routes
+const profileRoutes = require("./routes/profileRoutes");
+app.use("/api/profile", profileRoutes);
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
