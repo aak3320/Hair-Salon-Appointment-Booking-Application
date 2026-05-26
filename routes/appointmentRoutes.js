@@ -3,7 +3,18 @@ const router = express.Router();
 
 const appointmentController = require("../controllers/appointmentController");
 
-router.post("/", appointmentController.createAppointment);
-router.patch("/:id/cancel", appointmentController.cancelAppointment);
+const verifyToken = require("../middleware/authMiddleware");
+
+router.post(
+  "/",
+  verifyToken,
+  appointmentController.createAppointment
+);
+
+router.patch(
+  "/:id/cancel",
+  verifyToken,
+  appointmentController.cancelAppointment
+);
 
 module.exports = router;

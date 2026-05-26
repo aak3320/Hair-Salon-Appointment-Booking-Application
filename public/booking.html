@@ -15,7 +15,7 @@
 
 <body class="booking-page">
 
-   <!-- Common Navigation bar -->
+  <!-- Common Navigation bar -->
   <nav class="navbar-custom">
     <div class="nav-wrapper container custom-navbar">
 
@@ -27,17 +27,17 @@
         <i class="material-icons">menu</i>
       </a>
 
-     <ul class="center-menu hide-on-med-and-down" id="mobile-menu">
-      <li><a href="index.html" class="nav-active">Home</a></li>
-      <li><a href="catalog.html">Catalog</a></li>
-      <li><a href="contact.html">Contact Us</a></li>
-    </ul>
+      <ul class="center-menu hide-on-med-and-down" id="mobile-menu">
+        <li><a href="index.html" class="nav-active">Home</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
       <ul class="right-menu hide-on-med-and-down">
-      <li>
-        <a href="login.html" id="navLoginLinkMobile" class="login-btn">Login</a>
-      </li>
-      <li><a href="#" id="navUserName"></a></li>
-    </ul>
+        <li>
+          <a href="login.html" id="navLoginLinkMobile" class="login-btn">Login</a>
+        </li>
+        <li><a href="#" id="navUserName"></a></li>
+      </ul>
 
       <!-- <ul class="sidenav" id="mobile-menu">
         <li><a href="index.html">Home</a></li>
@@ -123,7 +123,7 @@
     </div>
   </section>
 
-   <!-- Footer -->
+  <!-- Footer -->
   <footer class="page-footer footer-custom">
     <div class="container">
       <div class="row">
@@ -185,54 +185,55 @@
   <!-- Auth JS -->
   <script src="js/auth.js"></script>
 
-<script>
-  document.addEventListener('DOMContentLoaded', function () {
-    M.Sidenav.init(document.querySelectorAll('.sidenav'));
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      M.Sidenav.init(document.querySelectorAll('.sidenav'));
 
-    M.Datepicker.init(document.querySelectorAll('.datepicker'), {
-      format: 'yyyy-mm-dd',
-      autoClose: true
+      M.Datepicker.init(document.querySelectorAll('.datepicker'), {
+        format: 'yyyy-mm-dd',
+        autoClose: true
+      });
+
+      M.Timepicker.init(document.querySelectorAll('.timepicker'), {
+        twelveHour: false
+      });
     });
 
-    M.Timepicker.init(document.querySelectorAll('.timepicker'), {
-      twelveHour: false
-    });
-  });
+    document
+      .getElementById("bookingForm")
+      .addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-  document
-    .getElementById("bookingForm")
-    .addEventListener("submit", async function (event) {
-      event.preventDefault();
+        const bookingData = {
+          fullName: document.getElementById("fullName").value,
+          email: document.getElementById("email").value,
+          appointmentDate: document.getElementById("bookingDate").value,
+          appointmentTime: document.getElementById("bookingTime").value,
+          notes: document.getElementById("notes").value
+        };
 
-      const bookingData = {
-        fullName: document.getElementById("fullName").value,
-        email: document.getElementById("email").value,
-        appointmentDate: document.getElementById("bookingDate").value,
-        appointmentTime: document.getElementById("bookingTime").value,
-        notes: document.getElementById("notes").value
-      };
+        try {
+          const response = await fetch("/appointments", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify(bookingData)
+          });
 
-      try {
-        const response = await fetch("/appointments", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify(bookingData)
-        });
+          const result = await response.json();
 
-        const result = await response.json();
+          alert(result.message);
 
-        alert(result.message);
+          document.getElementById("bookingForm").reset();
 
-        document.getElementById("bookingForm").reset();
-
-      } catch (error) {
-        console.log(error);
-        alert("Booking failed");
-      }
-    });
-</script>
+        } catch (error) {
+          console.log(error);
+          alert("Booking failed");
+        }
+      });
+  </script>
 
 </body>
 
