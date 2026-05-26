@@ -17,25 +17,29 @@
 
   <!-- Common Navigation bar -->
   <nav class="navbar-custom">
-    <div class="nav-wrapper container">
+    <div class="nav-wrapper container custom-navbar">
 
-      <a href="index.html" class="brand-logo">Hair Salon</a>
+      <a href="index.html" class="brand-logo">
+        <img src="images/download.png" alt="Logo" class="navbar-logo">
+      </a>
 
       <a href="#" data-target="mobile-menu" class="sidenav-trigger">
         <i class="material-icons">menu</i>
       </a>
 
-      <ul class="right hide-on-med-and-down">
-        <li><a href="index.html" class="nav-active">Home</a></li>
-        <li><a href="catalog.html">Catalog</a></li>
-        <li><a href="booking.html">Booking</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="login.html" id="navLoginLink">Login</a></li>
-        <li><a href="#" id="navUserName"></a></li>
-      </ul>
+     <ul class="center-menu hide-on-med-and-down" id="mobile-menu">
+      <li><a href="index.html" class="nav-active">Home</a></li>
+      <li><a href="catalog.html">Catalog</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+    </ul>
+      <ul class="right-menu hide-on-med-and-down">
+      <li>
+        <a href="login.html" id="navLoginLinkMobile" class="login-btn">Login</a>
+      </li>
+      <li><a href="#" id="navUserName"></a></li>
+    </ul>
 
-      <ul class="sidenav" id="mobile-menu">
+      <!-- <ul class="sidenav" id="mobile-menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="catalog.html">Catalog</a></li>
         <li><a href="booking.html">Booking</a></li>
@@ -43,7 +47,7 @@
         <li><a href="profile.html">Profile</a></li>
         <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
         <li><a href="#" id="navUserNameMobile"></a></li>
-      </ul>
+      </ul> -->
 
     </div>
   </nav>
@@ -60,6 +64,7 @@
             A simple and convenient system for customers to view salon services,
             check available time slots, and book appointments online.
           </p>
+           <p class="hero-note">✔ Quick and easy online booking</p>
 
           <div class="hero-actions">
             <a href="catalog.html" class="waves-effect btn-flat btn-secondary">
@@ -67,7 +72,7 @@
             </a>
           </div>
 
-          <p class="hero-note">✔ Quick and easy online booking</p>
+         
         </div>
 
         <div class="col s12 m6">
@@ -89,7 +94,7 @@
     </div>
   </section>
 
-  <!-- Location & Suggestion Section -->
+  <!-- Location & Suggestion Section
   <section class="section suggestion-section">
     <div class="container">
 
@@ -132,10 +137,54 @@
 
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- How It Works Section -->
-  <section class="section how-it-works">
+   <!-- How It Works Section -->
+<section class="section how-it-works">
+  <div class="container">
+
+    <div class="how-heading center-align">
+      <h2>How It Works</h2>
+      <p>Booking a salon appointment is simple and easy.</p>
+    </div>
+
+    <div class="row how-cards">
+
+      <div class="col s12 m4">
+        <div class="card how-card center-align">
+          <div class="card-content">
+            <i class="material-icons medium">search</i>
+            <span class="card-title">1. Browse Salons</span>
+            <p>View available salons and services from the catalog page.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="card how-card center-align">
+          <div class="card-content">
+            <i class="material-icons medium">event_available</i>
+            <span class="card-title">2. Select Time</span>
+            <p>Choose a suitable salon, date, and appointment time.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col s12 m4">
+        <div class="card how-card center-align">
+          <div class="card-content">
+            <i class="material-icons medium">check_circle</i>
+            <span class="card-title">3. Confirm Booking</span>
+            <p>Submit your booking and manage your appointment online.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+  <!-- <section class="section how-it-works">
     <div class="container">
 
       <div class="center-align">
@@ -177,10 +226,55 @@
 
       </div>
     </div>
-  </section>
+  </section> -->
 
   <!-- About Section -->
-  <section class="about section">
+   <section class="why-choose-us">
+  <div class="container">
+
+    <div class="why-heading center-align">
+      <h2>Why Choose Us?</h2>
+      <p>Find trusted salons, compare services, and book appointments easily in one place.</p>
+    </div>
+
+    <div class="row why-cards">
+
+      <div class="col s12 m6 l3">
+        <div class="why-card center-align">
+          <i class="material-icons">event_available</i>
+          <h4>Easy Booking</h4>
+          <p>Book salon appointments online without phone calls or waiting.</p>
+        </div>
+      </div>
+
+      <div class="col s12 m6 l3">
+        <div class="why-card center-align">
+          <i class="material-icons">search</i>
+          <h4>Real Salon Search</h4>
+          <p>Search salons by suburb and explore real salon information.</p>
+        </div>
+      </div>
+
+      <div class="col s12 m6 l3">
+        <div class="why-card center-align">
+          <i class="material-icons">star</i>
+          <h4>Compare Ratings</h4>
+          <p>Check salon ratings and choose the best option for your needs.</p>
+        </div>
+      </div>
+
+      <div class="col s12 m6 l3">
+        <div class="why-card center-align">
+          <i class="material-icons">schedule</i>
+          <h4>Save Time</h4>
+          <p>Quickly select a salon, date, and time from one simple system.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+  <!-- <section class="about section">
     <div class="container">
       <div class="row valign-wrapper">
 
@@ -198,63 +292,238 @@
 
       </div>
     </div>
+  </section> -->
+  <!-- Contact Section -->
+  <section class="section contact-section">
+    <div class="container">
+
+      <div class="center-align">
+        <h2>Contact Us</h2>
+
+        <p>
+          If you have any questions or need help with your booking,
+          feel free to contact our team.
+        </p>
+      </div>
+
+      <div class="row">
+
+        <!-- Contact Information -->
+        <div class="col s12 m5">
+          <div class="card">
+            <div class="card-content">
+
+              <span class="card-title">Get In Touch</span>
+
+              <p>
+                <i class="material-icons tiny">email</i>
+                support@hairsalon.com
+              </p>
+
+              <br>
+
+              <p>
+                <i class="material-icons tiny">phone</i>
+                +61 412 345 678
+              </p>
+
+              <br>
+
+              <p>
+                <i class="material-icons tiny">location_on</i>
+                Melbourne, Victoria
+              </p>
+
+              <br>
+
+              
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="col s12 m7">
+          <div class="card">
+            <div class="card-content">
+
+              <span class="card-title">Send Us a Message</span>
+
+              <form>
+
+                <div class="input-field">
+                  <input type="text" id="name" required>
+                  <label for="name">Full Name</label>
+                </div>
+
+                <div class="input-field">
+                  <input type="email" id="email" required>
+                  <label for="email">Email Address</label>
+                </div>
+
+                <div class="input-field">
+                  <textarea id="message" class="materialize-textarea" required></textarea>
+                  <label for="message">Message</label>
+                </div>
+
+                <button class="btn waves-effect waves-light btn-custom" type="submit">
+                  Send Message
+                  <i class="material-icons right" style="color: white;">send</i>
+                </button>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
   </section>
 
-<!-- Footer -->
-<footer class="page-footer footer-custom">
+<!-- FAQ Section -->
+<section class="faq-section">
   <div class="container">
-    <div class="row">
 
-      <!-- About -->
+    <div class="center-align faq-heading">
+      <h2>Frequently Asked Questions</h2>
+      <p>Quick answers to common questions about using our salon booking system.</p>
+    </div>
+
+    <ul class="collapsible faq-list">
+
+      <li>
+        <div class="collapsible-header">
+          <i class="material-icons">help_outline</i>
+          How do I book a salon appointment?
+        </div>
+        <div class="collapsible-body">
+          <span>You can browse salons from the catalog page, select your preferred salon, choose a date and time, then confirm your booking through the booking form.</span>
+        </div>
+      </li>
+
+      <li>
+        <div class="collapsible-header">
+          <i class="material-icons">schedule</i>
+          Can I choose my preferred date and time?
+        </div>
+        <div class="collapsible-body">
+          <span>Yes, you can select your preferred appointment date and time while completing the booking form.</span>
+        </div>
+      </li>
+
+      <li>
+        <div class="collapsible-header">
+          <i class="material-icons">search</i>
+          Can I search salons by suburb?
+        </div>
+        <div class="collapsible-body">
+          <span>Yes, you can search salons by suburb such as Clayton, Burwood, Melbourne CBD, Richmond, and other Melbourne areas.</span>
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="testimonial-section">
+  <div class="container">
+
+    <div class="center-align testimonial-heading">
+      <h2>What Our Customers Say</h2>
+      <p>Customer experiences from using our salon booking system.</p>
+    </div>
+
+    <div class="row testimonial-row">
+
       <div class="col s12 m4">
-        <h5 class="white-text">Hair Salon</h5>
-        <p class="grey-text text-lighten-4">
-          A modern salon appointment booking system that helps customers
-          find salons, book appointments, and manage services online.
-        </p>
+        <div class="testimonial-card">
+          <i class="material-icons quote-icon">format_quote</i>
+          <p>Booking my salon appointment was quick and simple. I could compare salons and choose a time easily.</p>
+          <h4>Krisha M.</h4>
+          <span>Customer</span>
+        </div>
       </div>
 
-      <!-- Quick Links -->
       <div class="col s12 m4">
-        <h5 class="white-text">Quick Links</h5>
-
-        <ul>
-          <li><a class="grey-text text-lighten-3" href="index.html">Home</a></li>
-          <li><a class="grey-text text-lighten-3" href="catalog.html">Catalog</a></li>
-          <li><a class="grey-text text-lighten-3" href="booking.html">Booking</a></li>
-          <li><a class="grey-text text-lighten-3" href="login.html">Login</a></li>
-        </ul>
+        <div class="testimonial-card">
+          <i class="material-icons quote-icon">format_quote</i>
+          <p>The catalog helped me find salons near my suburb. The booking form was clear and easy to use.</p>
+          <h4>Priya S.</h4>
+          <span>Customer</span>
+        </div>
       </div>
 
-      <!-- Contact -->
       <div class="col s12 m4">
-        <h5 class="white-text">Contact Us</h5>
-
-        <p class="grey-text text-lighten-3">
-          <i class="material-icons tiny">email</i>
-          support@hairsalon.com
-        </p>
-
-        <p class="grey-text text-lighten-3">
-          <i class="material-icons tiny">phone</i>
-          +61 412 345 678
-        </p>
-
-        <p class="grey-text text-lighten-3">
-          <i class="material-icons tiny">location_on</i>
-          Melbourne, Victoria
-        </p>
+        <div class="testimonial-card">
+          <i class="material-icons quote-icon">format_quote</i>
+          <p>This system saves time for customers and makes appointment management easier for salons.</p>
+          <h4>Akash P.</h4>
+          <span>Salon Staff</span>
+        </div>
       </div>
 
     </div>
   </div>
+</section>
 
-  <div class="footer-copyright">
-    <div class="container center-align">
-      © 2026 Hair Salon Appointment Booking System
+  <!-- Footer -->
+  <footer class="page-footer footer-custom">
+    <div class="container">
+      <div class="row">
+
+        <!-- About -->
+        <div class="col s12 m4">
+          <h5 class="white-text">Hair Salon</h5>
+          <p class="grey-text text-lighten-4">
+            A modern salon appointment booking system that helps customers
+            find salons, book appointments, and manage services online.
+          </p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="col s12 m4">
+          <h5 class="white-text">Quick Links</h5>
+
+          <ul>
+            <li><a class="grey-text text-lighten-3" href="index.html">Home</a></li>
+            <li><a class="grey-text text-lighten-3" href="catalog.html">Catalog</a></li>
+            <li><a class="grey-text text-lighten-3" href="booking.html">Booking</a></li>
+            <li><a class="grey-text text-lighten-3" href="login.html">Login</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="col s12 m4">
+          <h5 class="white-text">Contact Us</h5>
+
+          <p class="grey-text text-lighten-3">
+            <i class="material-icons tiny">email</i>
+            support@hairsalon.com
+          </p>
+
+          <p class="grey-text text-lighten-3">
+            <i class="material-icons tiny">phone</i>
+            +61 412 345 678
+          </p>
+
+          <p class="grey-text text-lighten-3">
+            <i class="material-icons tiny">location_on</i>
+            Melbourne, Victoria
+          </p>
+        </div>
+
+      </div>
     </div>
-  </div>
-</footer>
+
+    <div class="footer-copyright">
+      <div class="container center-align">
+        © 2026 Hair Salon Appointment Booking System
+      </div>
+    </div>
+  </footer>
 
   <!-- Materialize JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -266,6 +535,18 @@
     document.addEventListener('DOMContentLoaded', function () {
       M.Sidenav.init(document.querySelectorAll('.sidenav'));
     });
+  
+  document.addEventListener('DOMContentLoaded', function () {
+    M.Collapsible.init(document.querySelectorAll('.collapsible'));
+  });
+ M.Carousel.init(document.querySelectorAll('.carousel'), {
+  indicators: true,
+  dist: -40,
+  shift: 20,
+  padding: 40,
+  numVisible: 3
+});
+
   </script>
 
 </body>

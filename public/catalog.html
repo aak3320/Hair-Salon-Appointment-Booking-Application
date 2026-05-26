@@ -57,117 +57,56 @@
   </section>
  
   <!-- Search + Filter -->
-  <section class="search-section">
-    <div class="container">
-      <div class="row">
- 
-        <div class="input-field col s12 m6">
-          <i class="material-icons prefix">search</i>
-          <input type="text" id="searchBar">
-          <label for="searchBar">Search salon</label>
-        </div>
- 
-        <div class="input-field col s12 m6">
-          <select id="filterSelect">
-            <option value="all" selected>All Suburbs</option>
-            <!-- Suburbs loaded dynamically by loadSuburbs() in JS below -->
-          </select>
-          <label>Filter by suburb</label>
-        </div>
- 
+
+<section class="search-section">
+  <div class="container">
+    <div class="row">
+
+      <div class="input-field col s12 m6 l3">
+        <i class="material-icons prefix">search</i>
+        <input type="text" id="searchBar">
+        <label for="searchBar">Search suburb</label>
       </div>
+
+      <div class="input-field col s12 m6 l3">
+        <select id="filterSelect">
+          <option value="all" selected>All Suburbs</option>
+        </select>
+        <label>Filter by suburb</label>
+      </div>
+
+      <div class="input-field col s12 m6 l3">
+        <select id="ratingFilter">
+          <option value="0" selected>All Ratings</option>
+          <option value="4">4+ Rating</option>
+          <option value="4.5">4.5+ Rating</option>
+          <option value="5">5 Rating</option>
+        </select>
+        <label>Filter by reviews</label>
+      </div>
+
+      <div class="input-field col s12 m6 l3">
+        <select id="priceFilter">
+          <option value="" selected>All Prices</option>
+          <option value="$">$</option>
+          <option value="$$">$$</option>
+          <option value="$$$">$$$</option>
+          <option value="$$$$">$$$$</option>
+        </select>
+        <label>Filter by price level</label>
+      </div>
+
     </div>
-  </section>
- 
+  </div>
+</section>
   <!-- Salon Cards -->
   <section class="catalog-section">
     <div class="container">
       <div class="row" id="salonContainer">
- 
-        <!-- STATIC FALLBACK SALON CARDS
- 
-        Salon 1
-        <div class="col s12 m6 l4 salon-item">
-          <div class="card catalog-card" data-name="Elite Hair Studio" data-location="Melbourne CBD">
- 
-            <div class="card-image">
-              <img src="images/salon1.png" alt="Elite Hair Studio">
-            </div>
- 
-            <div class="card-content catalog-content">
-              <span class="card-title">Elite Hair Studio</span>
-              <p><i class="material-icons tiny">location_on</i> Melbourne CBD</p>
-              <p class="rating">⭐ 4.8 Rating</p>
-              <p><strong>Services:</strong> Haircut, Hair Colouring, Styling</p>
-              <p><strong>Price from:</strong> $35 - $200</p>
-            </div>
- 
-            <div class="card-action">
-              <a href="specific-salon-page.html?name=Elite%20Hair%20Studio&suburb=Melbourne%20CBD&rating=4.8&price=%2435-%24200&address=Melbourne%20CBD%2C%20VIC&image=images/salon1.png"
-                class="waves-effect waves-light btn btn-primary">
-                View More
-              </a>
-            </div>
- 
-          </div>
-        </div>
- 
-        Salon 2
-        <div class="col s12 m6 l4 salon-item">
-          <div class="card catalog-card" data-name="Modern Cuts" data-location="Box Hill">
- 
-            <div class="card-image">
-              <img src="images/salon2.png" alt="Modern Cuts">
-            </div>
- 
-            <div class="card-content catalog-content">
-              <span class="card-title">Modern Cuts</span>
-              <p><i class="material-icons tiny">location_on</i> Box Hill</p>
-              <p class="rating">⭐ 4.6 Rating</p>
-              <p><strong>Services:</strong> Men's Haircut, Women's Haircut, Blow Dry</p>
-              <p><strong>Price from:</strong> $30 - $150</p>
-            </div>
- 
-            <div class="card-action">
-              <a href="specific-salon-page.html?name=Modern%20Cuts&suburb=Box%20Hill&rating=4.6&price=%2430-%24150&address=Box%20Hill%2C%20VIC&image=images/salon2.png"
-                class="waves-effect waves-light btn btn-primary">
-                View More
-              </a>
-            </div>
- 
-          </div>
-        </div>
- 
-        Salon 3
-        <div class="col s12 m6 l4 salon-item">
-          <div class="card catalog-card" data-name="Luxury Salon" data-location="Richmond">
- 
-            <div class="card-image">
-              <img src="images/salon3.png" alt="Luxury Salon">
-            </div>
- 
-            <div class="card-content catalog-content">
-              <span class="card-title">Luxury Salon</span>
-              <p><i class="material-icons tiny">location_on</i> Richmond</p>
-              <p class="rating">⭐ 4.9 Rating</p>
-              <p><strong>Services:</strong> Hair Treatment, Colouring, Premium Styling</p>
-              <p><strong>Price from:</strong> $45 - $250</p>
-            </div>
- 
-            <div class="card-action">
-              <a href="specific-salon-page.html?name=Luxury%20Salon&suburb=Richmond&rating=4.9&price=%2445-%24250&address=Richmond%2C%20VIC&image=images/salon3.png"
-                class="waves-effect waves-light btn btn-primary">
-                View More
-              </a>
-            </div>
- 
-          </div>
-        </div> -->
- 
+        <!-- API salon cards will load here -->
       </div>
     </div>
   </section>
- 
   <!-- Footer -->
   <footer class="page-footer footer-custom">
 
@@ -222,159 +161,148 @@
  
   <!-- Auth JS -->
   <script src="js/auth.js"></script>
- 
-  <script>
- 
-    const melbourneSuburbs = [
-      "Melbourne CBD", "Clayton", "Burwood", "Box Hill", "Richmond",
-      "Dandenong", "Springvale", "Glen Waverley", "Mount Waverley",
-      "Chadstone", "Oakleigh", "Caulfield", "St Kilda", "South Yarra",
-      "Prahran", "Carlton", "Brunswick", "Footscray", "Sunshine",
-      "Preston", "Coburg", "Hawthorn", "Doncaster", "Ringwood",
-      "Frankston", "Noble Park", "Malvern", "Toorak", "Brighton",
-      "Werribee", "Point Cook", "Narre Warren"
-    ];
- 
-    const searchBar = document.getElementById("searchBar");
-    const filterSelect = document.getElementById("filterSelect");
-    const salonContainer = document.getElementById("salonContainer");
- 
-    document.addEventListener('DOMContentLoaded', function () {
- 
-      M.Sidenav.init(document.querySelectorAll('.sidenav'));
- 
-      loadSuburbs();
- 
-      // Load salons dynamically from Yelp API
-      loadSalons();
- 
+<script>
+  const melbourneSuburbs = [
+    "Melbourne CBD", "Clayton", "Burwood", "Box Hill", "Richmond",
+    "Dandenong", "Springvale", "Glen Waverley", "Mount Waverley",
+    "Chadstone", "Oakleigh", "Caulfield", "St Kilda", "South Yarra",
+    "Prahran", "Carlton", "Brunswick", "Footscray", "Sunshine",
+    "Preston", "Coburg", "Hawthorn", "Doncaster", "Ringwood",
+    "Frankston", "Noble Park", "Malvern", "Toorak", "Brighton",
+    "Werribee", "Point Cook", "Narre Warren"
+  ];
+
+  const searchBar = document.getElementById("searchBar");
+  const filterSelect = document.getElementById("filterSelect");
+  const ratingFilter = document.getElementById("ratingFilter");
+  const priceFilter = document.getElementById("priceFilter");
+  const salonContainer = document.getElementById("salonContainer");
+
+  document.addEventListener('DOMContentLoaded', function () {
+    M.Sidenav.init(document.querySelectorAll('.sidenav'));
+    loadSuburbs();
+    loadSalons();
+  });
+
+  function loadSuburbs() {
+    melbourneSuburbs.forEach((suburb) => {
+      const option = document.createElement("option");
+      option.value = suburb;
+      option.textContent = suburb;
+      filterSelect.appendChild(option);
     });
 
-    function loadSuburbs() {
- 
-      melbourneSuburbs.forEach((suburb) => {
- 
-        const option = document.createElement("option");
-        option.value = suburb;
-        option.textContent = suburb;
-        filterSelect.appendChild(option);
- 
+    M.FormSelect.init(document.querySelectorAll('select'));
+  }
+
+  async function loadSalons() {
+    let suburb = searchBar.value.trim();
+
+    if (suburb === "") {
+      suburb = filterSelect.value;
+    }
+
+    if (suburb === "all" || suburb === "") {
+      suburb = "Melbourne CBD";
+    }
+
+    try {
+      salonContainer.innerHTML = "<p class='center-align'>Loading salons...</p>";
+
+      const response = await fetch(
+        `/salons?suburb=${encodeURIComponent(suburb)}&rating=${ratingFilter.value}&price=${encodeURIComponent(priceFilter.value)}`
+      );
+
+      const salons = await response.json();
+
+      displaySalons(salons, suburb);
+    } catch (error) {
+      console.log("Error loading salons:", error);
+      salonContainer.innerHTML = "<p class='center-align'>Unable to load salons.</p>";
+    }
+  }
+
+  function displaySalons(salons, suburb) {
+    salonContainer.innerHTML = "";
+
+    if (!salons || salons.length === 0) {
+      salonContainer.innerHTML = `<p class='center-align'>No salons found for ${suburb}.</p>`;
+      return;
+    }
+
+    salons.forEach((salon) => {
+      const image = salon.photos && salon.photos[0]
+        ? salon.photos[0]
+        : "images/salon1.png";
+
+      const services = salon.services
+        ? salon.services.join(", ")
+        : "Hair salon services";
+
+      const price = salon.price || "N/A";
+      const reviewCount = salon.reviewCount || 0;
+
+      const params = new URLSearchParams({
+        name: salon.name,
+        suburb: suburb,
+        rating: salon.ratings || "N/A",
+        reviews: reviewCount,
+        price: price,
+        address: salon.address || suburb,
+        image: image
       });
 
-      M.FormSelect.init(document.querySelectorAll('select'));
- 
-    }
+      const cardHTML = `
+        <div class="col s12 m6 l4 salon-item">
+          <div class="card catalog-card">
 
-    async function loadSalons() {
-
-      let suburb = searchBar.value.trim();
- 
-      if (suburb === "") {
-        suburb = filterSelect.value;
-      }
- 
-      if (suburb === "all" || suburb === "") {
-        suburb = "Melbourne CBD";
-      }
- 
-      try {
- 
-        salonContainer.innerHTML = "<p class='center-align'>Loading salons...</p>";
-
-        const response = await fetch(`/api/salons?suburb=${encodeURIComponent(suburb)}`);
- 
-        const salons = await response.json();
- 
-        displaySalons(salons, suburb);
- 
-      } catch (error) {
- 
-        console.log("Error loading salons:", error);
-        salonContainer.innerHTML = "<p class='center-align'>Unable to load salons.</p>";
- 
-      }
- 
-    }
-
-    function displaySalons(salons, suburb) {
- 
-      salonContainer.innerHTML = "";
- 
-      if (!salons || salons.length === 0) {
-        salonContainer.innerHTML = `<p class='center-align'>No salons found for ${suburb}.</p>`;
-        return;
-      }
- 
-      salons.forEach((salon) => {
- 
-        const image = salon.photos && salon.photos[0]
-          ? salon.photos[0]
-          : "images/salon1.png";
- 
-        const services = salon.services
-          ? salon.services.join(", ")
-          : "Hair salon services";
- 
-        const price = salon.price || "N/A";
-
-        const params = new URLSearchParams({
-          name: salon.name,
-          suburb: suburb,
-          rating: salon.ratings || "N/A",
-          price: price,
-          address: salon.address || suburb,
-          image: image
-        });
- 
-        const cardHTML = `
-          <div class="col s12 m6 l4 salon-item">
-            <div class="card catalog-card">
- 
-              <div class="card-image">
-                <img src="${image}" alt="${salon.name}">
-              </div>
- 
-              <div class="card-content catalog-content">
-                <span class="card-title">${salon.name}</span>
-                <p>
-                  <i class="material-icons tiny">location_on</i>
-                  ${salon.address || suburb}
-                </p>
-                <p class="rating">⭐ ${salon.ratings || "N/A"} Rating</p>
-                <p><strong>Services:</strong> ${services}</p>
-                <p><strong>Price:</strong> ${price}</p>
-              </div>
- 
-              <div class="card-action">
-                <a href="specific-salon-page.html?${params.toString()}"
-                   class="waves-effect waves-light btn btn-primary">
-                  View More
-                </a>
-              </div>
- 
+            <div class="card-image">
+              <img src="${image}" alt="${salon.name}">
             </div>
+
+            <div class="card-content catalog-content">
+              <span class="card-title">${salon.name}</span>
+
+              <p>
+                <i class="material-icons tiny">location_on</i>
+                ${salon.address || suburb}
+              </p>
+
+              <p class="rating">⭐ ${salon.ratings || "N/A"} Rating</p>
+              <p><strong>Reviews:</strong> ${reviewCount}</p>
+              <p><strong>Services:</strong> ${services}</p>
+              <p><strong>Price Level:</strong> ${price}</p>
+            </div>
+
+            <div class="card-action">
+              <a href="specific-salon-page.html?${params.toString()}"
+                 class="waves-effect waves-light btn btn-primary">
+                View More
+              </a>
+            </div>
+
           </div>
-        `;
- 
-        salonContainer.insertAdjacentHTML("beforeend", cardHTML);
- 
-      });
- 
-    }
+        </div>
+      `;
 
-    searchBar.addEventListener("keydown", function (event) {
-      if (event.key === "Enter") {
-        loadSalons();
-      }
+      salonContainer.insertAdjacentHTML("beforeend", cardHTML);
     });
+  }
 
-    filterSelect.addEventListener("change", function () {
-      searchBar.value = "";
+  searchBar.addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
       loadSalons();
-    });
- 
-  </script>
- 
+    }
+  });
+
+  filterSelect.addEventListener("change", function () {
+    searchBar.value = "";
+    loadSalons();
+  });
+
+  ratingFilter.addEventListener("change", loadSalons);
+  priceFilter.addEventListener("change", loadSalons);
+</script>
 </body>
  
 </html>

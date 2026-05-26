@@ -13,13 +13,17 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB connected successfully"))
   .catch((err) => console.log("MongoDB connection error:", err.message));
 
+// Appointment Routes
 const appointmentRoutes = require("./routes/appointmentRoutes");
 app.use("/appointments", appointmentRoutes);
 
+// Auth Routes
 const authRoutes = require("./routes/authRoutes");
 app.use("/api/auth", authRoutes);
 
+// Salon Routes
 const salonRoutes = require("./routes/salonroutes");
+app.use("/salons", salonRoutes);
 app.use("/api/salons", salonRoutes);
 
 app.get("/", (req, res) => {

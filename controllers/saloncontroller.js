@@ -22,6 +22,7 @@ exports.getAllSalons = async (req, res) => {
       suburb: suburb,
       address: business.location.display_address.join(", "),
       ratings: business.rating,
+      reviewCount: business.review_count || 0,
       price: business.price || "N/A",
       photos: [business.image_url],
       url: business.url
