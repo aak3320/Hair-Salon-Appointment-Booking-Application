@@ -16,7 +16,53 @@
 <body class="booking-page">
 
   <!-- Common Navigation bar -->
+  <!-- Common Navigation bar -->
   <nav class="navbar-custom">
+    <div class="nav-wrapper container">
+
+      <a href="index.html" class="brand-logo">
+        <img src="images/download.png" alt="Logo" class="navbar-logo">
+      </a>
+
+      <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+        <i class="material-icons">menu</i>
+      </a>
+
+      <ul class="center-menu hide-on-med-and-down">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+
+      <ul class="right-menu hide-on-med-and-down">
+        <li>
+          <a href="login.html" id="navLoginLink" class="login-btn">Login</a>
+        </li>
+        <li class="user-dropdown-wrapper">
+          <a href="#" id="navUserName"></a>
+          <div class="user-dropdown-menu" id="userDropdownMenu">
+            <a href="profile.html">
+              <i class="material-icons">account_circle</i> View Profile
+            </a>
+            <a href="#" id="dropdownLogoutBtn">
+              <i class="material-icons">logout</i> Logout
+            </a>
+          </div>
+        </li>
+      </ul>
+
+      <ul class="sidenav" id="mobile-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="catalog.html">Catalog</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
+        <li><a href="#" id="navUserNameMobile"></a></li>
+      </ul>
+
+    </div>
+  </nav>
+
+  <!--<nav class="navbar-custom">
     <div class="nav-wrapper container custom-navbar">
 
       <a href="index.html" class="brand-logo">
@@ -33,11 +79,11 @@
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
       <ul class="right-menu hide-on-med-and-down">
-        <li>
-          <a href="login.html" id="navLoginLinkMobile" class="login-btn">Login</a>
-        </li>
-        <li><a href="#" id="navUserName"></a></li>
-      </ul>
+      <li>
+        <a href="login.html" id="navLoginLinkMobile" class="login-btn">Login</a>
+      </li>
+      <li><a href="#" id="navUserName"></a></li>
+    </ul> -->
 
       <!-- <ul class="sidenav" id="mobile-menu">
         <li><a href="index.html">Home</a></li>
@@ -47,10 +93,10 @@
         <li><a href="profile.html">Profile</a></li>
         <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
         <li><a href="#" id="navUserNameMobile"></a></li>
-      </ul> -->
+      </ul>
 
     </div>
-  </nav>
+  </nav> -->
 
   <!-- Booking Section -->
   <section class="booking-section">
@@ -199,50 +245,41 @@
       });
     });
 
-    document.getElementById("bookingForm").addEventListener("submit", async function (event) {
-      event.preventDefault();
+    document
+      .getElementById("bookingForm")
+      .addEventListener("submit", async function (event) {
+        event.preventDefault();
 
-      const token = localStorage.getItem("token");
+        const bookingData = {
+          fullName: document.getElementById("fullName").value,
+          email: document.getElementById("email").value,
+          appointmentDate: document.getElementById("bookingDate").value,
+          appointmentTime: document.getElementById("bookingTime").value,
+          notes: document.getElementById("notes").value
+        };
 
-      if (!token) {
-        alert("Please login before booking an appointment.");
-        window.location.href = "login.html";
-        return;
-      }
+        try {
+          const response = await fetch("/appointments", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(bookingData)
+          });
 
-      const bookingData = {
-        fullName: document.getElementById("fullName").value,
-        email: document.getElementById("email").value,
-        appointmentDate: document.getElementById("bookingDate").value,
-        appointmentTime: document.getElementById("bookingTime").value,
-        notes: document.getElementById("notes").value
-      };
+          const result = await response.json();
 
-      try {
-        const response = await fetch("/appointments", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify(bookingData)
-        });
+          alert(result.message);
 
-        const result = await response.json();
-
-        alert(result.message);
-
-        if (response.ok && result.appointment && result.appointment._id) {
           document.getElementById("bookingForm").reset();
-          window.location.href = `payment.html?appointmentId=${result.appointment._id}`;
-        }
 
-      } catch (error) {
-        console.log(error);
-        alert("Booking failed");
-      }
-    });
+        } catch (error) {
+          console.log(error);
+          alert("Booking failed");
+        }
+      });
   </script>
+
 </body>
 
 </html>

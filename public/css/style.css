@@ -64,6 +64,49 @@ nav.navbar-custom .nav-active {
   background-color: transparent !important;
 }
 
+/* User dropdown */
+.user-dropdown-wrapper {
+  position: relative;
+}
+
+.user-dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  min-width: 180px;
+  z-index: 1000;
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+.user-dropdown-menu a {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 20px !important;
+  color: #333 !important;
+  font-size: 15px !important;
+  font-weight: 500 !important;
+  transition: background 0.2s ease;
+  padding: 0 !important;
+  margin: 0 !important;
+  justify-content: center !important;
+}
+
+.user-dropdown-menu a:hover {
+  background-color: #fff7f2 !important;
+  color: #b35c44 !important;
+}
+
+.user-dropdown-menu a i {
+  color: #b35c44;
+  font-size: 18px !important;
+}
+
 /* Common page layout */
 .index-page,
 .catalog-page,
@@ -265,7 +308,7 @@ nav.navbar-custom .nav-active {
   color: #b35c44;
 }
 
-.input-field .prefix ~ .select-custom {
+.input-field .prefix~.select-custom {
   margin-left: 3rem !important;
   width: calc(100% - 3rem) !important;
 }
@@ -361,36 +404,36 @@ nav.navbar-custom .nav-active {
 
 /* Equal height cards */
 .salon-item {
-    display: flex;
+  display: flex;
 }
 
 .catalog-card {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .catalog-card .card-content {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 /* Card title */
 .catalog-card .card-title {
-    display: block;
-    font-size: 20px;
-    color: #5c2c22;
-    font-weight: bold;
-    margin-bottom: 8px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  display: block;
+  font-size: 20px;
+  color: #5c2c22;
+  font-weight: bold;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Card address */
 .catalog-card .card-content p:first-of-type {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Catalog page */
@@ -468,7 +511,7 @@ nav.navbar-custom .nav-active {
   background-color: white;
   padding: 35px;
   border-radius: 22px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 /* Search section */
@@ -525,7 +568,7 @@ nav.navbar-custom .nav-active {
 .booking-form-card {
   border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .booking-form {
@@ -596,402 +639,402 @@ nav.navbar-custom .nav-active {
 
 /* Return button container */
 .salon-page-return {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 /* Return button */
 .salon-return-btn {
-    color: #b35c44 !important;
-    font-weight: 500;
-    margin-bottom: 10px;
-    display: flex !important;
-    align-items: center !important;
-    gap: 4px;
+  color: #b35c44 !important;
+  font-weight: 500;
+  margin-bottom: 10px;
+  display: flex !important;
+  align-items: center !important;
+  gap: 4px;
 }
 
 .salon-return-btn:hover {
-    color: #5c2c22 !important;
+  color: #5c2c22 !important;
 }
 
 /* Buffering spinner */
 .salon-spinner {
-    margin-top: 100px;
+  margin-top: 100px;
 }
 
 /* Buffering text */
 .salon-buffering-text {
-    color: #b35c44;
-    margin-top: 20px;
-    font-size: 16px;
+  color: #b35c44;
+  margin-top: 20px;
+  font-size: 16px;
 }
 
 /* Error section */
 #salonError {
-    display: none;
+  display: none;
 }
 
 /* Error panel */
 .salon-error-panel {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #c0392b;
-    margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #c0392b;
+  margin-top: 30px;
 }
 
 /* Specific salon detail section */
 .specific-salon-detail-section {
-    padding: 20px 0 60px 0;
-    background-color: #fff7f2;
-    min-height: 80vh;
+  padding: 20px 0 60px 0;
+  background-color: #fff7f2;
+  min-height: 80vh;
 }
 
 #salonDetails {
-    display: none;
+  display: none;
 }
 
 /* Hero card */
 .salon-hero-card {
-    border-radius: 20px !important;
-    overflow: hidden;
-    box-shadow: 0 8px 25px rgba(92, 44, 34, 0.15) !important;
+  border-radius: 20px !important;
+  overflow: hidden;
+  box-shadow: 0 8px 25px rgba(92, 44, 34, 0.15) !important;
 }
 
 /* Hero image */
 .salon-hero-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
 }
 
 /* Hero content */
 .salon-hero-content {
-    padding: 24px !important;
-    background-color: white;
+  padding: 24px !important;
+  background-color: white;
 }
 
 /* Salon name */
 .salon-name {
-    color: #5c2c22;
-    font-size: 28px;
-    font-weight: bold;
-    margin-bottom: 8px;
+  color: #5c2c22;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 8px;
 }
 
 /* Salon location */
 .salon-location,
 .salon-suburb {
-    display: flex;
-    align-items: center;
-    gap: 4px;
-    color: #666;
-    margin-bottom: 6px;
-    font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: #666;
+  margin-bottom: 6px;
+  font-size: 15px;
 }
 
 .salon-location i,
 .salon-suburb i {
-    color: #b35c44;
-    font-size: 16px !important;
+  color: #b35c44;
+  font-size: 16px !important;
 }
 
 /* Rating */
 .salon-rating-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    background: linear-gradient(135deg, #b35c44, #e07a5f);
-    color: white;
-    padding: 8px 18px;
-    border-radius: 30px;
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: linear-gradient(135deg, #b35c44, #e07a5f);
+  color: white;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .salon-rating-badge i {
-    font-size: 20px !important;
+  font-size: 20px !important;
 }
 
 /* Price */
 .salon-price-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    background-color: #fff7f2;
-    color: #b35c44;
-    border: 2px solid #b35c44;
-    padding: 6px 16px;
-    border-radius: 30px;
-    font-size: 15px;
-    font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background-color: #fff7f2;
+  color: #b35c44;
+  border: 2px solid #b35c44;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 /* Section title */
 .salon-section-title {
-    color: #5c2c22;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 16px !important;
+  color: #5c2c22;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px !important;
 }
 
 .salon-section-title i {
-    color: #b35c44;
+  color: #b35c44;
 }
 
 /* Divider */
 .salon-divider {
-    background-color: #f0d5cc !important;
-    margin: 12px 0 !important;
+  background-color: #f0d5cc !important;
+  margin: 12px 0 !important;
 }
 
 /* Services */
 .salon-services-card {
-    border-radius: 20px !important;
-    box-shadow: 0 8px 25px rgba(92, 44, 34, 0.1) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 25px rgba(92, 44, 34, 0.1) !important;
 }
 
 /* Service item */
 .salon-service-item {
-    padding: 8px 0;
+  padding: 8px 0;
 }
 
 /* Service icon */
 .salon-service-icon {
-    color: #b35c44 !important;
-    margin-right: 8px;
-    font-size: 10px !important;
+  color: #b35c44 !important;
+  margin-right: 8px;
+  font-size: 10px !important;
 }
 
 /* Service name */
 .salon-service-name {
-    color: #333;
-    font-size: 15px;
+  color: #333;
+  font-size: 15px;
 }
 
 /* Service price */
 .salon-service-price {
-    color: #b35c44;
-    font-weight: bold;
-    font-size: 14px;
+  color: #b35c44;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 /* Service row */
 .service-row {
-    margin-bottom: 0 !important;
-    padding: 4px 0;
+  margin-bottom: 0 !important;
+  padding: 4px 0;
 }
 
 /* Add button */
 .service-add-btn {
-    background-color: white !important;
-    color: #b35c44 !important;
-    border: 2px solid #b35c44 !important;
-    border-radius: 20px !important;
-    padding: 6px 18px !important;
-    font-size: 14px !important;
-    font-weight: bold !important;
-    cursor: pointer !important;
-    transition: all 0.2s ease !important;
+  background-color: white !important;
+  color: #b35c44 !important;
+  border: 2px solid #b35c44 !important;
+  border-radius: 20px !important;
+  padding: 6px 18px !important;
+  font-size: 14px !important;
+  font-weight: bold !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
 }
 
 .service-add-btn:hover {
-    background-color: #b35c44 !important;
-    color: white !important;
+  background-color: #b35c44 !important;
+  color: white !important;
 }
 
 /* Added/Remove button state */
 .service-added {
-    background-color: #b35c44 !important;
-    color: white !important;
+  background-color: #b35c44 !important;
+  color: white !important;
 }
 
 .service-added:hover {
-    background-color: #5c2c22 !important;
-    border-color: #5c2c22 !important;
+  background-color: #5c2c22 !important;
+  border-color: #5c2c22 !important;
 }
 
 /* Services summary section */
 .services-summary-card {
-    display: none;
-    margin-top: 16px;
-    background-color: #fff7f2;
-    border-radius: 12px;
-    padding: 16px;
-    border: 2px solid #f0d5cc;
+  display: none;
+  margin-top: 16px;
+  background-color: #fff7f2;
+  border-radius: 12px;
+  padding: 16px;
+  border: 2px solid #f0d5cc;
 }
 
 .services-summary-title {
-    color: #5c2c22 !important;
-    font-weight: bold !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 6px !important;
-    margin-bottom: 8px !important;
+  color: #5c2c22 !important;
+  font-weight: bold !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  margin-bottom: 8px !important;
 }
 
 .services-summary-title i {
-    color: #b35c44;
+  color: #b35c44;
 }
 
 .summary-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 6px 0;
-    border-bottom: 1px solid #f0d5cc;
-    font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #f0d5cc;
+  font-size: 14px;
 }
 
 .summary-item:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .summary-item-name {
-    color: #333;
-    display: flex;
-    align-items: center;
-    gap: 4px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
 .summary-item-name i {
-    color: #b35c44;
-    font-size: 8px !important;
+  color: #b35c44;
+  font-size: 8px !important;
 }
 
 .summary-item-price {
-    color: #b35c44;
-    font-weight: bold;
+  color: #b35c44;
+  font-weight: bold;
 }
 
 /* Reviews card */
 .salon-reviews-card {
-    border-radius: 20px !important;
-    box-shadow: 0 8px 25px rgba(92, 44, 34, 0.1) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 25px rgba(92, 44, 34, 0.1) !important;
 }
 
 /* No reviews */
 .salon-no-reviews {
-    padding: 30px 0;
+  padding: 30px 0;
 }
 
 .salon-no-reviews-icon {
-    font-size: 48px !important;
-    color: #f0d5cc;
+  font-size: 48px !important;
+  color: #f0d5cc;
 }
 
 .salon-no-reviews p {
-    color: #888;
-    margin: 8px 0;
+  color: #888;
+  margin: 8px 0;
 }
 
 /* Booking */
 .salon-book-card {
-    border-radius: 20px !important;
-    box-shadow: 0 8px 25px rgba(92, 44, 34, 0.1) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 25px rgba(92, 44, 34, 0.1) !important;
 }
 
 /* Booking icon */
 .salon-book-icon {
-    font-size: 48px !important;
-    color: #b35c44;
-    margin-bottom: 10px;
+  font-size: 48px !important;
+  color: #b35c44;
+  margin-bottom: 10px;
 }
 
 /* Booking title */
 .salon-book-title {
-    color: #5c2c22;
-    font-size: 20px;
-    margin-bottom: 10px;
+  color: #5c2c22;
+  font-size: 20px;
+  margin-bottom: 10px;
 }
 
 /* Book text */
 .salon-book-text {
-    color: #666;
-    font-size: 14px;
-    line-height: 1.6;
-    margin-bottom: 20px;
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
 /* Booking button */
 .btn-custom {
-    background: linear-gradient(135deg, #b35c44, #e07a5f) !important;
-    color: white !important;
-    border-radius: 35px !important;
-    height: 50px !important;
-    line-height: 50px !important;
-    font-size: 15px !important;
-    font-weight: bold !important;
-    width: 100% !important;
-    display: block !important;
-    text-align: center !important;
-    transition: all 0.3s ease !important;
+  background: linear-gradient(135deg, #b35c44, #e07a5f) !important;
+  color: white !important;
+  border-radius: 35px !important;
+  height: 50px !important;
+  line-height: 50px !important;
+  font-size: 15px !important;
+  font-weight: bold !important;
+  width: 100% !important;
+  display: block !important;
+  text-align: center !important;
+  transition: all 0.3s ease !important;
 }
 
 .btn-custom:hover {
-    background: linear-gradient(135deg, #5c2c22, #b35c44) !important;
-    color: white !important;
+  background: linear-gradient(135deg, #5c2c22, #b35c44) !important;
+  color: white !important;
 }
 
 /* Maps button */
 .btn-maps {
-    background-color: white !important;
-    color: #b35c44 !important;
-    border: 2px solid #b35c44 !important;
-    border-radius: 35px !important;
-    height: 50px !important;
-    line-height: 50px !important;
-    font-size: 15px !important;
-    font-weight: bold !important;
-    width: 100% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px;
-    transition: all 0.3s ease !important;
+  background-color: white !important;
+  color: #b35c44 !important;
+  border: 2px solid #b35c44 !important;
+  border-radius: 35px !important;
+  height: 50px !important;
+  line-height: 50px !important;
+  font-size: 15px !important;
+  font-weight: bold !important;
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px;
+  transition: all 0.3s ease !important;
 }
 
 .btn-maps:hover {
-    background-color: #b35c44 !important;
-    color: white !important;
+  background-color: #b35c44 !important;
+  color: white !important;
 }
 
 .salon-btn-divider {
-    margin: 20px 0;
+  margin: 20px 0;
 }
 
 .btn-maps i {
-    color: inherit !important;
-    float: none !important;
-    margin: 0 !important;
-    line-height: inherit !important;
+  color: inherit !important;
+  float: none !important;
+  margin: 0 !important;
+  line-height: inherit !important;
 }
 
 /* Salon detail card */
 .salon-detail-card {
-    border-radius: 20px !important;
-    box-shadow: 0 8px 25px rgba(92, 44, 34, 0.1) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 25px rgba(92, 44, 34, 0.1) !important;
 }
 
 /* Salon detail item */
 .salon-detail-item {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    padding: 10px 0;
-    border-bottom: 1px solid #f0d5cc;
-    color: #555;
-    font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+  border-bottom: 1px solid #f0d5cc;
+  color: #555;
+  font-size: 15px;
 }
 
 .salon-detail-item:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .salon-detail-item i {
-    color: #b35c44;
+  color: #b35c44;
 }
 
 
@@ -1007,7 +1050,7 @@ nav.navbar-custom {
   background-color: #ffffff !important;
   min-height: 85px;
   line-height: normal !important;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
   z-index: 999;
@@ -1139,7 +1182,7 @@ nav.navbar-custom .nav-active,
   width: 100%;
   border-radius: 22px !important;
   overflow: hidden;
-  box-shadow: 0 10px 26px rgba(0,0,0,0.08) !important;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08) !important;
   transition: all 0.3s ease;
 }
 
@@ -1316,7 +1359,7 @@ nav.navbar-custom .nav-active,
   padding: 36px 24px;
   min-height: 260px;
   border-radius: 18px;
-  box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
 
@@ -1376,7 +1419,7 @@ nav.navbar-custom .nav-active,
 .how-card {
   min-height: 280px;
   border-radius: 14px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
@@ -1443,7 +1486,7 @@ nav.navbar-custom .nav-active,
 .contact-section .card {
   height: 100%;
   border-radius: 18px;
-  box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
 
@@ -1510,7 +1553,7 @@ nav.navbar-custom .nav-active,
   margin-bottom: 18px;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
 
@@ -1577,7 +1620,7 @@ nav.navbar-custom .nav-active,
   padding: 42px 30px;
   min-height: 320px;
   text-align: center;
-  box-shadow: 0 14px 36px rgba(0,0,0,0.10);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.10);
   transition: all 0.3s ease;
 }
 
@@ -1674,7 +1717,7 @@ nav.navbar-custom .nav-active,
 }
 
 /* Responsive final fixes */
-@media screen and (max-width: 992px) {
+/* @media screen and (max-width: 992px) {
   nav.navbar-custom,
   nav.navbar-custom .nav-wrapper,
   .custom-navbar {
@@ -1715,7 +1758,7 @@ nav.navbar-custom .nav-active,
     border-radius: 0 0 28px 28px;
     padding: 50px 36px;
   }
-}
+} */
 
 @media screen and (max-width: 768px) {
   .footer-custom {
@@ -1742,7 +1785,7 @@ nav.navbar-custom .nav-active,
   }
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   nav.navbar-custom .brand-logo {
     font-size: 20px;
   }
@@ -1783,8 +1826,7 @@ nav.navbar-custom .nav-active,
   .testimonial-heading h2 {
     font-size: 36px;
   }
-}
-
+} */
 .payment-section {
   min-height: 100vh;
   background-color: #fff7f2;

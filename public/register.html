@@ -15,8 +15,53 @@
 
 <body>
 
-      <!-- Common Navigation bar -->
-  <nav class="navbar-custom">
+    <!-- Common Navigation bar -->
+    <nav class="navbar-custom">
+        <div class="nav-wrapper container">
+
+            <a href="index.html" class="brand-logo">
+                <img src="images/download.png" alt="Logo" class="navbar-logo">
+            </a>
+
+            <a href="#" data-target="mobile-menu" class="sidenav-trigger">
+                <i class="material-icons">menu</i>
+            </a>
+
+            <ul class="center-menu hide-on-med-and-down">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+
+            <ul class="right-menu hide-on-med-and-down">
+                <li>
+                    <a href="login.html" id="navLoginLink" class="login-btn nav-active">Login</a>
+                </li>
+                <li class="user-dropdown-wrapper">
+                    <a href="#" id="navUserName"></a>
+                    <div class="user-dropdown-menu" id="userDropdownMenu">
+                        <a href="profile.html">
+                            <i class="material-icons">account_circle</i> View Profile
+                        </a>
+                        <a href="#" id="dropdownLogoutBtn">
+                            <i class="material-icons">logout</i> Logout
+                        </a>
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="sidenav" id="mobile-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="catalog.html">Catalog</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
+                <li><a href="#" id="navUserNameMobile"></a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <!--<nav class="navbar-custom">
     <div class="nav-wrapper container custom-navbar">
 
       <a href="index.html" class="brand-logo">
@@ -37,20 +82,10 @@
         <a href="login.html" id="navLoginLinkMobile" class="login-btn">Login</a>
       </li>
       <li><a href="#" id="navUserName"></a></li>
-    </ul>
-
-      <!-- <ul class="sidenav" id="mobile-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="catalog.html">Catalog</a></li>
-        <li><a href="booking.html">Booking</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
-        <li><a href="#" id="navUserNameMobile"></a></li>
-      </ul> -->
+    </ul>  
 
     </div>
-  </nav>
+    </nav> -->
     <!-- Registration Form -->
     <section class="registration-section">
         <div class="container">
@@ -129,61 +164,61 @@
         </div>
     </section>
 
-     <!-- Footer -->
-  <footer class="page-footer footer-custom">
-    <div class="container">
-      <div class="row">
+    <!-- Footer -->
+    <footer class="page-footer footer-custom">
+        <div class="container">
+            <div class="row">
 
-        <!-- About -->
-        <div class="col s12 m4">
-          <h5 class="white-text">Hair Salon</h5>
-          <p class="grey-text text-lighten-4">
-            A modern salon appointment booking system that helps customers
-            find salons, book appointments, and manage services online.
-          </p>
+                <!-- About -->
+                <div class="col s12 m4">
+                    <h5 class="white-text">Hair Salon</h5>
+                    <p class="grey-text text-lighten-4">
+                        A modern salon appointment booking system that helps customers
+                        find salons, book appointments, and manage services online.
+                    </p>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="col s12 m4">
+                    <h5 class="white-text">Quick Links</h5>
+
+                    <ul>
+                        <li><a class="grey-text text-lighten-3" href="index.html">Home</a></li>
+                        <li><a class="grey-text text-lighten-3" href="catalog.html">Catalog</a></li>
+                        <li><a class="grey-text text-lighten-3" href="booking.html">Booking</a></li>
+                        <li><a class="grey-text text-lighten-3" href="login.html">Login</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="col s12 m4">
+                    <h5 class="white-text">Contact Us</h5>
+
+                    <p class="grey-text text-lighten-3">
+                        <i class="material-icons tiny">email</i>
+                        support@hairsalon.com
+                    </p>
+
+                    <p class="grey-text text-lighten-3">
+                        <i class="material-icons tiny">phone</i>
+                        +61 412 345 678
+                    </p>
+
+                    <p class="grey-text text-lighten-3">
+                        <i class="material-icons tiny">location_on</i>
+                        Melbourne, Victoria
+                    </p>
+                </div>
+
+            </div>
         </div>
 
-        <!-- Quick Links -->
-        <div class="col s12 m4">
-          <h5 class="white-text">Quick Links</h5>
-
-          <ul>
-            <li><a class="grey-text text-lighten-3" href="index.html">Home</a></li>
-            <li><a class="grey-text text-lighten-3" href="catalog.html">Catalog</a></li>
-            <li><a class="grey-text text-lighten-3" href="booking.html">Booking</a></li>
-            <li><a class="grey-text text-lighten-3" href="login.html">Login</a></li>
-          </ul>
+        <div class="footer-copyright">
+            <div class="container center-align">
+                © 2026 Hair Salon Appointment Booking System
+            </div>
         </div>
-
-        <!-- Contact -->
-        <div class="col s12 m4">
-          <h5 class="white-text">Contact Us</h5>
-
-          <p class="grey-text text-lighten-3">
-            <i class="material-icons tiny">email</i>
-            support@hairsalon.com
-          </p>
-
-          <p class="grey-text text-lighten-3">
-            <i class="material-icons tiny">phone</i>
-            +61 412 345 678
-          </p>
-
-          <p class="grey-text text-lighten-3">
-            <i class="material-icons tiny">location_on</i>
-            Melbourne, Victoria
-          </p>
-        </div>
-
-      </div>
-    </div>
-
-    <div class="footer-copyright">
-      <div class="container center-align">
-        © 2026 Hair Salon Appointment Booking System
-      </div>
-    </div>
-  </footer>
+    </footer>
 
     <!-- Materialize JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
