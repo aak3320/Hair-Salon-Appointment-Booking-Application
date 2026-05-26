@@ -1,4 +1,5 @@
 const Appointment = require("../models/Appointment");
+const sendBookingEmail = require("../utils/sendEmail");
 
 exports.createAppointment = async (req, res) => {
   try {
@@ -12,8 +13,15 @@ exports.createAppointment = async (req, res) => {
 
     await appointment.save();
 
+    await sendBookingEmail(
+      appointment.email,
+      appointment.fullName,
+      appointment.appointmentDate,
+      appointment.appointmentTime
+    );
+
     res.status(201).json({
-      message: "Appointment booked successfully",
+      message: "Appointment booked successfully. Confirmation email sent.",
       appointment: appointment
     });
 
@@ -24,6 +32,7 @@ exports.createAppointment = async (req, res) => {
     });
   }
 };
+
 exports.cancelAppointment = async (req, res) => {
   try {
     const appointmentId = req.params.id;
