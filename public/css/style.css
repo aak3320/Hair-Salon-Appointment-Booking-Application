@@ -44,13 +44,41 @@ nav.navbar-custom .nav-active {
   color: #333;
 }
 
+.sidenav {
+  z-index: 9999 !important;
+}
 .sidenav-overlay {
-  z-index: 997 !important;
+  z-index: 9998 !important;
 }
 
-.sidenav {
-  z-index: 999 !important;
+
+/* .sidenav {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+} */
+
+@media (max-width: 768px){
+  .sidenav {
+    display: flex
+  }
 }
+
+.sidenav.active .bar:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+  }
+  .sidenav.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  .sidenav.active .bar:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+  }
+
+
+
 
 #navUserName,
 #navUserNameMobile {
