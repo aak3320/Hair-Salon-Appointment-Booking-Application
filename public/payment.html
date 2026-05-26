@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Payment</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<nav class="navbar-custom">
+  <div class="nav-wrapper container">
+    <a href="index.html" class="brand-logo">Hair Salon</a>
+    <ul class="right hide-on-med-and-down">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="catalog.html">Catalog</a></li>
+      <li><a href="booking.html">Booking</a></li>
+      <li><a href="login.html">Login</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="payment-section">
+  <div class="container">
+    <div class="payment-card">
+
+      <h2>Payment Summary</h2>
+      <p>Your appointment has been booked successfully.</p>
+
+      <div class="summary-box">
+        <p><strong>Appointment ID:</strong> <span id="appointmentId"></span></p>
+        <p><strong>Service Fee:</strong> $50</p>
+        <p><strong>Status:</strong> Pending Payment</p>
+      </div>
+
+      <h2>Payment Details</h2>
+
+<div class="input-field payment-input">
+  <i class="material-icons prefix">person</i>
+  <input type="text" id="cardName">
+  <label for="cardName">Cardholder Name</label>
+</div>
+
+<div class="input-field payment-input">
+  <i class="material-icons prefix">credit_card</i>
+  <input type="text" id="cardNumber">
+  <label for="cardNumber">Card Number</label>
+</div>
+
+<div class="row">
+
+  <div class="input-field col s12 m6 payment-input">
+    <i class="material-icons prefix">date_range</i>
+    <input type="text" id="expiry">
+    <label for="expiry">MM/YY</label>
+  </div>
+
+  <div class="input-field col s12 m6 payment-input">
+    <i class="material-icons prefix">lock</i>
+    <input type="password" id="cvv">
+    <label for="cvv">CVV</label>
+  </div>
+
+</div>
+
+<button class="btn btn-primary btn-block payment-btn" onclick="payNow()">
+  <i class="material-icons left">payment</i>
+  Pay Now
+</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const appointmentId = params.get("appointmentId");
+
+  document.getElementById("appointmentId").textContent = appointmentId || "N/A";
+
+  function payNow() {
+    alert("Payment successful!");
+    window.location.href = "profile.html";
+  }
+</script>
+
+</body>
+</html>
