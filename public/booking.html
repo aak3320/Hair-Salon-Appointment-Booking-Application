@@ -15,7 +15,7 @@
 
 <body class="booking-page">
 
-   <!-- Common Navigation bar -->
+  <!-- Common Navigation bar -->
   <nav class="navbar-custom">
     <div class="nav-wrapper container">
 
@@ -82,20 +82,20 @@
         <a href="login.html" id="navLoginLinkMobile" class="login-btn">Login</a>
       </li>
       <li><a href="#" id="navUserName"></a></li>
-    </ul> -->
+    </ul> 
 
-      <!-- <ul class="sidenav" id="mobile-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="catalog.html">Catalog</a></li>
-        <li><a href="booking.html">Booking</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-        <li><a href="profile.html">Profile</a></li>
-        <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
-        <li><a href="#" id="navUserNameMobile"></a></li>
-      </ul>
+    <ul class="sidenav" id="mobile-menu">
+      <li><a href="catalog.html">Catalog</a></li>
+      <li><a href="booking.html">Booking</a></li>
+      <li><a href="contact.html">Contact Us</a></li>
+      <li><a href="profile.html">Profile</a></li>
+      <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
+      <li><a href="#" id="navUserNameMobile"></a></li>
+      <li><a href="index.html">Home</a></li>
+    </ul>
 
     </div>
-  </nav>
+  </nav> -->
 
   <!-- Booking Section -->
   <section class="booking-section">
@@ -249,6 +249,8 @@
       .addEventListener("submit", async function (event) {
         event.preventDefault();
 
+        const token = localStorage.getItem('token');
+
         const bookingData = {
           fullName: document.getElementById("fullName").value,
           email: document.getElementById("email").value,
@@ -261,12 +263,20 @@
           const response = await fetch("/appointments", {
             method: "POST",
             headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${token}`
             },
             body: JSON.stringify(bookingData)
           });
 
           const result = await response.json();
+          
+          if (response.ok) {
+            // Redirect to payment page
+            window.location.href = 'payment.html';
+          } else {
+            alert(result.message);
+          }
 
           alert(result.message);
 
