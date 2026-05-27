@@ -213,6 +213,10 @@
 
 
   <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+      M.Sidenav.init(document.querySelectorAll('.sidenav'));
+    });
     const params = new URLSearchParams(window.location.search);
     const appointmentId = params.get("appointmentId");
 

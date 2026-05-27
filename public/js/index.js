@@ -52,6 +52,8 @@ const searchBar = document.getElementById("searchBar");
     });
   }
 
+  document.addEventListener('DOMContentLoaded', validateAndUpdateNavbar);
+
   filterSelect.addEventListener("change", loadSalons);
   searchBar.addEventListener("input", loadSalons);
 

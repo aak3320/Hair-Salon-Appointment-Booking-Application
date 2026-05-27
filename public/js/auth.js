@@ -1,8 +1,10 @@
 // It will handle the login and registration logic for the frontend.
 
 // Function to check if user is logged in and update the navigation bar accordingly
-const updateNavBar = () => {
+const validateAndUpdateNavbar = async () => {
+
     //User data from localStorage
+    const token = localStorage.getItem('token');
     const user = localStorage.getItem('user');
 
     //For desktop navigation
@@ -13,59 +15,118 @@ const updateNavBar = () => {
     const navLoginLinkMobile = document.getElementById('navLoginLinkMobile');
     const navUserNameMobile = document.getElementById('navUserNameMobile');
 
-    if (user) {
-        // If user is logged in
-        const userData = JSON.parse(user);
+    if (token && user) {
 
-        //Update Navbar for desktop
-        if (navLoginLink) navLoginLink.style.display = 'none';
-        if (navUserName) {
-            navUserName.style.display = 'block';
-            navUserName.textContent = `Hi, ${userData.name.split(' ')[0]}`;
-            navUserName.href = '#';
+        try {
 
-            navUserName.addEventListener('click', function (e) {
-                e.preventDefault();
-                const menu = document.getElementById('userDropdownMenu');
-                menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-            });
-
-            document.addEventListener('click', function (e) {
-                const wrapper = document.querySelector('.user-dropdown-wrapper');
-                if (wrapper && !wrapper.contains(e.target)) {
-                    document.getElementById('userDropdownMenu').style.display = 'none';
+            const response = await fetch('/api/auth/validate', {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
                 }
             });
 
-            const dropdownLogout = document.getElementById('dropdownLogoutBtn');
-            if (dropdownLogout) {
-                dropdownLogout.addEventListener('click', function () {
-                    localStorage.removeItem('token');
-                    localStorage.removeItem('user');
-                    window.location.href = 'login.html';
-                });
+            if (response.ok) {
+                // If user is logged in
+                const userData = JSON.parse(user);
+                const firstName = userData.name.split(' ')[0];
+
+                //Update Navbar for desktop
+                if (navLoginLink) navLoginLink.style.display = 'none';
+                if (navUserName) {
+                    navUserName.style.display = 'block';
+                    navUserName.textContent = `Hi, ${firstName}`;
+                    navUserName.href = '#';
+
+                    navUserName.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const menu = document.getElementById('userDropdownMenu');
+                        if (menu) {
+                            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                        }
+                    });
+
+                    document.addEventListener('click', function (e) {
+                        const wrapper = document.querySelector('.user-dropdown-wrapper');
+                        if (wrapper && !wrapper.contains(e.target)) {
+                            const menu = document.getElementById('userDropdownMenu');
+                            if (menu) {
+                                menu.style.display = 'none';
+                            }
+                        }
+                    });
+
+                    const dropdownLogout = document.getElementById('dropdownLogoutBtn');
+                    if (dropdownLogout) {
+                        dropdownLogout.addEventListener('click', function () {
+                            localStorage.removeItem('token');
+                            localStorage.removeItem('user');
+                            window.location.href = 'login.html';
+                        });
+                    }
+                }
+
+                //Update Navbar for mobile
+                if (navLoginLinkMobile) navLoginLinkMobile.style.display = 'none';
+                if (navUserNameMobile) {
+                    navUserNameMobile.style.display = 'block';
+                    navUserNameMobile.textContent = `Hi, ${userData.name.split(' ')[0]}`;
+                    navUserNameMobile.href = 'profile.html';
+                }
+            } else {
+                // If token is invalid or expired clearfrom localStorage
+                localStorage.clear();
+                showLoginLink(
+                    navLoginLink,
+                    navUserName,
+                    navLoginLinkMobile,
+                    navUserNameMobile
+                );
+            }
+
+        } catch (err) {
+            // Don't clear in case of network error
+            if (user) {
+                const userData = JSON.parse(user);
+                const firstName = userData.name.split(' ')[0];
+
+                if (navLoginLink) navLoginLink.style.display = 'none';
+                if (navUserName) {
+                    navUserName.style.display = 'block';
+                    navUserName.textContent = `Hi, ${firstName}`;
+                }
+
+                if (navLoginLinkMobile) navLoginLinkMobile.style.display = 'none';
+                if (navUserNameMobile) {
+                    navUserNameMobile.style.display = 'block';
+                    navUserNameMobile.textContent = `Hi, ${firstName}`;
+                    navUserNameMobile.href = 'profile.html';
+                }
             }
         }
-
-        //Update Navbar for mobile
-        if (navLoginLinkMobile) navLoginLinkMobile.style.display = 'none';
-        if (navUserNameMobile) {
-            navUserNameMobile.style.display = 'block';
-            navUserNameMobile.textContent = `Hi, ${userData.name.split(' ')[0]}`;
-            navUserNameMobile.href = 'profile.html';
-        }
     } else {
-        // If user is not logged in
-        if (navLoginLink) navLoginLink.style.display = 'block';
-        if (navUserName) navUserName.style.display = 'none';
-
-        if (navLoginLinkMobile) navLoginLinkMobile.style.display = 'block';
-        if (navUserNameMobile) navUserNameMobile.style.display = 'none';
+        // No token show login link
+        showLoginLink(
+            navLoginLink,
+            navUserName,
+            navLoginLinkMobile,
+            navUserNameMobile
+        );
     }
 };
 
-// Run the updated navigation when page loads
-document.addEventListener('DOMContentLoaded', updateNavBar);
+const showLoginLink = (navLoginLink, navUserName, navLoginLinkMobile, navUserNameMobile) => {
+
+    // If user is not logged in
+    if (navLoginLink) navLoginLink.style.display = 'block';
+    if (navUserName) navUserName.style.display = 'none';
+
+    if (navLoginLinkMobile) navLoginLinkMobile.style.display = 'block';
+    if (navUserNameMobile) navUserNameMobile.style.display = 'none';
+};
+
+// updated navigation when page loads
+document.addEventListener('DOMContentLoaded', validateAndUpdateNavbar);
 
 //Registration form submission
 const registerForm = document.getElementById('registerForm');
