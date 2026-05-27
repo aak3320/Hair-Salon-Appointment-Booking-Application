@@ -311,17 +311,42 @@ const displaySalonDetails = (salon, suburb) => {
     });
 
     // Reviews List
-    const reviewsList = document.getElementById('reviewsList');
+   // Reviews List
+const reviewsList = document.getElementById('reviewsList');
 
-    // Review from database
-    reviewsList.innerHTML = `
-        <div class="center-align salon-no-reviews">
-            <i class="material-icons salon-no-reviews-icon">rate_review</i>
-            <p>No reviews yet.</p>
-            <p class="grey-text">
-                Reviews will be available after completing an appointment.
-            </p>
-        </div>
-    `;
+async function loadSalonReviews(salonName) {
+    try {
+        const response = await fetch(`/reviews?salonName=${encodeURIComponent(salonName)}`);
+        const reviews = await response.json();
+
+        if (!reviews || reviews.length === 0) {
+            reviewsList.innerHTML = `
+                <div class="center-align salon-no-reviews">
+                    <i class="material-icons salon-no-reviews-icon">rate_review</i>
+                    <p>No reviews yet.</p>
+                    <p class="grey-text">
+                        Reviews will be available after completing an appointment.
+                    </p>
+                </div>
+            `;
+            return;
+        }
+
+        reviewsList.innerHTML = reviews.map((review) => `
+            <div class="review-item">
+                <p class="review-rating">⭐ ${review.rating}/5</p>
+                <p>${review.comment}</p>
+                <div class="divider salon-divider"></div>
+            </div>
+        `).join("");
+
+    } catch (error) {
+        reviewsList.innerHTML = `
+            <p class="red-text center-align">Unable to load reviews.</p>
+        `;
+    }
+}
+
+loadSalonReviews(salon.name);
 
 };

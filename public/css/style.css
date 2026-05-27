@@ -1910,3 +1910,12 @@ nav.navbar-custom .nav-active,
 .payment-btn:hover {
   background: linear-gradient(135deg, #9c4e39, #c96c4f);
 }
+
+.review-item {
+  padding: 14px 0;
+}
+
+.review-rating {
+  color: #b35c44;
+  font-weight: bold;
+}
