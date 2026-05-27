@@ -34,6 +34,10 @@ app.get("/", (req, res) => {
 const profileRoutes = require("./routes/profileRoutes");
 app.use("/api/profile", profileRoutes);
 
+// Review Routes
+const reviewRoutes = require("./routes/reviewRoutes");
+app.use("/reviews", reviewRoutes);
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
