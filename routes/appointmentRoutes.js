@@ -16,5 +16,10 @@ router.patch(
   protect,
   appointmentController.cancelAppointment
 );
+const verifyToken = require("../middleware/authMiddleware");
+
+router.post("/", verifyToken, appointmentController.createAppointment);
+
+router.patch("/:id/cancel", verifyToken, appointmentController.cancelAppointment);
 
 module.exports = router;
