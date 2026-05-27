@@ -1,5 +1,5 @@
 const Appointment = require("../models/Appointment");
-const sendBookingEmail = require("../utils/sendEmail");
+const {sendBookingEmail} = require("../utils/sendEmail");
 
 exports.createAppointment = async (req, res) => {
   

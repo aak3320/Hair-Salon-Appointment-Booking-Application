@@ -38,6 +38,10 @@ app.use("/api/profile", profileRoutes);
 const reviewRoutes = require("./routes/reviewRoutes");
 app.use("/reviews", reviewRoutes);
 
+// Payment Routes
+const paymentRoutes = require('./routes/paymentRoutes'); 
+app.use("/api/payment", paymentRoutes);
+
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });

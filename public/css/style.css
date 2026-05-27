@@ -47,6 +47,7 @@ nav.navbar-custom .nav-active {
 .sidenav {
   z-index: 9999 !important;
 }
+
 .sidenav-overlay {
   z-index: 9998 !important;
 }
@@ -61,21 +62,23 @@ nav.navbar-custom .nav-active {
   cursor: pointer;
 } */
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
   .sidenav {
     display: flex
   }
 }
 
 .sidenav.active .bar:nth-child(1) {
-    transform: translateY(9px) rotate(45deg);
-  }
-  .sidenav.active .bar:nth-child(2) {
-    opacity: 0;
-  }
-  .sidenav.active .bar:nth-child(3) {
-    transform: translateY(-9px) rotate(-45deg);
-  }
+  transform: translateY(9px) rotate(45deg);
+}
+
+.sidenav.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.sidenav.active .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
 
 #navUserName,
 #navUserNameMobile {
@@ -1869,6 +1872,7 @@ nav.navbar-custom .nav-active,
 
 .payment-card h2 {
   color: #5c2c22;
+  font-size: 28px !important;
   margin-bottom: 12px;
 }
 
@@ -1883,7 +1887,8 @@ nav.navbar-custom .nav-active,
   padding: 20px;
   margin: 25px 0;
 }
-.payment-input .prefix {
+
+/* .payment-input .prefix {
   color: #b35c44;
 }
 
@@ -1894,6 +1899,31 @@ nav.navbar-custom .nav-active,
 
 .payment-input label.active {
   color: #b35c44 !important;
+} */
+
+/* Stripe Card Element */
+.payment-input {
+  margin-bottom: 8px !important;
+}
+
+#card-element {
+  padding: 14px 16px;
+  border: 1px solid #aaa;
+  border-radius: 8px;
+  margin: 16px 0;
+  background-color: white;
+  transition: border 0.2s ease;
+}
+
+#card-element:focus-within {
+  border: 2px solid #b35c44;
+}
+
+#card-errors {
+  color: #c0392b;
+  font-size: 14px;
+  margin-bottom: 10px;
+  min-height: 20px;
 }
 
 .payment-btn {
