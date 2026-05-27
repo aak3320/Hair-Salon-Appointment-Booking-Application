@@ -77,9 +77,6 @@ nav.navbar-custom .nav-active {
     transform: translateY(-9px) rotate(-45deg);
   }
 
-
-
-
 #navUserName,
 #navUserNameMobile {
   display: none;
