@@ -33,7 +33,6 @@ const protect = (req, res, next) => {
 };
 
 module.exports = { protect };
-const jwt = require("jsonwebtoken");
 
 function verifyToken(req, res, next) {
   const authHeader = req.headers.authorization;
