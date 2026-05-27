@@ -1,12 +1,12 @@
-const {userProfile, updateUserProfile} = require('../services/profileService');
+const { userProfile, updateUserProfile, deleteUserProfile } = require('../services/profileService');
 
 // Get logged in user's profile
 const Profile = async (req, res) => {
-    
+
     try {
-        
+
         // Get user ID from the authenticated request
-        const userId = req.user.id; 
+        const userId = req.user.id;
 
         // Fetch user profile using the service function
         const user = await userProfile(userId);
@@ -49,7 +49,7 @@ const updateProfile = async (req, res) => {
             });
         }
 
-        const updatedData = { };
+        const updatedData = {};
 
         if (name) {
             updatedData.name = name;
@@ -71,7 +71,7 @@ const updateProfile = async (req, res) => {
             message: 'Profile updated successfully',
             user: updatedUser
         });
-        
+
     } catch (err) {
 
         res.status(400).json({
@@ -81,4 +81,24 @@ const updateProfile = async (req, res) => {
     }
 };
 
-module.exports = { Profile, updateProfile };
+const deleteProfile = async (req, res) => {
+
+    try {
+        const userId = req.user.id;
+
+        // Call the service to delete user profile
+        await deleteUserProfile(userId);
+
+        res.status(200).json({
+            success: true,
+            message: 'Account deleted successfully'
+        });
+    } catch (err) {
+        res.status(400).json({
+            success: false,
+            message: err.message
+        });
+    }
+};
+
+module.exports = { Profile, updateProfile, deleteProfile };

@@ -63,4 +63,17 @@ const updateUserProfile = async (userId, updatedData) => {
 
 };
 
-module.exports = { userProfile, updateUserProfile };
+const deleteUserProfile = async (userId) => {
+
+    const user = await User.findById(userId);
+
+    if (!user) {
+        throw new Error("User not found");
+    }
+    
+    await User.findByIdAndDelete(userId);
+
+    return true;
+};
+
+module.exports = { userProfile, updateUserProfile, deleteUserProfile };
