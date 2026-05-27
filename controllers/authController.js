@@ -1,4 +1,6 @@
 const { registerUser, loginUser } = require('../services/authService');
+const jwt = require('jsonwebtoken');
+const User = require('../models/User');
 
 // Controller function to handle user registration
 const register = async (req, res) => {
@@ -60,4 +62,41 @@ const login = async (req, res) => {
     }
 };
 
-module.exports = { register, login };
+const validateToken = async (req, res) => {
+
+    try {
+        // Get token from header
+        const authHeader = req.headers.authorization;
+
+        if (!authHeader || !authHeader.startsWith('Bearer ')) {
+            return res.status(401).json({
+                success: false,
+                message: 'No token provided'
+            });
+        }
+
+        const token = authHeader.split(' ')[1];
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+        const user = await User.findById(decoded.id).select('-password');
+
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: 'User no longer exists'
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message: 'Token is valid'
+        });
+    } catch (err) {
+        res.status(401).json({
+            success: false,
+            message: 'Token is invalid or expired'
+        });
+    }
+};
+
+module.exports = { register, login, validateToken };
