@@ -94,16 +94,6 @@
   </div> 
   </nav> -->
 
-
-  <!-- Mobile Navigation -->
-  <ul class="sidenav" id="mobile-menu">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="catalog.html">Catalog</a></li>
-    <li><a href="contact.html">Contact Us</a></li>
-    <li><a href="login.html" id="navLoginLinkMobile">Login</a></li>
-    <li><a href="#" id="navUserNameMobile"></a></li>
-  </ul>
-
   <section class="payment-section">
     <div class="container">
       <div class="payment-card">
@@ -112,9 +102,29 @@
         <p>Your appointment has been booked successfully.</p>
 
         <div class="summary-box">
-          <p><strong>Appointment ID:</strong> <span id="appointmentId"></span></p>
-          <p><strong>Service Fee:</strong> $50</p>
-          <p><strong>Status:</strong> Pending Payment</p>
+          <p>
+            <strong>Salon:</strong>
+            <span id="summarysalon">-</span>
+          </p>
+          <p>
+            <strong>Services:</strong>
+            <span id="summaryServices">-</span>
+          </p>
+          <p>
+            <strong>Date:</strong>
+            <span id="summaryDate">-</span>
+          </p>
+          <p>
+            <strong>Time:</strong>
+            <span id="summaryTime">-</span>
+          </p>
+          <p>
+            <strong>Service Fee:</strong>
+            <span id="summaryAmount">$50</span>
+          </p>
+          <p>
+            <strong>Status:</strong> Pending Payment
+          </p>
         </div>
 
         <h2>Payment Details</h2>
@@ -124,29 +134,9 @@
           <input type="text" id="cardName">
           <label for="cardName">Cardholder Name</label>
         </div>
-
-        <div class="input-field payment-input">
-          <i class="material-icons prefix">credit_card</i>
-          <input type="text" id="cardNumber">
-          <label for="cardNumber">Card Number</label>
-        </div>
-
-        <div class="row">
-
-          <div class="input-field col s12 m6 payment-input">
-            <i class="material-icons prefix">date_range</i>
-            <input type="text" id="expiry">
-            <label for="expiry">MM/YY</label>
-          </div>
-
-          <div class="input-field col s12 m6 payment-input">
-            <i class="material-icons prefix">lock</i>
-            <input type="password" id="cvv">
-            <label for="cvv">CVV</label>
-          </div>
-
-        </div>
-
+        <!-- Stripe Card Element -->
+        <div id="card-element"></div>
+        <div id="card-errors"></div>
         <button class="btn btn-primary btn-block payment-btn" onclick="payNow()">
           <i class="material-icons left">payment</i>
           Pay Now
@@ -211,21 +201,151 @@
     </div>
   </footer>
 
+  <!-- Materialize JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <!-- Add Stripe.js before closing body tag -->
+  <script src="https://js.stripe.com/v3/"></script>
+
+  <!-- Auth JS -->
+  <script src="js/auth.js"></script>
 
   <script>
 
-    document.addEventListener('DOMContentLoaded', function () {
+    let stripe, cardElement;
+    document.addEventListener('DOMContentLoaded', async function () {
       M.Sidenav.init(document.querySelectorAll('.sidenav'));
+
+      const token = localStorage.getItem("token");
+      const user = JSON.parse(localStorage.getItem("user"));
+
+      if (!token || !user) {
+        window.location.href = "login.html";
+        return;
+      }
+
+      const urlParams = new URLSearchParams(window.location.search);
+      const salonName = urlParams.get("name") || 'Hair Salon';
+      const services = urlParams.get("services") || 'Appointment';
+      const appointmentDate = urlParams.get("date") || 'N/A';
+      const appointmentTime = urlParams.get("time") || 'N/A';
+
+      document.getElementById('summarysalon').textContent = salonName;
+      document.getElementById('summaryServices').textContent = services;
+      document.getElementById('summaryDate').textContent = appointmentDate;
+      document.getElementById('summaryTime').textContent = appointmentTime;
+
+      const amount = 50; // Example amount in dollars
+      document.getElementById('summaryAmount').textContent = `$${amount}`;
+
+      stripe = Stripe('pk_test_51TblovJw0InLtnufjqAtlbWBtORwOgWaIwUh73bldyMC6YfzRYaNyISIuy4d3qk8GRRUwnOduQsMT58vAvE216xa00PiidOVoz');
+      const elements = stripe.elements();
+      cardElement = elements.create('card', {
+        hidePostalCode: true
+      });
+      cardElement.mount('#card-element');
+
+      // Payment intent from server
+      try {
+
+        const response = await fetch('/api/payment/create', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+
+          body: JSON.stringify({ amount: amount, salonName: salonName, services: services })
+        });
+
+        const data = await response.json();
+
+        if (!data.success) {
+          alert('Unable to initialize payment. Please try again.');
+          return;
+        }
+
+        // Store client secret and payment intent ID
+        window.clientSecret = data.clientSecret;
+        window.paymentIntentId = data.paymentIntentId;
+
+      } catch (error) {
+        console.error('Payment init error: ', error);
+        alert('Something went wrong. Please try again.');
+      }
     });
-    const params = new URLSearchParams(window.location.search);
-    const appointmentId = params.get("appointmentId");
 
-    document.getElementById("appointmentId").textContent = appointmentId || "N/A";
+    async function payNow() {
+      const token = localStorage.getItem('token');
+      const user = JSON.parse(localStorage.getItem('user'));
 
-    function payNow() {
-      alert("Payment successful!");
-      window.location.href = "profile.html";
+      const urlParams = new URLSearchParams(window.location.search);
+      const salonName = urlParams.get("name") || 'Hair Salon';
+      const services = urlParams.get("services") || 'Appointment';
+      const appointmentDate = urlParams.get("date") || 'N/A';
+      const appointmentTime = urlParams.get("time") || 'N/A';
+
+      const cardName = document.getElementById('cardName').value;
+      if (!cardName) {
+        alert('Please enter cardholder name.');
+        return;
+      }
+
+      const { paymentIntent, error } = await stripe.confirmCardPayment(
+        window.clientSecret,
+        {
+          payment_method: {
+            card: cardElement,
+            billing_details: { name: cardName }
+          }
+        }
+      );
+
+      if (error) {
+        document.getElementById('card-errors').textContent = error.message;
+        alert('Payment failed: ' + error.message);
+        return;
+      }
+
+      if (paymentIntent.status !== 'succeeded') {
+        alert('Payment was not completed.');
+        return;
+      }
+
+      try {
+        // Confirm card payment with Stripe.js
+        const confirmResponse = await fetch('/api/payment/confirm', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            paymentIntentId: window.paymentIntentId,
+            salonName: salonName,
+            services: services,
+            appointmentDate: appointmentDate,
+            appointmentTime: appointmentTime,
+            userEmail: user.email,
+            userName: user.name
+          })
+        });
+
+        const confirmData = await confirmResponse.json();
+
+        if (confirmData.success) {
+          alert('Payment successful...Confirmation email sent to ' + user.email);
+          window.location.href = "profile.html";
+        } else {
+          alert('Payment failed: ' + confirmData.message);
+        }
+
+      } catch (err) {
+        console.error('Payment error: ', err);
+        alert('Payment failed. Please try again.');
+      }
     }
+
   </script>
 
 </body>

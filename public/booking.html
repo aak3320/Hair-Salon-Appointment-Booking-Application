@@ -270,10 +270,22 @@
           });
 
           const result = await response.json();
-          
+
           if (response.ok) {
-            // Redirect to payment page
-            window.location.href = 'payment.html';
+            // Get URL params from booking page
+            const urlParams = new URLSearchParams(window.location.search);
+            const salonName = urlParams.get('name') || '';
+            const services = urlParams.get('services') || '';
+
+            // Pass all details to payment page
+            const paymentParams = new URLSearchParams({
+              name: salonName,
+              services: services,
+              date: document.getElementById('bookingDate').value,
+              time: document.getElementById('bookingTime').value
+            });
+
+            window.location.href = `payment.html?${paymentParams.toString()}`;
           } else {
             alert(result.message);
           }
