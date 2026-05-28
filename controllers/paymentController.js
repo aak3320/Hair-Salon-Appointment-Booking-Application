@@ -64,11 +64,10 @@ const confirmPayment = async (req, res) => {
 
         // Send confirmation email to user
         try {
-            console.log('Sending email to:', userEmail);
-    console.log('Email details:', userName, salonName, services); 
+            
             await sendPaymentConfirmationEmail(userEmail, userName, salonName, services,
                 appointmentDate, appointmentTime);
-                 console.log('Email sent successfully!');
+                 
         } catch (emailError) {
             console.log('Email failed:', emailError.message);
         }
