@@ -30,16 +30,18 @@ const sendBookingEmail = async (to, fullName, date, time) => {
 };
 
 // Email 2: After successful payment
-const sendPaymentConfirmationEmail = async (to, fullName, date, time) => {
+const sendPaymentConfirmationEmail = async (to, fullName, salonName, services, date, time) => {
   const transporter = createTransporter();
 
   await transporter.sendMail({
     from: process.env.EMAIL_USER,
     to: to,
-    subject: "Payment Confirmation - Look Booker",
+    subject: "Payment Confirmation: Look Booker",
     html: `
       <h2>Hello ${fullName},</h2>
       <p>Your payment has been processed successfully!</p>
+      <p><strong>Salon:</strong> ${salonName || 'Hair Salon'}</p>
+      <p><strong>Services:</strong> ${services || 'Appointment'}</p>
       <p><strong>Date:</strong> ${date}</p>
       <p><strong>Time:</strong> ${time}</p>
       <br>
@@ -48,7 +50,4 @@ const sendPaymentConfirmationEmail = async (to, fullName, date, time) => {
   });
 };
 
-module.exports = {
-  sendBookingEmail,
-  sendPaymentConfirmationEmail
-};
+module.exports = {sendBookingEmail,sendPaymentConfirmationEmail};
