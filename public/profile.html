@@ -114,14 +114,22 @@
           <div class="card profile-card center-align">
             <div class="card-content">
 
-              <i class="material-icons large profile-icon">account_circle</i>
+              <div class="profile-avatar">
+                <i class="material-icons large profile-icon">account_circle</i>
+              </div>
 
               <h5 id="profileName">Guest User</h5>
-              <p id="profileRole">Customer</p>
+              <span id="profileRole" class="profile-role-badge">Customer</span>
 
-              <br>
+              <div class="profile-stats">
+                <div class="stat-item">
+                  <i class="material-icons">event_available</i>
+                  <span>Bookings</span>
+                </div>
+              </div>
 
-              <a href="booking.html" class="btn btn-primary">
+              <a href="catalog.html" class="btn waves-effect waves-light btn-custom">
+                <i class="material-icons left">event</i>
                 Book Appointment
               </a>
 
@@ -129,61 +137,131 @@
           </div>
         </div>
 
-        <!-- Account Details -->
         <div class="col s12 m8">
-          <div class="card">
+          <!-- Account Information Card -->
+          <div class="card profile-info-card">
             <div class="card-content">
 
-              <span class="card-title">Account Information</span>
-
-              <div class="profile-info">
-                <p>
-                  <strong>Full Name:</strong>
-                  <span id="displayName">Not available</span>
-                </p>
-
-                <p>
-                  <strong>Email:</strong>
-                  <span id="displayEmail">Not available</span>
-                </p>
-
-                <p>
-                  <strong>Mobile Number:</strong>
-                  <span id="displayMobile">Not available</span>
-                </p>
-
-                <p>
-                  <strong>Account Role:</strong>
-                  <span id="displayRole">Customer</span>
-                </p>
+              <div class="profile-card-header">
+                <span class="card-title">Account Information</span>
+                <button class="btn-flat profile-edit-toggle waves-effect" id="editToggleBtn">
+                  <i class="material-icons left">edit</i> Edit Profile
+                </button>
               </div>
 
-              <br>
+              <!-- View Mode -->
+              <div id="viewMode">
+                <div class="profile-info-grid">
 
-              <button class="btn waves-effect waves-light btn-custom" id="logoutBtn">
-                Logout
-                <i class="material-icons right">logout</i>
-              </button>
+                  <div class="profile-info-item">
+                    <div class="profile-info-icon">
+                      <i class="material-icons">person</i>
+                    </div>
+                    <div class="profile-info-content">
+                      <label>Full Name</label>
+                      <span id="displayName">Not available</span>
+                    </div>
+                  </div>
 
+                  <div class="profile-info-item">
+                    <div class="profile-info-icon">
+                      <i class="material-icons">email</i>
+                    </div>
+                    <div class="profile-info-content">
+                      <label>Email Address</label>
+                      <span id="displayEmail">Not available</span>
+                    </div>
+                  </div>
+
+                  <div class="profile-info-item">
+                    <div class="profile-info-icon">
+                      <i class="material-icons">phone</i>
+                    </div>
+                    <div class="profile-info-content">
+                      <label>Mobile Number</label>
+                      <span id="displayMobile">Not available</span>
+                    </div>
+                  </div>
+
+                  <div class="profile-info-item">
+                    <div class="profile-info-icon">
+                      <i class="material-icons">badge</i>
+                    </div>
+                    <div class="profile-info-content">
+                      <label>Account Role</label>
+                      <span id="displayRole">Customer</span>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <!-- Edit Mode -->
+              <div id="editMode" style="display: none;">
+
+                <div id="editError" class="error-message"></div>
+                <div id="editSuccess" class="success-message"></div>
+
+                <div class="row">
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix">person</i>
+                    <input type="text" id="editName">
+                    <label for="editName">Full Name</label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix">email</i>
+                    <input type="email" id="editEmail">
+                    <label for="editEmail">Email Address</label>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="input-field col s12">
+                    <i class="material-icons prefix">phone</i>
+                    <input type="text" id="editMobile">
+                    <label for="editMobile">Mobile Number</label>
+                  </div>
+                </div>
+
+                <div class="profile-edit-actions">
+                  <button class="btn btn-custom waves-effect waves-light" id="saveProfileBtn">
+                    <i class="material-icons left">save</i>
+                    Save Changes
+                  </button>
+                  <button class="btn btn-flat profile-cancel-btn waves-effect" id="cancelEditBtn">
+                    Cancel
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="card">
+          <div class="card profile-info-card">
             <div class="card-content">
 
               <span class="card-title">My Bookings</span>
-
-              <p>
-                Your recent booking information will be displayed here after the booking API is connected.
+              <p class="profile-bookings-text">
+                <i class="material-icons tiny">info</i>
+                Your recent booking information will appear here once bookings are made.
               </p>
 
+              <div class="profile-logout-row">
+                <button class="btn waves-effect waves-light btn-custom" id="logoutBtn">
+                  <i class="material-icons left">logout</i>
+                  Logout
+                </button>
+                <button class="btn waves-effect waves-light btn-custom" id="deleteAccountBtn">
+                  <i class="material-icons left">delete_forever</i>
+                  Delete Account
+                </button>
+              </div>
             </div>
           </div>
-
         </div>
-
       </div>
-
     </div>
   </section>
   <!-- Footer -->
@@ -271,6 +349,16 @@
       document.getElementById('displayMobile').textContent = user.mobileNumber || 'Not available';
       document.getElementById('displayRole').textContent = user.role || 'Customer';
 
+      //function to update profile view with new data
+      function populateView(userData) {
+        document.getElementById('profileName').textContent = userData.name || 'Guest User';
+        document.getElementById('profileRole').textContent = userData.role || 'Customer';
+        document.getElementById('displayName').textContent = userData.name || 'Not available';
+        document.getElementById('displayEmail').textContent = userData.email || 'Not available';
+        document.getElementById('displayMobile').textContent = userData.mobileNumber || 'Not available';
+        document.getElementById('displayRole').textContent = userData.role || 'Customer';
+      }
+
       try {
 
         // Fetch fresh data from backend API
@@ -289,12 +377,7 @@
           // Update page with fresh data from database
           const freshUser = data.user;
 
-          document.getElementById('profileName').textContent = freshUser.name || 'Guest User';
-          document.getElementById('profileRole').textContent = freshUser.role || 'Customer';
-          document.getElementById('displayName').textContent = freshUser.name || 'Not available';
-          document.getElementById('displayEmail').textContent = freshUser.email || 'Not available';
-          document.getElementById('displayMobile').textContent = freshUser.mobileNumber || 'Not available';
-          document.getElementById('displayRole').textContent = freshUser.role || 'Customer';
+          populateView(freshUser);
 
           // Update localStorage with fresh data
           localStorage.setItem('user', JSON.stringify(freshUser));
@@ -314,11 +397,127 @@
 
       }
 
+      // Toggle edit mode
+      const editToggleBtn = document.getElementById('editToggleBtn');
+      const cancelEditBtn = document.getElementById('cancelEditBtn');
+      const viewMode = document.getElementById('viewMode');
+      const editMode = document.getElementById('editMode');
+
+      editToggleBtn.addEventListener('click', function () {
+        viewMode.style.display = 'none';
+        editMode.style.display = 'block';
+        editToggleBtn.style.display = 'none';
+
+        const currentUser = JSON.parse(localStorage.getItem('user'));
+        document.getElementById('editName').value = currentUser.name || '';
+        document.getElementById('editEmail').value = currentUser.email || '';
+        document.getElementById('editMobile').value = currentUser.mobileNumber || '';
+
+        // Reinitialize Materialize labels
+        M.updateTextFields();
+      });
+
+      cancelEditBtn.addEventListener('click', function () {
+        viewMode.style.display = 'block';
+        editMode.style.display = 'none';
+        editToggleBtn.style.display = 'inline-flex';
+        document.getElementById('editError').style.display = 'none';
+        document.getElementById('editSuccess').style.display = 'none';
+      });
+
+      document.getElementById('saveProfileBtn').addEventListener('click', async function () {
+        const updatedName = document.getElementById('editName').value.trim();
+        const updatedEmail = document.getElementById('editEmail').value.trim();
+        const updatedMobile = document.getElementById('editMobile').value.trim();
+
+        const editError = document.getElementById('editError');
+        const editSuccess = document.getElementById('editSuccess');
+
+        editError.style.display = 'none';
+        editSuccess.style.display = 'none';
+
+        if (!updatedName && !updatedEmail && !updatedMobile) {
+          editError.style.display = 'block';
+          editError.textContent = 'Please fill in at least one field to update.';
+          return;
+        }
+
+        try {
+          const response = await fetch('/api/profile', {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ name: updatedName, email: updatedEmail, mobileNumber: updatedMobile })
+          });
+
+          const data = await response.json();
+
+          if (data.success) {
+            editSuccess.style.display = 'block';
+            editSuccess.textContent = 'Profile updated successfully...';
+
+            populateView(data.user);
+            localStorage.setItem('user', JSON.stringify(data.user));
+
+            setTimeout(() => {
+              viewMode.style.display = 'block';
+              editMode.style.display = 'none';
+              editToggleBtn.style.display = 'inline-flex';
+              editSuccess.style.display = 'none';
+            }, 1500);
+
+          } else {
+            // Show error message
+            editError.style.display = 'block';
+            editError.textContent = data.message || 'Update Failed...Please try again.';
+          }
+        } catch (err) {
+
+          editError.style.display = 'block';
+          editError.textContent = 'Something went wrong. Please try again.';
+        }
+      });
+
       // Logout button
       document.getElementById('logoutBtn').addEventListener('click', function () {
         localStorage.removeItem('token');
         localStorage.removeItem('user');
         window.location.href = 'login.html';
+      });
+
+      // Delete account button
+      document.getElementById('deleteAccountBtn').addEventListener('click', async function () {
+
+        if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+
+          const token = localStorage.getItem('token');
+
+          try {
+            const response = await fetch('/api/profile', {
+              method: 'DELETE',
+              headers: {
+                'Authorization': `Bearer ${token}`
+              }
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+              // Clear localStorage and redirect to login
+              localStorage.removeItem('token');
+              localStorage.removeItem('user');
+              alert('Your account has been deleted successfully.');
+              window.location.href = 'login.html';
+            } else {
+              alert(data.message || 'Failed to delete account.');
+            }
+
+          } catch (err) {
+            alert('Something went wrong. Please try again.');
+          }
+        }
       });
 
     });

@@ -1066,14 +1066,6 @@ nav.navbar-custom .nav-active {
 }
 
 
-/* =========================================================
-   KRISHA MERGED UI OVERRIDES
-   - Keeps existing teammate styles above
-   - Adds/overrides Krisha navbar, catalog, login/register,
-     footer, contact, FAQ and testimonial UI safely
-   ========================================================= */
-
-/* Navbar - supports both old Materialize menu and new centered menu */
 nav.navbar-custom {
   background-color: #ffffff !important;
   min-height: 85px;
@@ -1679,6 +1671,306 @@ nav.navbar-custom .nav-active,
 .testimonial-card span {
   color: #b35c44;
   font-weight: 700;
+}
+
+/* PROFILE PAGE */
+.profile-page {
+  background-color: #fff7f2;
+  min-height: 100vh;
+}
+
+/* Profile Section */
+.profile-section {
+  padding: 60px 0 80px;
+}
+
+/* Profile Header */
+.profile-header {
+  margin-bottom: 40px;
+}
+
+.profile-header h2 {
+  color: #5c2c22;
+  font-size: 42px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.profile-header p {
+  color: #666;
+  font-size: 17px;
+}
+
+/* Profile Card (left) */
+.profile-card {
+  border-radius: 24px !important;
+  box-shadow: 0 10px 30px rgba(92, 44, 34, 0.12) !important;
+  padding: 10px 0 20px !important;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(135deg, #b35c44, #e07a5f);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+  box-shadow: 0 8px 20px rgba(179, 92, 68, 0.35);
+}
+
+.profile-avatar i {
+  font-size: 56px !important;
+  color: white !important;
+}
+
+.profile-card h5 {
+  color: #5c2c22;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.profile-role-badge {
+  display: inline-block;
+  background-color: #fff7f2;
+  color: #b35c44;
+  border: 2px solid #b35c44;
+  border-radius: 30px;
+  padding: 4px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 20px 0 24px;
+  padding: 16px 0;
+  border-top: 1px solid #f0d5cc;
+  border-bottom: 1px solid #f0d5cc;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #666;
+  font-size: 13px;
+}
+
+.stat-item i {
+  color: #b35c44;
+  font-size: 22px !important;
+}
+
+.profile-book-btn {
+  margin-top: 8px !important;
+  border-radius: 35px !important;
+  width: 100% !important;
+}
+
+/* Profile Info Card (right) */
+.profile-info-card {
+  border-radius: 24px !important;
+  box-shadow: 0 10px 30px rgba(92, 44, 34, 0.10) !important;
+  margin-bottom: 24px !important;
+}
+
+.profile-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.profile-card-header .card-title {
+  color: #5c2c22 !important;
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  margin-bottom: 0 !important;
+}
+
+.profile-edit-toggle {
+  color: #b35c44 !important;
+  font-weight: 600 !important;
+  border-radius: 30px !important;
+  border: 2px solid #b35c44 !important;
+  padding: 0 18px !important;
+  height: 38px !important;
+  line-height: 38px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  transition: all 0.2s ease !important;
+}
+
+.profile-edit-toggle:hover {
+  background-color: #b35c44 !important;
+  color: white !important;
+}
+
+.profile-edit-toggle i {
+  font-size: 18px !important;
+}
+
+/* Profile Info Grid */
+.profile-info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.profile-info-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0d5cc;
+}
+
+.profile-info-item:last-child {
+  border-bottom: none;
+}
+
+.profile-info-icon {
+  width: 42px;
+  height: 42px;
+  background-color: #fff7f2;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.profile-info-icon i {
+  color: #b35c44;
+  font-size: 20px !important;
+}
+
+.profile-info-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile-info-content label {
+  font-size: 12px;
+  color: #999;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 2px;
+}
+
+.profile-info-content span {
+  font-size: 16px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* Edit Mode */
+#editMode .input-field .prefix {
+  color: #b35c44;
+}
+
+#editMode .input-field input:focus {
+  border-bottom: 2px solid #b35c44 !important;
+  box-shadow: 0 1px 0 0 #b35c44 !important;
+}
+
+#editMode .input-field label.active {
+  color: #b35c44 !important;
+}
+
+.profile-edit-actions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.profile-cancel-btn {
+  color: #666 !important;
+  font-weight: 600 !important;
+  border-radius: 30px !important;
+  border: 2px solid #ddd !important;
+  padding: 0 20px !important;
+  height: 44px !important;
+  line-height: 44px !important;
+}
+
+.profile-cancel-btn:hover {
+  background-color: #f5f5f5 !important;
+}
+
+/* My Bookings card */
+.profile-info-card .card-title {
+  color: #5c2c22 !important;
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.profile-bookings-text {
+  color: #888;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 20px !important;
+}
+
+.profile-bookings-text i {
+  color: #b35c44;
+}
+
+.profile-logout-row {
+  border-top: 1px solid #f0d5cc;
+  padding-top: 20px;
+  margin-top: 8px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.profile-logout-btn {
+  background-color: white !important;
+  color: #c0392b !important;
+  border: 2px solid #c0392b !important;
+  border-radius: 35px !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.profile-logout-btn:hover {
+  background-color: #c0392b !important;
+  color: white !important;
+}
+
+.profile-delete-btn {
+  background-color: white !important;
+  color: #c0392b !important;
+  border: 2px solid #c0392b !important;
+  border-radius: 35px !important;
+  font-weight: 600 !important;
+  box-shadow: none !important;
+  transition: all 0.2s ease !important;
+}
+
+.profile-delete-btn:hover {
+  background-color: #c0392b !important;
+  color: white !important;
 }
 
 /* Footer - centered and safe with Materialize columns */
